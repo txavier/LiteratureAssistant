@@ -176,7 +176,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Views\itemsController.cs" />
+    <Compile Include="Controllers\itemsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -241,6 +241,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Auto.Controller\Auto.Controller.csproj">
+      <Project>{5aaa8e35-07fc-4b4d-a97e-fc42978ad45d}</Project>
+      <Name>Auto.Controller</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Auto.Repo\Auto.Repo.csproj">
       <Project>{b460bb6c-9b69-44f8-bc2d-6d33a5081ffb}</Project>
       <Name>Auto.Repo</Name>

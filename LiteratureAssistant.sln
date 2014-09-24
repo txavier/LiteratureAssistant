@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Repo", "Auto.Repo\Auto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Service", "Auto.Service\Auto.Service.csproj", "{C4CFB008-244F-4D0E-AB7B-4040ECF220F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Controller", "Auto.Controller\Auto.Controller.csproj", "{5AAA8E35-07FC-4B4D-A97E-FC42978AD45D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{C4CFB008-244F-4D0E-AB7B-4040ECF220F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4CFB008-244F-4D0E-AB7B-4040ECF220F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4CFB008-244F-4D0E-AB7B-4040ECF220F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AAA8E35-07FC-4B4D-A97E-FC42978AD45D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AAA8E35-07FC-4B4D-A97E-FC42978AD45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AAA8E35-07FC-4B4D-A97E-FC42978AD45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AAA8E35-07FC-4B4D-A97E-FC42978AD45D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

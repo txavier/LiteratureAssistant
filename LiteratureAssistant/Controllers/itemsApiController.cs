@@ -18,11 +18,11 @@ namespace LiteratureAssistant.Controllers
     {
         private LiteratureAssistantDbModel db = new LiteratureAssistantDbModel();
 
-        // GET: api/itemsApi
-        public IQueryable<item> Getitems()
-        {
-            return db.items;
-        }
+        //// GET: api/itemsApi
+        //public IQueryable<item> Getitems()
+        //{
+        //    return db.items;
+        //}
 
         // GET: api/itemsApi/5
         [ResponseType(typeof(item))]

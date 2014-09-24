@@ -267,6 +267,10 @@
       <Project>{c4cfb008-244f-4d0e-ab7b-4040ecf220f5}</Project>
       <Name>Auto.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Auto.WebApiController\Auto.WebApiController.csproj">
+      <Project>{339adf9b-c000-4094-b14c-6af553b090e8}</Project>
+      <Name>Auto.WebApiController</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LiteratureAssistant.CompositionRoot\LiteratureAssistant.CompositionRoot.csproj">
       <Project>{06702535-bbdb-44ab-8f60-8e7e22e6fcb1}</Project>
       <Name>LiteratureAssistant.CompositionRoot</Name>

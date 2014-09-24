@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteratureAssistant.Core", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteratureAssistant.CompositionRoot", "LiteratureAssistant.CompositionRoot\LiteratureAssistant.CompositionRoot.csproj", "{06702535-BBDB-44AB-8F60-8E7E22E6FCB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Repo", "Auto.Repo\Auto.Repo.csproj", "{B460BB6C-9B69-44F8-BC2D-6D33A5081FFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Service", "Auto.Service\Auto.Service.csproj", "{C4CFB008-244F-4D0E-AB7B-4040ECF220F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{06702535-BBDB-44AB-8F60-8E7E22E6FCB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06702535-BBDB-44AB-8F60-8E7E22E6FCB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06702535-BBDB-44AB-8F60-8E7E22E6FCB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B460BB6C-9B69-44F8-BC2D-6D33A5081FFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B460BB6C-9B69-44F8-BC2D-6D33A5081FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B460BB6C-9B69-44F8-BC2D-6D33A5081FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B460BB6C-9B69-44F8-BC2D-6D33A5081FFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4CFB008-244F-4D0E-AB7B-4040ECF220F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4CFB008-244F-4D0E-AB7B-4040ECF220F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4CFB008-244F-4D0E-AB7B-4040ECF220F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4CFB008-244F-4D0E-AB7B-4040ECF220F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

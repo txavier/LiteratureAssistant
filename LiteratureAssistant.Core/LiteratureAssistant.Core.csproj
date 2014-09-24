@@ -61,11 +61,18 @@
     <Compile Include="Models\item.cs" />
     <Compile Include="Models\itemAttribute.cs" />
     <Compile Include="Models\itemTemplate.cs" />
+    <Compile Include="Models\Partials\item.cs" />
     <Compile Include="Models\templateAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ItemService.cs" />
+    <Compile Include="ViewModels\ItemViewModel.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Auto.Repo\Auto.Repo.csproj">
+      <Project>{b460bb6c-9b69-44f8-bc2d-6d33a5081ffb}</Project>
+      <Name>Auto.Repo</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StructureMap.Web;
+using Auto.WebApiController;
 
 namespace LiteratureAssistant.CompositionRoot
 {
@@ -24,6 +25,7 @@ namespace LiteratureAssistant.CompositionRoot
 
                 _.For<IRepository<item>>().Use<Repository<item>>();
                 _.For<IService<item>>().Use<Service<item>>();
+                _.For<IApiController<item>>().Use<ApiController<item>>();
 
                 _.Policies.SetAllProperties(prop => prop.OfType<IService<item>>());
 

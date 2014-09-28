@@ -23,7 +23,9 @@ namespace Auto.Service
 
         public IEnumerable<TEntity> GetAll()
         {
-            return repository.GetAll().ToList();
+            var result = repository.GetAll().ToList();
+
+            return result;
         }
 
         public void Update(TEntity entity)

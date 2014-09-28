@@ -4,7 +4,7 @@ namespace LiteratureAssistant.Core.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    //using System.Data.Entity.Spatial;
+    using System.Data.Entity.Spatial;
 
     [Table("itemAttribute")]
     public partial class itemAttribute
@@ -18,5 +18,9 @@ namespace LiteratureAssistant.Core.Models
         [Required]
         [StringLength(50)]
         public string value { get; set; }
+
+        public virtual item item { get; set; }
+
+        public virtual templateAttribute templateAttribute { get; set; }
     }
 }

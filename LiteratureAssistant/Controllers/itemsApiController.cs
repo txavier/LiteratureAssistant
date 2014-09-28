@@ -11,6 +11,10 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using LiteratureAssistant.Core.Models;
 using LiteratureAssistant.Data;
+using StructureMap;
+using Auto.Service;
+using Auto.WebApiController;
+using System.Runtime.Serialization;
 
 namespace LiteratureAssistant.Controllers
 {
@@ -18,11 +22,33 @@ namespace LiteratureAssistant.Controllers
     {
         private LiteratureAssistantDbModel db = new LiteratureAssistantDbModel();
 
-        //// GET: api/itemsApi
-        //public IQueryable<item> Getitems()
-        //{
-        //    return db.items;
-        //}
+        private readonly IApiController<item> apiController;
+
+        public itemsApiController()
+        {
+            apiController = ObjectFactory.GetInstance<IApiController<item>>();
+        }
+
+        // GET: api/itemsApi
+        public HttpResponseMessage Getitems()
+        {
+            var lightResultList = apiController.Get().Select(i => new 
+            {
+                itemId = i.itemId,
+                itemTemplateId = i.itemTemplateId,
+                itemTemplate = new { itemTemplateName = i.itemTemplate.itemTemplateName },
+                itemAttributes = i.itemAttributes.Select(j => new
+                {
+                    templateAttribute = new { templateAttributeName = j.templateAttribute.templateAttributeName },
+                    value = j.value
+                })
+            });
+
+            return this.Request.CreateResponse(
+                HttpStatusCode.OK,
+                lightResultList);
+            //return db.items;
+        }
 
         // GET: api/itemsApi/5
         [ResponseType(typeof(item))]

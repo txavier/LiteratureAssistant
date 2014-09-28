@@ -29,3 +29,25 @@
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
+<div ng-app="itemModule">
+    <div ng-controller="itemController">
+        @*<ul>
+            <li ng-repeat="item in items">
+                {{ item.itemId }}, {{ item.itemTemplateId}}, {{ item.itemTemplate.itemTemplateName }}
+            </li>
+        </ul>*@
+        <table class="table table-striped">
+            <tr ng-repeat="item in items">
+                <th ng-repeat="itemAttribute in item.itemAttributes">
+                    {{ itemAttribute.templateAttribute.templateAttributeName }}
+                </th>
+            </tr>
+            <tr ng-repeat="item in items">
+                <td ng-repeat="itemAttribute in item.itemAttributes">
+                    {{ itemAttribute.value }}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

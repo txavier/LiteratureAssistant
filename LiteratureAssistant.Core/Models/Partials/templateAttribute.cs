@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace LiteratureAssistant.Core.Models
 {
-    public partial class item
+    public partial class templateAttribute
     {
-       
+
     }
 }

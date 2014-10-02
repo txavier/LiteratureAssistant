@@ -13,16 +13,11 @@ using StructureMap;
 
 namespace LiteratureAssistant.Views
 {
-    public class itemsController : Auto.Controller.Controller<item>
+    public class itemsController : Controller
     {
         private LiteratureAssistantDbModel db = new LiteratureAssistantDbModel();
 
         //private readonly IService<item> itemService;
-
-        public itemsController() :
-            base(ObjectFactory.GetInstance<IService<item>>())
-        {
-        }
 
         //// GET: items
         //public ActionResult Index()

@@ -13,8 +13,10 @@ using LiteratureAssistant.Core.Models;
 using LiteratureAssistant.Data;
 using StructureMap;
 using Auto.Service;
-using Auto.WebApiController;
 using System.Runtime.Serialization;
+using Newtonsoft.Json.Linq;
+using Auto.Service.Interfaces;
+using LiteratureAssistant.Core.Interfaces;
 
 namespace LiteratureAssistant.Controllers
 {
@@ -22,17 +24,27 @@ namespace LiteratureAssistant.Controllers
     {
         private LiteratureAssistantDbModel db = new LiteratureAssistantDbModel();
 
-        private readonly IApiController<item> apiController;
+        private readonly IItemService ItemService;
+        
+        private readonly IService<itemAttribute> ItemAttributeService;
+        
+        private readonly IService<templateAttribute> TemplateAttributeService;
 
-        public itemsApiController()
+        public itemsApiController(IContainer container)
         {
-            apiController = ObjectFactory.GetInstance<IApiController<item>>();
+            ItemService = container.GetInstance<IItemService>();
+
+            ItemService.ItemTemplateId = 4; // This item template id indicates literature.
+
+            ItemAttributeService = container.GetInstance<IService<itemAttribute>>();
+
+            TemplateAttributeService = container.GetInstance<IService<templateAttribute>>();
         }
 
         // GET: api/itemsApi
         public HttpResponseMessage Getitems()
         {
-            var lightResultList = apiController.Get().Select(i => new 
+            var lightResultList = ItemService.GetAll().Select(i => new 
             {
                 itemId = i.itemId,
                 itemTemplateId = i.itemTemplateId,
@@ -47,7 +59,6 @@ namespace LiteratureAssistant.Controllers
             return this.Request.CreateResponse(
                 HttpStatusCode.OK,
                 lightResultList);
-            //return db.items;
         }
 
         // GET: api/itemsApi/5
@@ -99,18 +110,21 @@ namespace LiteratureAssistant.Controllers
         }
 
         // POST: api/itemsApi
-        [ResponseType(typeof(item))]
-        public async Task<IHttpActionResult> Postitem(item item)
+        //[ResponseType(typeof(List<itemAttribute>))]
+        public async Task<IHttpActionResult> Postitem(JObject data)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.items.Add(item);
-            await db.SaveChangesAsync();
+            //dynamic data1 = data;
 
-            return CreatedAtRoute("DefaultApi", new { id = item.itemId }, item);
+            var newItemAttributes = ItemService.DynamicItemAttributeToItemAttribute(data);
+
+            var item = await ItemService.AddRange(newItemAttributes);
+
+            return CreatedAtRoute("DefaultApi", new { }, item);
         }
 
         // DELETE: api/itemsApi/5

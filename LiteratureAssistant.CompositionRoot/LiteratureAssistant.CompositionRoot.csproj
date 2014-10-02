@@ -56,7 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultBootStrap.cs" />
+    <Compile Include="DefaultRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,10 +71,6 @@
     <ProjectReference Include="..\Auto.Service\Auto.Service.csproj">
       <Project>{c4cfb008-244f-4d0e-ab7b-4040ecf220f5}</Project>
       <Name>Auto.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Auto.WebApiController\Auto.WebApiController.csproj">
-      <Project>{339adf9b-c000-4094-b14c-6af553b090e8}</Project>
-      <Name>Auto.WebApiController</Name>
     </ProjectReference>
     <ProjectReference Include="..\LiteratureAssistant.Core\LiteratureAssistant.Core.csproj">
       <Project>{99094628-d915-4e27-85d2-b1d1e308f5a9}</Project>

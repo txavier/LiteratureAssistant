@@ -32,11 +32,6 @@
 
 <div ng-app="itemModule">
     <div ng-controller="itemController">
-        @*<ul>
-            <li ng-repeat="item in items">
-                {{ item.itemId }}, {{ item.itemTemplateId}}, {{ item.itemTemplate.itemTemplateName }}
-            </li>
-        </ul>*@
         <table class="table table-striped">
             <tr ng-repeat="item in items">
                 <th ng-repeat="itemAttribute in item.itemAttributes">
@@ -49,5 +44,21 @@
                 </td>
             </tr>
         </table>
+    </div>
+    <div ng-controller="templateAttributeController" class="form-horizontal">
+        <form name="form1" role="form">
+            <div class="form-group" ng-repeat="templateAttribute in templateAttributes">
+                <label class="control-label col-md-2" for="{{ templateAttribute.templateAttributeName }}">{{ templateAttribute.templateAttributeName }}</label>
+                <div class="col-md-10">
+                    <input class="text-box single-line" data-val="true" data-ng-model=formData[templateAttribute.templateAttributeName] type="text" value="" />
+                    <span class="field-validation-valid" data-valmsg-for="{{ templateAttribute.templateAttributeName }}" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" ng-click="sendItem()" />
+                </div>
+            </div>
+        </form>
     </div>
 </div>

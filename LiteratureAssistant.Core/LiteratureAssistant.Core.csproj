@@ -51,15 +51,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Yarn">
-      <HintPath>..\packages\Yarn.0.8.10\lib\net40\Yarn.dll</HintPath>
-    </Reference>
-    <Reference Include="Yarn.EF">
-      <HintPath>..\packages\Yarn.EF.0.8.10\lib\net40\Yarn.EF.dll</HintPath>
-    </Reference>
-    <Reference Include="Yarn.StructureMap">
-      <HintPath>..\packages\Yarn.StructureMap.0.8.10\lib\net40\Yarn.StructureMap.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\count.cs" />
@@ -68,9 +59,12 @@
     <Compile Include="Models\itemTemplate.cs" />
     <Compile Include="Models\order.cs" />
     <Compile Include="Models\Partials\item.cs" />
+    <Compile Include="Models\Partials\templateAttribute.cs" />
+    <Compile Include="Models\Partials\itemAttribute.cs" />
     <Compile Include="Models\templateAttribute.cs" />
     <Compile Include="Models\user.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Interfaces\IItemService.cs" />
     <Compile Include="Services\ItemService.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
   </ItemGroup>
@@ -79,11 +73,16 @@
       <Project>{b460bb6c-9b69-44f8-bc2d-6d33a5081ffb}</Project>
       <Name>Auto.Repo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Auto.Service\Auto.Service.csproj">
+      <Project>{c4cfb008-244f-4d0e-ab7b-4040ecf220f5}</Project>
+      <Name>Auto.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

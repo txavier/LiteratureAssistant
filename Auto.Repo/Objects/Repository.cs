@@ -6,6 +6,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Omu.ValueInjecter;
+using System.Data.Entity.Infrastructure;
 
 namespace Auto.Repo.Objects
 {
@@ -25,19 +27,30 @@ namespace Auto.Repo.Objects
             _dbSet = context.Set<TEntity>();
         }
 
-        public TEntity GetSingle(int entityId)
+        public TEntity Find(object entityId)
         {
-            return _dbSet.Find(entityId);
+            var result = _dbSet.Find(entityId);
+
+            return result;
         }
 
-        public async Task<TEntity> GetSingleAsync(int entityId)
+        public async Task<TEntity> FindAsync(object entityId)
         {
-            return await _dbSet.FindAsync(entityId);
+            var result = await _dbSet.FindAsync(entityId);
+
+            return result;
         }
 
-        public IQueryable<TEntity> GetAll()
+        private IQueryable<TEntity> GetAllAsQueryable()
         {
             return _context.Set<TEntity>();
+        }
+
+        public IEnumerable<TEntity> GetAll()
+        {
+            var result = GetAllAsQueryable().ToList();
+
+            return result;
         }
 
         /// <summary>
@@ -210,14 +223,82 @@ namespace Auto.Repo.Objects
             return entity;
         }
 
-        public TEntity Update(TEntity entity, bool dontSave = false)
+        public void Dispose()
         {
-            if (_context.Entry(entity).State == EntityState.Detached)
+            Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        private bool disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if(!this.disposed)
             {
-                _dbSet.Attach(entity);
+                if(disposing)
+                {
+                    _context.Dispose();
+                }
             }
 
-            _context.Entry(entity).State = EntityState.Modified;
+            this.disposed = true;
+        }
+
+        /// <summary>
+        /// This method gets the name of the generic objects primary key.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        /// <remarks>http://michaelmairegger.wordpress.com/2013/03/30/find-primary-keys-from-entities-from-dbcontext/</remarks>
+        public string GetEntityKeyName(TEntity entity)
+        {
+            var result = ((IObjectContextAdapter)_context).ObjectContext.CreateObjectSet<TEntity>().EntitySet.ElementType.
+                KeyMembers.Select(k => k.Name).ToArray().FirstOrDefault();
+
+            return result;
+        }
+
+        /// <summary>
+        /// This method returns the value of the primary key of this entity.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public object GetEntityIdObject(TEntity entity)
+        {
+            Type type = typeof(TEntity);
+
+            var keyName = GetEntityKeyName(entity);
+            
+            var result = type.GetProperty(keyName).GetValue(entity, null);
+
+            return result;
+        }
+
+        /// <summary>
+        /// This method returns the value of the primary key of this entity if it is an integer.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public int? GetEntityIdInt(TEntity entity)
+        {
+            var result = GetEntityIdObject(entity);
+
+            var resultInt = (int)result;
+
+            return resultInt;
+        }
+
+        public TEntity Update(TEntity entity, bool dontSave = false)
+        {
+            // Get the value of the primary key.
+            var id = GetEntityIdObject(entity);
+            
+            // Get the orginal object from the database.
+            TEntity baseEntity = Find(id);
+
+            // Using ValueInjector to inject the updated values into the context connected entity.
+            baseEntity.InjectFrom(entity);
 
             if (!dontSave)
             {

@@ -27,9 +27,9 @@ namespace LiteratureAssistant.Controllers
                 {
                     templateAttributeName = i.templateAttributeName,
                     templateAttributeId = i.templateAttributeId
-                });
+                }).ToList();
 
-            return this.Request.CreateResponse(lightTemplateAttributeList);
+            return this.Request.CreateResponse(HttpStatusCode.OK, lightTemplateAttributeList.ToArray());
         }
 
         // GET: api/templateAttribute/5

@@ -18,14 +18,14 @@ namespace Auto.Service.Services
             this._repository = repository;
         }
 
-        public async Task<TEntity> GetSingleAsync(int entityId)
+        public async Task<TEntity> FindAsync(object entityId)
         {
-            return await _repository.GetSingleAsync(entityId);
+            return await _repository.FindAsync(entityId);
         }
 
-        public TEntity GetSingle(int entityId)
+        public TEntity Find(object entityId)
         {
-            return _repository.GetSingle(entityId);
+            return _repository.Find(entityId);
         }
 
         public IEnumerable<TEntity> GetAll()

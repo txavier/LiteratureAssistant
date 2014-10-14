@@ -17,6 +17,8 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json.Linq;
 using Auto.Service.Interfaces;
 using LiteratureAssistant.Core.Interfaces;
+using LiteratureAssistant.Core.ViewModels;
+using LiteratureAssistant.Core.Services;
 
 namespace LiteratureAssistant.Controllers
 {
@@ -24,7 +26,7 @@ namespace LiteratureAssistant.Controllers
     {
         private LiteratureAssistantDbModel db = new LiteratureAssistantDbModel();
 
-        private readonly IItemService ItemService;
+        private readonly IItemService _itemService;
         
         private readonly IService<itemAttribute> ItemAttributeService;
         
@@ -32,46 +34,56 @@ namespace LiteratureAssistant.Controllers
 
         public itemsApiController(IContainer container)
         {
-            ItemService = container.GetInstance<IItemService>();
+            _itemService = container.GetInstance<IItemService>();
 
-            ItemService.ItemTemplateId = 4; // This item template id indicates literature.
+            _itemService.ItemTemplateId = 4; // This item template id indicates literature.
 
             ItemAttributeService = container.GetInstance<IService<itemAttribute>>();
 
             TemplateAttributeService = container.GetInstance<IService<templateAttribute>>();
         }
 
+        //[ResponseType(typeof(List<ItemViewModel>))]
         // GET: api/itemsApi
         public HttpResponseMessage Getitems()
         {
-            var lightResultList = ItemService.GetAll().Select(i => new 
+            try
             {
-                itemId = i.itemId,
-                itemTemplateId = i.itemTemplateId,
-                itemTemplate = new { itemTemplateName = i.itemTemplate.itemTemplateName },
-                itemAttributes = i.itemAttributes.Select(j => new
-                {
-                    templateAttribute = new { templateAttributeName = j.templateAttribute.templateAttributeName },
-                    value = j.value
-                })
-            });
+                var lightResultList = ItemService.ToViewModels(_itemService.GetAll()).ToList();
 
-            return this.Request.CreateResponse(
-                HttpStatusCode.OK,
-                lightResultList);
+                return this.Request.CreateResponse(
+                    HttpStatusCode.OK,
+                    lightResultList.ToArray());
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         // GET: api/itemsApi/5
-        [ResponseType(typeof(item))]
-        public async Task<IHttpActionResult> Getitem(int id)
+        //[ResponseType(typeof(ItemViewModel))]
+        public HttpResponseMessage Getitem(int id)
         {
-            item item = await db.items.FindAsync(id);
-            if (item == null)
+            try
             {
-                return NotFound();
-            }
+                var item = _itemService.Find(id);
 
-            return Ok(item);
+                //if (item == null)
+                //{
+                //    return NotFound();
+                //}
+
+                var itemViewModel = ItemService.ToViewModel(item);
+
+                return this.Request.CreateResponse(HttpStatusCode.OK, itemViewModel);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         // PUT: api/itemsApi/5
@@ -111,36 +123,58 @@ namespace LiteratureAssistant.Controllers
 
         // POST: api/itemsApi
         //[ResponseType(typeof(List<itemAttribute>))]
-        public async Task<IHttpActionResult> Postitem(JObject data)
+        public IHttpActionResult Postitem(JObject data)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                //dynamic data1 = data;
+
+                var newItemAttributes = _itemService.DynamicItemAttributeToItemAttribute(data);
+
+                var updatedItems = _itemService.UpdateRange(newItemAttributes.Where(i => i.itemId != 0).ToList());
+
+                var newItems = _itemService.AddRange(newItemAttributes.Where(i => i.itemId == 0).ToList());
+
+                return CreatedAtRoute("DefaultApi", new { }, newItems);
             }
-
-            //dynamic data1 = data;
-
-            var newItemAttributes = ItemService.DynamicItemAttributeToItemAttribute(data);
-
-            var item = await ItemService.AddRange(newItemAttributes);
-
-            return CreatedAtRoute("DefaultApi", new { }, item);
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         // DELETE: api/itemsApi/5
         [ResponseType(typeof(item))]
         public async Task<IHttpActionResult> Deleteitem(int id)
         {
-            item item = await db.items.FindAsync(id);
-            if (item == null)
+            try
             {
-                return NotFound();
+                var item = await _itemService.DeleteAsync(id);
+
+                return Ok(item);
+
+                //item item = await db.items.FindAsync(id);
+                //if (item == null)
+                //{
+                //    return NotFound();
+                //}
+
+                //db.items.Remove(item);
+                //await db.SaveChangesAsync();
+
+                //return Ok(item);
             }
-
-            db.items.Remove(item);
-            await db.SaveChangesAsync();
-
-            return Ok(item);
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         protected override void Dispose(bool disposing)

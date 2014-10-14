@@ -14,8 +14,8 @@ namespace Auto.Service.Interfaces
         System.Collections.Generic.IEnumerable<TEntity> Get(System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null, Func<System.Linq.IQueryable<TEntity>, System.Collections.Generic.IEnumerable<TEntity>> distinctBy = null, Func<System.Linq.IQueryable<TEntity>, System.Linq.IOrderedQueryable<TEntity>> orderBy = null, Func<System.Collections.Generic.IEnumerable<TEntity>, System.Collections.Generic.IEnumerable<TEntity>> maxBy = null, int? skip = null, int? take = null, string includeProperties = "");
         System.Collections.Generic.IEnumerable<TEntity> GetAll();
         int GetCount(System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null, Func<System.Linq.IQueryable<TEntity>, System.Collections.Generic.IEnumerable<TEntity>> distinctBy = null, Func<System.Linq.IQueryable<TEntity>, System.Linq.IOrderedQueryable<TEntity>> orderBy = null, Func<System.Collections.Generic.IEnumerable<TEntity>, System.Collections.Generic.IEnumerable<TEntity>> maxBy = null, string includeProperties = "");
-        TEntity GetSingle(int entityId);
-        System.Threading.Tasks.Task<TEntity> GetSingleAsync(int entityId);
+        TEntity Find(object entityId);
+        System.Threading.Tasks.Task<TEntity> FindAsync(object entityId);
         int SaveChanges();
         System.Threading.Tasks.Task<int> SaveChangesAsync();
         TEntity Update(TEntity entity, bool dontSave = false);

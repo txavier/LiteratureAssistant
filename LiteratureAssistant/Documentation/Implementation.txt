@@ -1,0 +1,4 @@
+﻿1) In order to create a directive that allowed back button functionality the following examples were used.
+
+	http://stackoverflow.com/questions/14070285/how-to-implement-history-back-in-angular-js
+	http://jsfiddle.net/asgoth/WaRKv/

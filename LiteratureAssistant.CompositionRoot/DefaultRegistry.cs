@@ -39,14 +39,20 @@ namespace LiteratureAssistant.CompositionRoot
                     scan.TheCallingAssembly();
                     scan.WithDefaultConventions();
                 });
-            
-            For<DbContext>().HybridHttpOrThreadLocalScoped().Use<LiteratureAssistantDbModel>();
+
+            //For<DbContext>().HybridHttpOrThreadLocalScoped().Use<LiteratureAssistantDbModel>();
+            For<DbContext>().LifecycleIs(new StructureMap.Pipeline.ThreadLocalStorageLifecycle()).
+                Use<LiteratureAssistantDbModel>();
 
             For(typeof(IService<>)).Use(typeof(Service<>));
 
             For(typeof(IRepository<>)).Use(typeof(Repository<>));
 
             For<IItemService>().Use<ItemService>();
+
+            For<IUserService>().Use<UserService>();
+
+            For<IOrderService>().Use<OrderService>();
 
             Policies.SetAllProperties(prop => prop.OfType<IService<item>>());
 
@@ -55,6 +61,10 @@ namespace LiteratureAssistant.CompositionRoot
             Policies.SetAllProperties(prop => prop.OfType<IService<templateAttribute>>());
 
             Policies.SetAllProperties(prop => prop.OfType<IItemService>());
+
+            Policies.SetAllProperties(prop => prop.OfType<IUserService>());
+
+            Policies.SetAllProperties(prop => prop.OfType<IOrderService>());
         }
 
         #endregion

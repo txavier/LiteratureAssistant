@@ -1,0 +1,37 @@
+﻿<!--<div ng-app="itemModule">
+    <div ng-controller="itemController">
+        <table class="table table-striped">
+            <tr ng-repeat="item in items">
+                <th ng-repeat="itemAttribute in item.itemAttributes">
+                    {{ itemAttribute.templateAttribute.templateAttributeName }}
+                </th>
+            </tr>
+            <tr ng-repeat="item in items">
+                <td ng-repeat="itemAttribute in item.itemAttributes">
+                    {{ itemAttribute.value }}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>-->
+
+<div class="container">
+    <table class="table table-striped">
+        <tr ng-repeat="item in items | limitTo: 1">
+            <th ng-repeat="itemAttribute in item.itemAttributes">
+                {{ itemAttribute.templateAttribute.templateAttributeName }}
+            </th>
+        </tr>
+        <tr ng-repeat="item in items">
+            <td ng-repeat="itemAttribute in item.itemAttributes">
+                {{ itemAttribute.value }}
+            </td>
+            <td>
+                <a class="btn btn-default" href="#/item/edit/{{ item.itemId }}">Edit</a>
+            </td>
+            <td>
+                <a class="btn btn-default" ng-click="deleteItem(item.itemId)">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>

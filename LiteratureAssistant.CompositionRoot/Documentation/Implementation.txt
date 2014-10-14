@@ -1,0 +1,11 @@
+﻿1) To use structuremap to configure the implementation of a generic repository the following information was used:
+
+http://stackoverflow.com/questions/2835420/how-do-i-configure-structuremap-to-use-a-generic-repository
+
+2) Use container for structuremap in place of ObjectFactory.
+
+https://groups.google.com/forum/#!topic/structuremap-users/S7nBib95zh0
+
+3) If code contracts will be used than this guide could get you started with info.
+
+http://devjourney.com/blog/2014/02/12/code-contracts-part-1-introduction/

@@ -11,8 +11,7 @@
     $scope.deleteItem = function (itemId) {
         itemService.getItem.delete({ id: itemId });
 
-        var currentPageTemplate = $route.current.templateUrl;
-        $templateCache.remove(currentPageTemplate);
-        $route.reload();
+        // Reload the item template with the latest data.
+        $scope.items = new itemService().getItems.query({}, isArray = true);
     }
 });

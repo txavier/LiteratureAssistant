@@ -42,9 +42,9 @@ namespace LiteratureAssistant.Core.Services
 
                 orderSent = i.orderSent,
 
-                item = ItemService.ToViewModel(i.item),
+                item = i.item == null ? null : ItemService.ToViewModel(i.item),
 
-                user = UserService.ToViewModel(i.user)
+                user = i.user == null ? null : UserService.ToViewModel(i.user)
             });
 
             return result;

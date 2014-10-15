@@ -8,6 +8,7 @@ namespace Auto.Service.Interfaces
         System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<TEntity>> AddRangeAsync(System.Collections.Generic.IEnumerable<TEntity> entities, bool dontSave = false);
         System.Threading.Tasks.Task<TEntity> AddAsync(TEntity entity, bool dontSave = false);
         System.Collections.Generic.IEnumerable<TEntity> AddRange(System.Collections.Generic.IEnumerable<TEntity> entities, bool dontSave = false);
+        TEntity AddOrUpdate(TEntity entity, bool dontSave = false);
         TEntity Delete(int id, bool dontSave = false);
         TEntity Delete(TEntity entity, bool dontSave = false);
         System.Threading.Tasks.Task<TEntity> DeleteAsync(int id, bool dontSave = false);

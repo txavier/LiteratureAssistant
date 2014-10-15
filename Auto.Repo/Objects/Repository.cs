@@ -8,19 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using Omu.ValueInjecter;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 
 namespace Auto.Repo.Objects
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly DbContext _context;
-        
+
         private readonly DbSet<TEntity> _dbSet;
 
         public Repository(DbContext context)
         {
             if (context == null)
+            {
                 throw new ArgumentNullException("context");
+            }
 
             _context = context;
 
@@ -164,7 +167,7 @@ namespace Auto.Repo.Objects
 
             if (!dontSave)
             {
-                await _context.SaveChangesAsync();
+                await SaveChangesAsync();
             }
 
             return entities;
@@ -176,7 +179,7 @@ namespace Auto.Repo.Objects
 
             if (!dontSave)
             {
-                await _context.SaveChangesAsync();
+                await SaveChangesAsync();
             }
 
             return entity;
@@ -188,7 +191,7 @@ namespace Auto.Repo.Objects
 
             if (!dontSave)
             {
-                _context.SaveChanges();
+                SaveChanges();
             }
 
             return entities;
@@ -200,7 +203,7 @@ namespace Auto.Repo.Objects
 
             if (!dontSave)
             {
-                _context.SaveChanges(); 
+                SaveChanges();
             }
 
             return entity;
@@ -217,32 +220,10 @@ namespace Auto.Repo.Objects
 
             if (!dontSave)
             {
-                await _context.SaveChangesAsync(); 
+                await SaveChangesAsync();
             }
 
             return entity;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-
-            GC.SuppressFinalize(this);
-        }
-
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if(!this.disposed)
-            {
-                if(disposing)
-                {
-                    _context.Dispose();
-                }
-            }
-
-            this.disposed = true;
         }
 
         /// <summary>
@@ -269,31 +250,17 @@ namespace Auto.Repo.Objects
             Type type = typeof(TEntity);
 
             var keyName = GetEntityKeyName(entity);
-            
+
             var result = type.GetProperty(keyName).GetValue(entity, null);
 
             return result;
-        }
-
-        /// <summary>
-        /// This method returns the value of the primary key of this entity if it is an integer.
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        public int? GetEntityIdInt(TEntity entity)
-        {
-            var result = GetEntityIdObject(entity);
-
-            var resultInt = (int)result;
-
-            return resultInt;
         }
 
         public TEntity Update(TEntity entity, bool dontSave = false)
         {
             // Get the value of the primary key.
             var id = GetEntityIdObject(entity);
-            
+
             // Get the orginal object from the database.
             TEntity baseEntity = Find(id);
 
@@ -302,7 +269,7 @@ namespace Auto.Repo.Objects
 
             if (!dontSave)
             {
-                _context.SaveChanges(); 
+                SaveChanges();
             }
 
             return entity;
@@ -317,9 +284,9 @@ namespace Auto.Repo.Objects
 
             _dbSet.Remove(entity);
 
-            if(!dontSave)
+            if (!dontSave)
             {
-                _context.SaveChanges();
+                SaveChanges();
             }
 
             return entity;
@@ -345,7 +312,7 @@ namespace Auto.Repo.Objects
 
         private async Task<TEntity> DeleteAsync(TEntity entity, bool dontSave = false)
         {
-            if(entity == null)
+            if (entity == null)
             {
                 return entity;
             }
@@ -359,24 +326,95 @@ namespace Auto.Repo.Objects
 
             if (!dontSave)
             {
-                await _context.SaveChangesAsync();
+                await SaveChangesAsync();
             }
 
             return entity;
         }
 
+        /// <summary>
+        /// Wrapper for SaveChanges adding the Validation Messages to the generated exception
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <remarks>http://stackoverflow.com/questions/10219864/ef-code-first-how-do-i-see-entityvalidationerrors-property-from-the-nuget-pac</remarks>
         public int SaveChanges()
         {
-            var saveChangesInt = _context.SaveChanges();
+            try
+            {
+                var saveChangesInt = _context.SaveChanges();
 
-            return saveChangesInt;
+                return saveChangesInt;
+            }
+            catch (DbEntityValidationException ex)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                foreach (var failure in ex.EntityValidationErrors)
+                {
+                    sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                    foreach (var error in failure.ValidationErrors)
+                    {
+                        sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                        sb.AppendLine();
+                    }
+                }
+
+                throw new DbEntityValidationException(
+                    "Entity Validation Failed - errors follow:\n" +
+                    sb.ToString(), ex
+                ); // Add the original exception as the innerException
+            }
         }
 
         public async Task<int> SaveChangesAsync()
         {
-            var saveChangesInt = await _context.SaveChangesAsync();
+            try
+            {
+                var saveChangesInt = await _context.SaveChangesAsync();
 
-            return saveChangesInt;
+                return saveChangesInt;
+            }
+            catch (DbEntityValidationException ex)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                foreach (var failure in ex.EntityValidationErrors)
+                {
+                    sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                    foreach (var error in failure.ValidationErrors)
+                    {
+                        sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                        sb.AppendLine();
+                    }
+                }
+
+                throw new DbEntityValidationException(
+                    "Entity Validation Failed - errors follow:\n" +
+                    sb.ToString(), ex
+                ); // Add the original exception as the innerException
+            }
+        }
+
+        private bool disposed = false;
+
+        public void Dispose()
+        {
+            Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    _context.Dispose();
+                }
+            }
+
+            this.disposed = true;
         }
 
     }

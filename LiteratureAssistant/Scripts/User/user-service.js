@@ -1,5 +1,8 @@
-﻿itemModule.factory("userService", function ($resource) {
+﻿itemModule.factory("userService", function ($resource, $http) {
+
+    var baseUrl = "api/usersApi/";
+
     return {
-        getUsers: $resource("api/usersApi")
+        getUsers: $resource("api/usersApi"),
     };
 });

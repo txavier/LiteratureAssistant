@@ -10,8 +10,6 @@
     // item from the web api get method.
     if ($routeParams.itemId != null) {
 
-        //$scope.item = itemService.getItem.get({ id: $routeParams.itemId });
-
         var resultPromise = $http.get("api/itemsApi/" + $routeParams.itemId);
 
         resultPromise.success(function (item) {
@@ -34,6 +32,9 @@
         var newItem = itemService.getItems.save({ item: item });
 
         $location.path("/item");
+
+        // Reload the item template with the latest data.
+        $scope.items = new itemService().getItems.query({}, isArray = true);
     }
 
     $scope.editItem = function (item) {
@@ -44,5 +45,8 @@
         updatedItem = itemService.getItems.save({ item: updatedItem });
 
         $location.path("/item");
+
+        // Reload the item template with the latest data.
+        $scope.items = new itemService().getItems.query({}, isArray = true);
     }
 });

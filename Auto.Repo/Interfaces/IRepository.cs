@@ -9,6 +9,8 @@ namespace Auto.Repo.Interfaces
         System.Threading.Tasks.Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, bool dontSave = false);
         System.Threading.Tasks.Task<TEntity> AddAsync(TEntity entity, bool dontSave = false);
         IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities, bool dontSave = false);
+        object GetEntityIdObject(TEntity entity);
+
         TEntity Delete(int id, bool dontSave = false);
         TEntity Delete(TEntity entity, bool dontSave = false);
         System.Threading.Tasks.Task<TEntity> DeleteAsync(int id, bool dontSave = false);

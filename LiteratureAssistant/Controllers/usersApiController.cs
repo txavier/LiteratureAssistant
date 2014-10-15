@@ -33,13 +33,15 @@ namespace LiteratureAssistant.Controllers
         }
 
         // GET: api/usersApi/5
-        public string Get(int id)
+        public UserViewModel Get(int id)
         {
-            return "value";
+            var user = UserService.ToViewModel(_userService.Find(id));
+
+            return user;
         }
 
         // POST: api/usersApi
-        public void Post(JObject data)
+        public UserViewModel Post(JObject data)
         {
             try
             {
@@ -47,11 +49,15 @@ namespace LiteratureAssistant.Controllers
 
                 var userViewModel = new UserViewModel()
                 {
-                    firstName = dataDynamic.firstName,
-                    lastName = dataDynamic.lastName
+                    firstName = dataDynamic.user.firstName,
+                    lastName = dataDynamic.user.lastName,
+                    userId = dataDynamic.user.userId ?? 0,
+                    orders = dataDynamic.user.orders == null ? null : dataDynamic.user.orders.ToObject<List<OrderViewModel>>()
                 };
 
-                _userService.Add(UserService.ToEntity(userViewModel));
+                var result = _userService.AddOrUpdate(UserService.ToEntity(userViewModel));
+
+                return UserService.ToViewModel(result);
             }
             catch (Exception ex)
             {
@@ -61,13 +67,14 @@ namespace LiteratureAssistant.Controllers
         }
 
         // PUT: api/usersApi/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, JObject data)
         {
         }
 
         // DELETE: api/usersApi/5
         public void Delete(int id)
         {
+            _userService.Delete(id);
         }
     }
 }

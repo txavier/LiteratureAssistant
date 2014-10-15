@@ -63,6 +63,46 @@ namespace Auto.Service.Services
             return result;
         }
 
+        public TEntity Update(TEntity entity, bool dontSave = false)
+        {
+            var result = _repository.Update(entity, dontSave: dontSave);
+
+            return result;
+        }
+
+        public async Task<TEntity> UpdateAsync(TEntity entity, bool dontSave = false)
+        {
+            var result = await _repository.UpdateAsync(entity, dontSave: dontSave);
+
+            return result;
+        }
+
+        /// <summary>
+        /// This method adds this entity to the database if the key is 0 but updates
+        /// the object if the key is 1.  This method assumes your primary key is an 
+        /// integer.
+        /// </summary>
+        /// <param name="entity">This is the entity that must have an integer key.</param>
+        /// <param name="dontSave"></param>
+        /// <returns></returns>
+        public TEntity AddOrUpdate(TEntity entity, bool dontSave = false)
+        {
+            var idObject = _repository.GetEntityIdObject(entity);
+
+            if((int)idObject == 0)
+            {
+                var newEntity = _repository.Add(entity, dontSave: dontSave);
+
+                return newEntity;
+            }
+            else
+            {
+                var updatedEntity = _repository.Update(entity, dontSave: dontSave);
+
+                return updatedEntity;
+            }
+        }
+
         public TEntity Delete(int id, bool dontSave = false)
         {
             var result = _repository.Delete(id, dontSave: dontSave);
@@ -129,18 +169,5 @@ namespace Auto.Service.Services
             return result;
         }
 
-        public TEntity Update(TEntity entity, bool dontSave = false)
-        {
-            var result = _repository.Update(entity, dontSave: dontSave);
-
-            return result;
-        }
-
-        public async Task<TEntity> UpdateAsync(TEntity entity, bool dontSave = false)
-        {
-            var result = await _repository.UpdateAsync(entity, dontSave: dontSave);
-
-            return result;
-        }
     }
 }

@@ -41,7 +41,7 @@ namespace LiteratureAssistant.Core.Services
                     firstName = i.firstName,
                     lastName = i.lastName,
                     userId = i.userId,
-                    orders = OrderService.ToViewModels(i.orders)
+                    orders = i.orders == null ? null : OrderService.ToViewModels(i.orders)
                 });
 
             return result;

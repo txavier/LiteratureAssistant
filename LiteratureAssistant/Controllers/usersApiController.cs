@@ -41,15 +41,23 @@ namespace LiteratureAssistant.Controllers
         // POST: api/usersApi
         public void Post(JObject data)
         {
-            dynamic dataDynamic = data;
-
-            var userViewModel = new UserViewModel()
+            try
             {
-                firstName = dataDynamic.firstName,
-                lastName = dataDynamic.lastName
-            };
+                dynamic dataDynamic = data;
 
-            _userService.Add(UserService.ToEntity(userViewModel));
+                var userViewModel = new UserViewModel()
+                {
+                    firstName = dataDynamic.firstName,
+                    lastName = dataDynamic.lastName
+                };
+
+                _userService.Add(UserService.ToEntity(userViewModel));
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
         }
 
         // PUT: api/usersApi/5

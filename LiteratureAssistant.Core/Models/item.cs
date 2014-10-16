@@ -12,6 +12,10 @@ namespace LiteratureAssistant.Core.Models
         public item()
         {
             counts = new HashSet<count>();
+            item1 = new HashSet<item>();
+            item11 = new HashSet<item>();
+            item12 = new HashSet<item>();
+            item13 = new HashSet<item>();
             itemAttributes = new HashSet<itemAttribute>();
             orders = new HashSet<order>();
         }
@@ -20,7 +24,35 @@ namespace LiteratureAssistant.Core.Models
 
         public int itemTemplateId { get; set; }
 
+        public int? parentItemId { get; set; }
+
+        public int? childItemId { get; set; }
+
+        public int? groupItemId { get; set; }
+
+        public int? parentGroupItemId { get; set; }
+
+        public int? processItemId { get; set; }
+
+        public int? parentProcessItemId { get; set; }
+
         public virtual ICollection<count> counts { get; set; }
+
+        public virtual ICollection<item> item1 { get; set; }
+
+        public virtual item item2 { get; set; }
+
+        public virtual ICollection<item> item11 { get; set; }
+
+        public virtual item item3 { get; set; }
+
+        public virtual ICollection<item> item12 { get; set; }
+
+        public virtual item item4 { get; set; }
+
+        public virtual ICollection<item> item13 { get; set; }
+
+        public virtual item item5 { get; set; }
 
         public virtual itemTemplate itemTemplate { get; set; }
 

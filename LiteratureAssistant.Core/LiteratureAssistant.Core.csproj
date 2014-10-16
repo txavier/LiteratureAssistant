@@ -58,6 +58,7 @@
     <Compile Include="Models\itemAttribute.cs" />
     <Compile Include="Models\itemTemplate.cs" />
     <Compile Include="Models\order.cs" />
+    <Compile Include="Models\Partials\item.cs" />
     <Compile Include="Models\templateAttribute.cs" />
     <Compile Include="Models\user.cs" />
     <Compile Include="Interfaces\IUserService.cs" />

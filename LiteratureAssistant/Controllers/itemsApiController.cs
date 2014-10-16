@@ -24,7 +24,7 @@ namespace LiteratureAssistant.Controllers
 {
     public class itemsApiController : ApiController
     {
-        private LiteratureAssistantDbModel db = new LiteratureAssistantDbModel();
+        private LiteratureAssistantDbContext db = new LiteratureAssistantDbContext();
 
         private readonly IItemService _itemService;
         

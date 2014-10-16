@@ -15,7 +15,7 @@ namespace LiteratureAssistant.Views
 {
     public class itemsController : Controller
     {
-        private LiteratureAssistantDbModel db = new LiteratureAssistantDbModel();
+        private LiteratureAssistantDbContext db = new LiteratureAssistantDbContext();
 
         //private readonly IService<item> itemService;
 

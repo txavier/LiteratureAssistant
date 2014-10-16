@@ -6,9 +6,9 @@ namespace LiteratureAssistant.Data
     using System.Linq;
     using LiteratureAssistant.Core.Models;
 
-    public partial class LiteratureAssistantDbModel : DbContext
+    public partial class LiteratureAssistantDbContext : DbContext
     {
-        public LiteratureAssistantDbModel()
+        public LiteratureAssistantDbContext()
             : base("name=LiteratureAssistantDbEntities")
         {
         }
@@ -27,6 +27,26 @@ namespace LiteratureAssistant.Data
                 .HasMany(e => e.counts)
                 .WithRequired(e => e.item)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<item>()
+                .HasMany(e => e.item1)
+                .WithOptional(e => e.item2)
+                .HasForeignKey(e => e.childItemId);
+
+            modelBuilder.Entity<item>()
+                .HasMany(e => e.item11)
+                .WithOptional(e => e.item3)
+                .HasForeignKey(e => e.groupItemId);
+
+            modelBuilder.Entity<item>()
+                .HasMany(e => e.item12)
+                .WithOptional(e => e.item4)
+                .HasForeignKey(e => e.parentItemId);
+
+            modelBuilder.Entity<item>()
+                .HasMany(e => e.item13)
+                .WithOptional(e => e.item5)
+                .HasForeignKey(e => e.processItemId);
 
             modelBuilder.Entity<item>()
                 .HasMany(e => e.itemAttributes)

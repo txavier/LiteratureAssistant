@@ -2,3 +2,22 @@
 
 	http://stackoverflow.com/questions/14070285/how-to-implement-history-back-in-angular-js
 	http://jsfiddle.net/asgoth/WaRKv/
+
+2) To implement a group add a new item with the name of the group.  Set the parentGroupItemId to the same
+	items' itemId.  For the other items in the group set their groupItemId to the parentGroupItemId of the 
+	parent item.  When accessing a group the business logic should retrieve all items with their groupItemIds
+	set to the parents parentGroupItemId.
+
+3) To implement a process add a new item with the name of the process.  Set the parentProcessItemId to the same
+	items' itemId.  For the other items that are a part of that process set their processItemItd to the 
+	parentProcessItemId of the parent process item.  If the parentGroupItemId is set on a parent process item,
+	indicated by the parentProcessItemId is not null, then the group is subject to that process.  
+	
+	In the business logic a custom process can inherit from the Auto.IProcess interface.  This interface has an 
+	OnProcessInitialLoad(IProcessItem processItem), OnProcessLoad(IProcessItem processItem), 
+	OnProcessCompleted(IProcessItem processItem), 
+	OnProcessInterval(double intervalMilliseconds, IProcessItem processItem).
+
+	To get the display name of the item[number] items in the item class (i.e. item1, item13), use the following link:
+
+	http://msdn.microsoft.com/en-us/library/system.web.mvc.modelmetadata.getdisplayname(v=vs.118).aspx

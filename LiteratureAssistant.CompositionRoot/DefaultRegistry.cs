@@ -42,7 +42,7 @@ namespace LiteratureAssistant.CompositionRoot
 
             //For<DbContext>().HybridHttpOrThreadLocalScoped().Use<LiteratureAssistantDbModel>();
             For<DbContext>().LifecycleIs(new StructureMap.Pipeline.ThreadLocalStorageLifecycle()).
-                Use<LiteratureAssistantDbModel>();
+                Use<LiteratureAssistantDbContext>();
 
             For(typeof(IService<>)).Use(typeof(Service<>));
 

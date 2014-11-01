@@ -28,11 +28,15 @@ namespace LiteratureAssistant.Core.Services
         {
             var result = orders.Select(i => new OrderViewModel
             {
+                orderedForUserFullName = i.user.firstName + " " + i.user.lastName,
+
+                orderedByUserFullName = i.user1.firstName + " " + i.user1.lastName,
+
                 orderId = i.orderId,
 
                 itemId = i.itemId,
 
-                userId = i.userId,
+                orderedForUserId = i.orderedForUserId,
 
                 date = i.date,
 
@@ -58,7 +62,9 @@ namespace LiteratureAssistant.Core.Services
 
                 itemId = i.itemId,
 
-                userId = i.userId,
+                orderedForUserId = i.orderedForUserId,
+
+                orderedByUserId = i.orderedByUserId,
 
                 date = i.date,
 

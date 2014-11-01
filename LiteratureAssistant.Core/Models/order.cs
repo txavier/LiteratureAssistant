@@ -13,7 +13,9 @@ namespace LiteratureAssistant.Core.Models
 
         public int itemId { get; set; }
 
-        public int userId { get; set; }
+        public int orderedForUserId { get; set; }
+
+        public int? orderedByUserId { get; set; }
 
         [Column(TypeName = "datetime2")]
         public DateTime date { get; set; }
@@ -27,5 +29,7 @@ namespace LiteratureAssistant.Core.Models
         public virtual item item { get; set; }
 
         public virtual user user { get; set; }
+
+        public virtual user user1 { get; set; }
     }
 }

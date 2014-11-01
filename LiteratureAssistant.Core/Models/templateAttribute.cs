@@ -24,6 +24,8 @@ namespace LiteratureAssistant.Core.Models
 
         public bool? required { get; set; }
 
+        public int? priority { get; set; }
+
         public virtual ICollection<itemAttribute> itemAttributes { get; set; }
 
         public virtual itemTemplate itemTemplate { get; set; }

@@ -1,0 +1,58 @@
+﻿<div class="form-group">
+    <div class="form-horizontal">
+        <form name="form1" role="form">
+            <div>
+                <input type="hidden" name="id" ng-value="order.orderId" />
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="{{ order.orderedForUserFullName }}">Name</label>
+                <div class="col-md-10">
+                    <input class="text-box single-line" data-val="true" data-ng-model="order.orderedForUserFullName" type="text" value="" />
+                    <span class="field-validation-valid" data-valmsg-for="order.orderedForUserFullName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="{{ order.itemLabel }}">Item</label>
+                <div class="col-md-10">
+                    <input class="text-box single-line" data-val="true" data-ng-model="order.itemLabel" type="text" value="" />
+                    <span class="field-validation-valid" data-valmsg-for="order.itemLabel" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="{{ order.date }}">Date</label>
+                <div class="col-md-10">
+                    <input class="text-box single-line" data-val="true" data-ng-model="order.date" type="text" value="" />
+                    <span class="field-validation-valid" data-valmsg-for="order.date" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="{{ order.orderedByUserFullName }}">Ordered By</label>
+                <div class="col-md-10">
+                    <input class="text-box single-line" data-val="true" data-ng-model="order.orderedByUserFullName" type="text" value="" />
+                    <span class="field-validation-valid" data-valmsg-for="order.orderedByUserFullName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="order.pending"> Pending
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="order.received"> Received
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="order.orderSent"> Order Sent
+                </label>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Edit" class="btn btn-default" ng-click="sendUser()" />
+                    <back-button></back-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

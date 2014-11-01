@@ -76,7 +76,13 @@ namespace LiteratureAssistant.Data
             modelBuilder.Entity<user>()
                 .HasMany(e => e.orders)
                 .WithRequired(e => e.user)
+                .HasForeignKey(e => e.orderedForUserId)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<user>()
+                .HasMany(e => e.orders1)
+                .WithOptional(e => e.user1)
+                .HasForeignKey(e => e.orderedByUserId);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace LiteratureAssistant.Core.Models
         public user()
         {
             orders = new HashSet<order>();
+            orders1 = new HashSet<order>();
         }
 
         public int userId { get; set; }
@@ -25,5 +26,7 @@ namespace LiteratureAssistant.Core.Models
         public string lastName { get; set; }
 
         public virtual ICollection<order> orders { get; set; }
+
+        public virtual ICollection<order> orders1 { get; set; }
     }
 }

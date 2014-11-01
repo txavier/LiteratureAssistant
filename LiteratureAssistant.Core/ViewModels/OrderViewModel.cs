@@ -7,11 +7,19 @@ namespace LiteratureAssistant.Core.ViewModels
 {
     public class OrderViewModel
     {
+        public string orderedForUserFullName { get; set; }
+
+        public string orderedByUserFullName { get; set; }
+
+        public string itemLabel { get; set; }
+
         public int orderId { get; set; }
 
         public int itemId { get; set; }
 
-        public int userId { get; set; }
+        public int orderedForUserId { get; set; }
+
+        public int orderedByUserId { get; set; }
 
         public DateTime date { get; set; }
 

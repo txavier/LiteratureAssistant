@@ -1,5 +1,5 @@
-﻿using Auto.Repo.Interfaces;
-using Auto.Service.Services;
+﻿using AutoClutch.Auto.Repo.Interfaces;
+using AutoClutch.Auto.Service.Services;
 using LiteratureAssistant.Core.Interfaces;
 using LiteratureAssistant.Core.Models;
 using LiteratureAssistant.Core.ViewModels;

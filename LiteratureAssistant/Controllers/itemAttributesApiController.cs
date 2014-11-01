@@ -1,5 +1,5 @@
-﻿using Auto.Service;
-using Auto.Service.Interfaces;
+﻿using AutoClutch.Auto.Service;
+using AutoClutch.Auto.Service.Interfaces;
 using LiteratureAssistant.Core.Models;
 using StructureMap;
 using System;

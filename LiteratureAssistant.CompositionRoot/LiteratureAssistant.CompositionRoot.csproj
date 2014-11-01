@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Auto.Repo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AutoClutch\Auto.Repo\bin\Release\Auto.Repo.dll</HintPath>
+    </Reference>
+    <Reference Include="Auto.Service, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AutoClutch\Auto.Service\bin\Release\Auto.Service.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
@@ -64,14 +72,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Auto.Repo\Auto.Repo.csproj">
-      <Project>{b460bb6c-9b69-44f8-bc2d-6d33a5081ffb}</Project>
-      <Name>Auto.Repo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Auto.Service\Auto.Service.csproj">
-      <Project>{c4cfb008-244f-4d0e-ab7b-4040ecf220f5}</Project>
-      <Name>Auto.Service</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LiteratureAssistant.Core\LiteratureAssistant.Core.csproj">
       <Project>{99094628-d915-4e27-85d2-b1d1e308f5a9}</Project>
       <Name>LiteratureAssistant.Core</Name>

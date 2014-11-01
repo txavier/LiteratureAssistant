@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Auto.Repo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AutoClutch\Auto.Repo\bin\Release\Auto.Repo.dll</HintPath>
+    </Reference>
+    <Reference Include="Auto.Service, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AutoClutch\Auto.Service\bin\Release\Auto.Service.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -73,16 +81,6 @@
     <Compile Include="ViewModels\ItemAttributeViewModel.cs" />
     <Compile Include="ViewModels\ItemTemplateViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Auto.Repo\Auto.Repo.csproj">
-      <Project>{b460bb6c-9b69-44f8-bc2d-6d33a5081ffb}</Project>
-      <Name>Auto.Repo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Auto.Service\Auto.Service.csproj">
-      <Project>{c4cfb008-244f-4d0e-ab7b-4040ecf220f5}</Project>
-      <Name>Auto.Service</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

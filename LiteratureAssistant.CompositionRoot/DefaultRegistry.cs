@@ -17,10 +17,10 @@
 
 namespace LiteratureAssistant.CompositionRoot
 {
-    using Auto.Repo.Interfaces;
-    using Auto.Repo.Objects;
-    using Auto.Service.Interfaces;
-    using Auto.Service.Services;
+    using AutoClutch.Auto.Repo.Interfaces;
+    using AutoClutch.Auto.Repo.Objects;
+    using AutoClutch.Auto.Service.Interfaces;
+    using AutoClutch.Auto.Service.Services;
     using LiteratureAssistant.Core.Interfaces;
     using LiteratureAssistant.Core.Models;
     using LiteratureAssistant.Core.Services;
@@ -40,9 +40,9 @@ namespace LiteratureAssistant.CompositionRoot
                     scan.WithDefaultConventions();
                 });
 
-            //For<DbContext>().HybridHttpOrThreadLocalScoped().Use<LiteratureAssistantDbModel>();
-            For<DbContext>().LifecycleIs(new StructureMap.Pipeline.ThreadLocalStorageLifecycle()).
-                Use<LiteratureAssistantDbContext>();
+            For<DbContext>().HybridHttpOrThreadLocalScoped().Use<LiteratureAssistantDbContext>();
+            //For<DbContext>().LifecycleIs(new StructureMap.Pipeline.ThreadLocalStorageLifecycle()).
+            //    Use<LiteratureAssistantDbContext>();
 
             For(typeof(IService<>)).Use(typeof(Service<>));
 

@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using LiteratureAssistant.Core.Models;
 using LiteratureAssistant.Data;
-using Auto.Service;
+using AutoClutch.Auto.Service;
 using StructureMap;
 
 namespace LiteratureAssistant.Views

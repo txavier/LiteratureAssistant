@@ -54,6 +54,8 @@ namespace LiteratureAssistant.CompositionRoot
 
             For<IOrderService>().Use<OrderService>();
 
+            For<ICountService>().Use<CountService>();
+
             Policies.SetAllProperties(prop => prop.OfType<IService<item>>());
 
             Policies.SetAllProperties(prop => prop.OfType<IService<itemAttribute>>());

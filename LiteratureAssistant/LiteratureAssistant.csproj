@@ -207,6 +207,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\itemAttributesApiController.cs" />
     <Compile Include="Controllers\itemsApiController.cs" />
+    <Compile Include="Controllers\countsApiController.cs" />
     <Compile Include="Controllers\templateAttributesApiController.cs" />
     <Compile Include="Controllers\ordersApiController.cs" />
     <Compile Include="Controllers\usersApiController.cs" />
@@ -264,6 +265,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Count\count-controller.js" />
+    <Content Include="Scripts\Count\count-service.js" />
     <Content Include="Scripts\Order\order-controller.js" />
     <Content Include="Scripts\Order\order-service.js" />
     <Content Include="Scripts\respond.js" />
@@ -273,11 +276,13 @@
     <Content Include="Scripts\User\user-service.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="templates\createItem.html" />
+    <Content Include="templates\createCount.html" />
     <Content Include="templates\createOrder.html" />
     <Content Include="templates\editUser.html" />
     <Content Include="templates\createUser.html" />
     <Content Include="templates\editItem.html" />
     <Content Include="templates\items.html" />
+    <Content Include="templates\counts.html" />
     <Content Include="templates\orders.html" />
     <Content Include="template\accordion\accordion-group.html" />
     <Content Include="template\accordion\accordion.html" />

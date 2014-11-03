@@ -13,8 +13,15 @@ namespace LiteratureAssistant.Core.Models
 
         public int itemId { get; set; }
 
+        public int? received { get; set; }
+
         [Column(TypeName = "datetime2")]
-        public DateTime date { get; set; }
+        public DateTime? receivedDate { get; set; }
+
+        public int? currentlyOnHand { get; set; }
+
+        [Column(TypeName = "datetime2")]
+        public DateTime? currentlyOnHandDate { get; set; }
 
         public virtual item item { get; set; }
     }

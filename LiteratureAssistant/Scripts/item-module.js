@@ -9,6 +9,9 @@
             .when('/user/edit/:userId', { templateUrl: 'templates/editUser.html', controller: 'userController' })
             .when('/order', { templateUrl: 'templates/orders.html', controller: 'orderController' })
             .when('/order/create', { templateUrl: 'templates/createOrder.html', controller: 'orderController' })
-            .when('/order/edit/:orderId', { templateUrl: 'templates/createOrder.html', controller: 'orderController' });;
+            .when('/order/edit/:orderId', { templateUrl: 'templates/createOrder.html', controller: 'orderController' })
+            .when('/count', { templateUrl: 'templates/counts.html', controller: 'countController' })
+            .when('/count/create', { templateUrl: 'templates/createCount.html', controller: 'countController' })
+            .when('/count/edit/:countId', { templateUrl: 'templates/createCount.html', controller: 'countController' });
         //$locationProvider.html5Mode(true);
     });

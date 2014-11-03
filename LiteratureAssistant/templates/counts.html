@@ -1,0 +1,44 @@
+﻿<div class="container">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Item
+            </th>
+            <th>
+                Received
+            </th>
+            <th>
+                Received Date
+            </th>
+            <th>
+                Currently On Hand
+            </th>
+            <th>
+                Currently On Hand Date
+            </th>
+        </tr>
+        <tr ng-repeat="count in counts">
+            <td>
+                {{ count.itemLabel }}
+            </td>
+            <td>
+                {{ count.received }}
+            </td>
+            <td>
+                {{ count.receivedDate }}
+            </td>
+            <td>
+                {{ count.currentlyOnHand }}
+            </td>
+            <td>
+                {{ count.currentlyOnHandDate }}
+            </td>
+            <td>
+                <a class="btn btn-default" href="#/count/edit/{{ count.countId }}">Edit</a>
+            </td>
+            <td>
+                <a class="btn btn-default" ng-click="deleteCount(count.countId)">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>

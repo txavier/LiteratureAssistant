@@ -49,7 +49,7 @@ namespace LiteratureAssistant.Controllers
         {
             try
             {
-                var lightResultList = ItemService.ToViewModels(_itemService.GetAll()).ToList();
+                var lightResultList = _itemService.ToViewModels(_itemService.GetAll()).ToList();
 
                 return this.Request.CreateResponse(
                     HttpStatusCode.OK,
@@ -75,7 +75,7 @@ namespace LiteratureAssistant.Controllers
                 //    return NotFound();
                 //}
 
-                var itemViewModel = ItemService.ToViewModel(item);
+                var itemViewModel = _itemService.ToViewModel(item);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, itemViewModel);
             }

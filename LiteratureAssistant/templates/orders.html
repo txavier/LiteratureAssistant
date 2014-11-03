@@ -1,0 +1,50 @@
+﻿<div class="container">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Item
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Pending
+            </th>
+            <th>
+                Received
+            </th>
+            <th>
+                Order Sent
+            </th>
+        </tr>
+        <tr ng-repeat="order in orders">
+            <td>
+                {{ order.orderedForUserFullName }}
+            </td>
+            <td>
+                {{ order.itemLabel }}
+            </td>
+            <td>
+                {{ order.date }}
+            </td>
+            <td>
+                {{ order.pending }}
+            </td>
+            <td>
+                {{ order.received }}
+            </td>
+            <td>
+                {{ order.orderSent }}
+            </td>
+            <td>
+                <a class="btn btn-default" href="#/order/edit/{{ order.orderId }}">Edit</a>
+            </td>
+            <td>
+                <a class="btn btn-default" ng-click="deleteOrder(order.orderId)">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>

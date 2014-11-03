@@ -27,7 +27,7 @@ namespace LiteratureAssistant.Controllers
         // GET: api/usersApi
         public IEnumerable<UserViewModel> Get()
         {
-            var users = UserService.ToViewModels(_userService.GetAll());
+            var users = _userService.ToViewModels(_userService.GetAll());
 
             return users;
         }
@@ -35,7 +35,7 @@ namespace LiteratureAssistant.Controllers
         // GET: api/usersApi/5
         public UserViewModel Get(int id)
         {
-            var user = UserService.ToViewModel(_userService.Find(id));
+            var user = _userService.ToViewModel(_userService.Find(id));
 
             return user;
         }
@@ -55,9 +55,9 @@ namespace LiteratureAssistant.Controllers
                     orders = dataDynamic.user.orders == null ? null : dataDynamic.user.orders.ToObject<List<OrderViewModel>>()
                 };
 
-                var result = _userService.AddOrUpdate(UserService.ToEntity(userViewModel));
+                var result = _userService.AddOrUpdate(_userService.ToEntity(userViewModel));
 
-                return UserService.ToViewModel(result);
+                return _userService.ToViewModel(result);
             }
             catch (Exception ex)
             {

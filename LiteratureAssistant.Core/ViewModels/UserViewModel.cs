@@ -12,6 +12,8 @@ namespace LiteratureAssistant.Core.ViewModels
     {
         public int userId { get; set; }
 
+        public string fullName { get; set; }
+
         [Required]
         [StringLength(50)]
         public string firstName { get; set; }

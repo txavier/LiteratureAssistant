@@ -13,19 +13,15 @@ namespace LiteratureAssistant.Core.Services
 {
     public class UserService : Service<user>, IUserService
     {
-        private readonly IOrderService _orderService;
-        
         private readonly IRepository<user> _userRepository;
 
-        public UserService(IOrderService orderService, IRepository<user> userRepository) :
+        public UserService(IRepository<user> userRepository) :
             base(userRepository)
         {
-            _orderService = orderService;
-
             _userRepository = userRepository;
         }
 
-        public static UserViewModel ToViewModel(user user)
+        public UserViewModel ToViewModel(user user)
         {
             var users = new List<user>() { user };
 
@@ -34,34 +30,35 @@ namespace LiteratureAssistant.Core.Services
             return result;
         }
 
-        public static IEnumerable<UserViewModel> ToViewModels(IEnumerable<user> users)
+        public IEnumerable<UserViewModel> ToViewModels(IEnumerable<user> users)
         {
             var result = users.Select(i => new UserViewModel
                 {
+                    fullName = i.firstName + " " + i.lastName,
                     firstName = i.firstName,
                     lastName = i.lastName,
                     userId = i.userId,
-                    orders = i.orders == null ? null : OrderService.ToViewModels(i.orders)
+                    //orders = i.orders == null ? null : OrderService.ToViewModels(i.orders)
                 });
 
             return result;
         }
 
-        public static user ToEntity(UserViewModel userViewModel)
+        public user ToEntity(UserViewModel userViewModel)
         {
             var result = ToEntities(new List<UserViewModel>() { userViewModel }).FirstOrDefault();
 
             return result;
         }
 
-        public static IEnumerable<user> ToEntities(IEnumerable<UserViewModel> userViewModels)
+        public IEnumerable<user> ToEntities(IEnumerable<UserViewModel> userViewModels)
         {
             var result = userViewModels.Select(i => new user
             {
                 firstName = i.firstName,
                 lastName = i.lastName,
                 userId = i.userId,
-                orders = i.orders == null ? null : OrderService.ToEntities(i.orders).ToList()
+                //orders = i.orders == null ? null : _orderService.ToEntities(i.orders).ToList()
             });
 
             return result;

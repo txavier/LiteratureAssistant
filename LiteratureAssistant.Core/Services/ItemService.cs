@@ -80,7 +80,7 @@ namespace LiteratureAssistant.Core.Services
             return newItemAttributes;
         }
 
-        public static ItemViewModel ToViewModel(item item)
+        public ItemViewModel ToViewModel(item item)
         {
             var items = new List<item> { item };
 
@@ -89,10 +89,11 @@ namespace LiteratureAssistant.Core.Services
             return results.FirstOrDefault();
         }
 
-        public static IEnumerable<ItemViewModel> ToViewModels(IEnumerable<item> items)
+        public IEnumerable<ItemViewModel> ToViewModels(IEnumerable<item> items)
         {
             var results = items.Select(i => new ItemViewModel
             {
+                itemLabel = GetItemLabel(i),
                 itemId = i.itemId,
                 itemTemplateId = i.itemTemplateId,
                 itemTemplate = new ItemTemplateViewModel { itemTemplateName = i.itemTemplate.itemTemplateName },
@@ -104,6 +105,18 @@ namespace LiteratureAssistant.Core.Services
             });
 
             return results;
+        }
+
+        public string GetItemLabel(item item)
+        {
+            if(item == null || !item.itemAttributes.Any())
+            {
+                return null;
+            }
+            
+            var result = item.itemAttributes.Select(j => j.value).Aggregate((current, next) => current + " - " + next);
+
+            return result;
         }
 
         /// <summary>
@@ -155,12 +168,12 @@ namespace LiteratureAssistant.Core.Services
             return item;
         }
 
-        internal static item ToEntity(ItemViewModel itemViewModel)
+        public item ToEntity(ItemViewModel itemViewModel)
         {
             throw new NotImplementedException();
         }
 
-        public static IEnumerable<item> ToEntities(IEnumerable<ItemViewModel> itemViewModels)
+        public IEnumerable<item> ToEntities(IEnumerable<ItemViewModel> itemViewModels)
         {
             var results = itemViewModels.Select(i => new item
             {

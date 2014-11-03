@@ -9,6 +9,8 @@
         <script src="~/Scripts/angular.js"></script>
         <script src="~/Scripts/angular-resource.js"></script>
         <script src="~/Scripts/angular-route.js"></script>
+        <script src="~/Scripts/angular-ui/ui-bootstrap.js"></script>
+        <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
         <script src="~/Scripts/item-module.js"></script>
         <script src="~/Scripts/Item/item-service.js"></script>
         <script src="~/Scripts/Item/item-controller.js"></script>
@@ -16,6 +18,8 @@
         <script src="~/Scripts/ItemAttribute/item-attribute-controller.js"></script>
         <script src="~/Scripts/User/user-service.js"></script>
         <script src="~/Scripts/User/user-controller.js"></script>
+        <script src="~/Scripts/Order/order-service.js"></script>
+        <script src="~/Scripts/Order/order-controller.js"></script>
         <script src="~/Scripts/BackButton/back-button.js"></script>
     </head>
     <body ng-app="itemModule">
@@ -34,10 +38,12 @@
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li><a href="#/item">Items</a></li>
                         <li><a href="#/item/create">Create Item</a></li>
+                        <li><a href="#/order">Orders</a></li>
+                        <li><a href="#/order/create">Create Order</a></li>
                         <li><a href="#/user">Users</a></li>
                         <li><a href="#/user/create">Create User</a></li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>

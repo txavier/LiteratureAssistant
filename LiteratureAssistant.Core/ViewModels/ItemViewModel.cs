@@ -16,5 +16,7 @@ namespace LiteratureAssistant.Core.ViewModels
         public ItemTemplateViewModel itemTemplate { get; set; }
 
         public IEnumerable<ItemAttributeViewModel> itemAttributes { get; set; }
+
+        public string itemLabel { get; set; }
     }
 }

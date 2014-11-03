@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteratureAssistant.Core", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteratureAssistant.CompositionRoot", "LiteratureAssistant.CompositionRoot\LiteratureAssistant.CompositionRoot.csproj", "{06702535-BBDB-44AB-8F60-8E7E22E6FCB1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A898B05F-0C2C-4A6C-9D2E-CE59131CFA04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

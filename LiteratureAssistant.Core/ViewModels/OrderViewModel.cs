@@ -15,13 +15,13 @@ namespace LiteratureAssistant.Core.ViewModels
 
         public int orderId { get; set; }
 
-        public int itemId { get; set; }
+        public int? itemId { get; set; }
 
-        public int orderedForUserId { get; set; }
+        public int? orderedForUserId { get; set; }
 
-        public int orderedByUserId { get; set; }
+        public int? orderedByUserId { get; set; }
 
-        public DateTime date { get; set; }
+        public string date { get; set; }
 
         public bool? pending { get; set; }
 
@@ -29,8 +29,8 @@ namespace LiteratureAssistant.Core.ViewModels
 
         public bool? orderSent { get; set; }
 
-        public ItemViewModel item { get; set; }
+        //public ItemViewModel item { get; set; }
 
-        public UserViewModel user { get; set; }
+        //public UserViewModel user { get; set; }
     }
 }

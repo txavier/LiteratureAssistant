@@ -252,6 +252,7 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-resource.min.js.map" />
+    <None Include="Properties\PublishProfiles\staging1.xaviersoftware.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ItemAttribute\item-attribute-controller.js" />
     <Content Include="Scripts\Item\item-controller.js" />

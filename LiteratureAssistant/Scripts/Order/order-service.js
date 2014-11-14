@@ -2,16 +2,20 @@
 
     var baseUrl = "api/ordersApi";
 
+    var resource = $resource(baseUrl);
+
     return {
-        getOrders: $resource(baseUrl).query({}, isArray = true),
+        getOrders: function () {
+            return resource.query({}, isArray = true);
+        },
         getOrder: function (orderId) {
-            return $resource(baseUrl).get({ id: orderId })
+            return resource.get({ id: orderId })
         },
         saveOrder: function (order) {
-            return $resource(baseUrl).save(order);
+            return resource.save(order);
         },
         deleteOrder: function (orderId) {
-            return $resource(baseUrl).delete({ id: orderId });
+            return resource.delete({ id: orderId });
         },
     }
 });

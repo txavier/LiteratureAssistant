@@ -1,17 +1,25 @@
 ﻿itemModule.controller("itemController", function ($scope, itemService, $routeParams, $log, $route, $templateCache) {
     $log.log('Parameters: ItemId: ' + $routeParams.itemId);
 
+    // If there is a request for an item get the item from web api.
     if ($routeParams.itemId != null) {
         $log.log('ItemId is not null');
-        $scope.item = itemService.getItem.get({ id: $routeParams.itemId });
+
+        itemService.getItem($routeParams.itemId).$promise.then(function (item) {
+            $scope.item = item;
+
+            $scope.items = itemService.getItems();
+        });
     }
 
-    $scope.items = itemService.getItems.query({}, isArray = true);
+    itemService.getItems().$promise.then(function (items) {
+        $scope.items = items;
+    });
 
     $scope.deleteItem = function (itemId) {
-        itemService.getItem.delete({ id: itemId });
-
-        // Reload the item template with the latest data.
-        $scope.items = new itemService().getItems.query({}, isArray = true);
+        itemService.deleteItem(itemId).$promise.then(function () {
+            // Reload the item template with the latest data.
+            $scope.items = itemService.getItems();
+        })
     }
 });

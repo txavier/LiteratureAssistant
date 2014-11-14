@@ -46,20 +46,12 @@ namespace LiteratureAssistant.Controllers
             try
             {
                 var result = _countService.AddOrUpdate(_countService.ToEntity(countViewModel));
-
-                //return OrderService.ToViewModel(result);
             }
             catch (Exception ex)
             {
-                
                 throw;
             }
         }
-
-        // PUT: api/usersApi/5
-        //public void Put(int id, JObject data)
-        //{
-        //}
 
         // DELETE: api/usersApi/5
         public void Delete(int id)

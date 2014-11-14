@@ -1,6 +1,6 @@
 ﻿itemModule.controller("templateAttributeController", function ($scope, $routeParams, $http, $route, $templateCache, $location,
     itemService) {
-    $scope.templateAttributes = itemService.getTemplateAttributes.query({}, isArray = true);
+    $scope.templateAttributes = itemService.getTemplateAttributes();
 
     $scope.formData = {};
 
@@ -29,12 +29,14 @@
 
         var item = { itemAttributes: itemAttributes };
 
-        var newItem = itemService.getItems.save({ item: item });
+        var newItem = itemService.saveItem(item);
 
-        $location.path("/item");
+        newItem.$promise.then(function () {
+            // Reload the item template with the latest data.
+            $scope.items = itemService.getItems();
 
-        // Reload the item template with the latest data.
-        $scope.items = new itemService().getItems.query({}, isArray = true);
+            $location.path("/item");
+        });
     }
 
     $scope.editItem = function (item) {
@@ -42,11 +44,13 @@
 
         var updatedItem = { itemId: item.itemId, itemAttributes: itemAttributes };
 
-        updatedItem = itemService.getItems.save({ item: updatedItem });
+        updatedItem = itemService.saveItem(updatedItem);
 
-        $location.path("/item");
+        updatedItem.$promise.then(function () {
+            // Reload the item template with the latest data.
+            $scope.items = itemService.getItems();
 
-        // Reload the item template with the latest data.
-        $scope.items = new itemService().getItems.query({}, isArray = true);
+            $location.path("/item");
+        });
     }
 });

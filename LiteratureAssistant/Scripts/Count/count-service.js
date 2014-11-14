@@ -2,6 +2,8 @@
 
     var baseUrl = "api/countsApi";
 
+    var resource = $resource(baseUrl);
+
     var getToday = function () {
         var today = new Date();
         var dd = today.getDate();
@@ -23,15 +25,17 @@
 
     return {
         getToday: getToday,
-        getCounts: $resource(baseUrl).query({}, isArray = true),
+        getCounts: function () {
+            return resource.query({}, isArray = true);
+        },
         getCount: function (countId) {
-            return $resource(baseUrl).get({ id: countId })
+            return resource.get({ id: countId })
         },
         saveCount: function (count) {
-            return $resource(baseUrl).save(count);
+            return resource.save(count);
         },
         deleteCount: function (countId) {
-            return $resource(baseUrl).delete({ id: countId });
+            return resource.delete({ id: countId });
         },
     }
 });

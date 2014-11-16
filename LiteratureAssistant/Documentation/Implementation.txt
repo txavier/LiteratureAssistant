@@ -33,3 +33,16 @@
 6) To ignore certain valueinjector properties.
 
 	https://valueinjecter.codeplex.com/discussions/234706
+
+7) To implement sign in with Google.
+	
+	http://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/
+
+	http://www.asp.net/mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on#goog
+
+	(Please note the Microsoft.Owin.Security.Google oauth package needed to be upgraded to work as per 
+	http://www.mattburkedev.com/app-dot-usegoogleauthentication-does-not-accept-2-arguments-azure-tutorial/.)
+
+8) To keep private settings out of source control the following guide should be used.
+
+	http://typecastexception.com/post/2014/04/06/ASPNET-MVC-Keep-Private-Settings-Out-of-Source-Control.aspx

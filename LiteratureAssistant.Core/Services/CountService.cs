@@ -92,5 +92,13 @@ namespace LiteratureAssistant.Core.Services
 
             return result;
         }
+
+
+        public object GetCurrentlyOnHandPerMonth()
+        {
+            var result = Get().GroupBy(i => i.currentlyOnHandDate.HasValue ? i.currentlyOnHandDate.Value.Month : -1);
+
+            return result;
+        }
     }
 }

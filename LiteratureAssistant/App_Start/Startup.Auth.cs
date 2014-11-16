@@ -32,7 +32,7 @@ namespace LiteratureAssistant
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication();
+            app.UseGoogleAuthentication(clientId: "363831025825.apps.googleusercontent.com", clientSecret: "KILYqYvLHVv2J88pTqu53KBW");
         }
     }
 }

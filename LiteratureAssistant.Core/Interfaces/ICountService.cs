@@ -7,5 +7,7 @@ namespace LiteratureAssistant.Core.Interfaces
         LiteratureAssistant.Core.Models.count ToEntity(LiteratureAssistant.Core.ViewModels.CountViewModel countViewModel);
         LiteratureAssistant.Core.ViewModels.CountViewModel ToViewModel(LiteratureAssistant.Core.Models.count count);
         System.Collections.Generic.IEnumerable<LiteratureAssistant.Core.ViewModels.CountViewModel> ToViewModels(System.Collections.Generic.IEnumerable<LiteratureAssistant.Core.Models.count> counts);
+        //System.Collections.Generic.IEnumerable<Models.count> GetByMonth();
+        object GetCurrentlyOnHandPerMonth();
     }
 }

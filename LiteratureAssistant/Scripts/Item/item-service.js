@@ -29,7 +29,7 @@
             return resource.save({ item: item });
         },
         deleteItem: function (itemId) {
-            return resource.deleteItem({ id: itemId });
+            return resource.delete({ id: itemId });
         }
     };
 });

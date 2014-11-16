@@ -25,6 +25,8 @@ namespace LiteratureAssistant.CompositionRoot
     using LiteratureAssistant.Core.Models;
     using LiteratureAssistant.Core.Services;
     using LiteratureAssistant.Data;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
     using StructureMap.Web;
@@ -41,8 +43,6 @@ namespace LiteratureAssistant.CompositionRoot
                 });
 
             For<DbContext>().HybridHttpOrThreadLocalScoped().Use<LiteratureAssistantDbContext>();
-            //For<DbContext>().LifecycleIs(new StructureMap.Pipeline.ThreadLocalStorageLifecycle()).
-            //    Use<LiteratureAssistantDbContext>();
 
             For(typeof(IService<>)).Use(typeof(Service<>));
 
@@ -56,6 +56,14 @@ namespace LiteratureAssistant.CompositionRoot
 
             For<ICountService>().Use<CountService>();
 
+            //For<IUserStore<MyUser>>().Use<MyUserStore>();
+            
+            //For<UserStore<MyUser>>().Use<MyUserStore>();
+
+            //For<UserManager<MyUser>>().Use<MyUserManager>();
+
+            For(typeof(IUserStore<>)).Use(typeof(UserStore<>));
+
             Policies.SetAllProperties(prop => prop.OfType<IService<item>>());
 
             Policies.SetAllProperties(prop => prop.OfType<IService<itemAttribute>>());
@@ -67,6 +75,8 @@ namespace LiteratureAssistant.CompositionRoot
             Policies.SetAllProperties(prop => prop.OfType<IUserService>());
 
             Policies.SetAllProperties(prop => prop.OfType<IOrderService>());
+
+            Policies.SetAllProperties(prop => prop.OfType<IUserStore<ApplicationUser>>());
         }
 
         #endregion

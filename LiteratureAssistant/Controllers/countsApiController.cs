@@ -32,6 +32,29 @@ namespace LiteratureAssistant.Controllers
             return counts;
         }
 
+        public IEnumerable<CountViewModel> Get(string aggregateType)
+        {
+            var countViewModels = new List<CountViewModel>();
+
+            switch (aggregateType)
+            {
+                case "monthlyTotals":
+                    {
+                        //countViewModels = _countService.ToViewModels(_countService.GetByMonth()).ToList();
+
+                        break;
+                    }
+                default:
+                    {
+                        countViewModels = _countService.ToViewModels(_countService.GetAll()).ToList();
+
+                        break;
+                    }
+            }
+
+            return countViewModels;
+        }
+
         // GET: api/usersApi/5
         public CountViewModel Get(int id)
         {

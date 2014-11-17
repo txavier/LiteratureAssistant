@@ -132,8 +132,6 @@ namespace LiteratureAssistant.Controllers
                     return BadRequest(ModelState);
                 }
 
-                //dynamic data1 = data;
-
                 var newItemAttributes = _itemService.DynamicItemAttributeToItemAttribute(data);
 
                 var updatedItems = _itemService.UpdateRange(newItemAttributes.Where(i => i.itemId != 0).ToList());
@@ -170,7 +168,7 @@ namespace LiteratureAssistant.Controllers
 
                 //return Ok(item);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 
                 throw;

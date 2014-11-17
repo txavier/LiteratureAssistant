@@ -33,6 +33,12 @@ namespace LiteratureAssistant.Core.Services
             _templateAttributeService = templateAttributeService;
         }
 
+        /// <summary>
+        /// This method adds an entire range of item attributes to the database.
+        /// </summary>
+        /// <param name="newItemAttributes"></param>
+        /// <param name="itemTemplateId"></param>
+        /// <returns>Returns null if the entity values are required but are not supplied.</returns>
         public async Task<item> AddRange(IEnumerable<itemAttribute> newItemAttributes, int? itemTemplateId = null)
         {
             if(!newItemAttributes.Any())
@@ -44,6 +50,15 @@ namespace LiteratureAssistant.Core.Services
             
             Add(item);
 
+            // Check to make sure required values are included.
+            foreach(var itemAttribute in newItemAttributes)
+            {
+                if(IsValueRequired(itemAttribute) && string.IsNullOrEmpty(itemAttribute.value))
+                {
+                    return null;
+                }
+            }
+
             newItemAttributes = newItemAttributes.Select(i =>
             {
                 i.itemId = item.itemId;
@@ -53,6 +68,15 @@ namespace LiteratureAssistant.Core.Services
             var newItemAttributesEnumerable = await _itemAttributeService.AddRangeAsync(newItemAttributes);
 
             return item;
+        }
+
+        public bool IsValueRequired(itemAttribute itemAttribute)
+        {
+            var required = _templateAttributeService.Get(filter: i => i.templateAttributeId == itemAttribute.templateAttributeId).SingleOrDefault().required;
+
+            var result = required ?? false;
+
+            return result;
         }
 
         public List<itemAttribute> DynamicItemAttributeToItemAttribute(dynamic newItemAttributesDynamic, int? itemTemplateId = null)
@@ -142,7 +166,7 @@ namespace LiteratureAssistant.Core.Services
             itemAttributes = itemAttributes.Select(i => 
                 {
                     i.item = item;
-                    i.itemAttributeId = item.itemAttributes.
+                    i.itemAttributeId = item.itemAttributes == null || !item.itemAttributes.Any() ? 0 : item.itemAttributes.
                         FirstOrDefault(j => j.templateAttributeId == i.templateAttributeId).itemAttributeId;
                     i.templateAttribute = _templateAttributeService.Find(i.templateAttributeId);
                     return i;

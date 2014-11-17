@@ -15,7 +15,6 @@ namespace LiteratureAssistant.Core.Models
 
         public int templateAttributeId { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string value { get; set; }
 

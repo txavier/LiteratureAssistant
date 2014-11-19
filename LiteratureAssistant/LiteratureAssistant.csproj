@@ -282,6 +282,7 @@
     <Content Include="Scripts\Order\order-service.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\TemplateAttribute\template-attribute-service.js" />
     <Content Include="Scripts\TemplateAttribute\template-attribute-controller.js" />
     <Content Include="Scripts\User\user-controller.js" />
     <Content Include="Scripts\User\user-service.js" />
@@ -289,12 +290,14 @@
     <Content Include="templates\createItem.html" />
     <Content Include="templates\createCount.html" />
     <Content Include="templates\createOrder.html" />
+    <Content Include="templates\createTemplateAttribute.html" />
     <Content Include="templates\editUser.html" />
     <Content Include="templates\createUser.html" />
     <Content Include="templates\editItem.html" />
     <Content Include="templates\items.html" />
     <Content Include="templates\counts.html" />
     <Content Include="templates\orders.html" />
+    <Content Include="templates\templateAttributes.html" />
     <Content Include="template\accordion\accordion-group.html" />
     <Content Include="template\accordion\accordion.html" />
     <Content Include="template\alert\alert.html" />

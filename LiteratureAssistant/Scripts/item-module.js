@@ -1,5 +1,5 @@
 ﻿var itemModule = angular.module("itemModule", ['ngRoute', 'ngResource', 'ui.bootstrap']).
-    config(function($routeProvider, $locationProvider) {
+    config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/item', { templateUrl: 'templates/items.html', controller: 'itemController' })
             .when('/item/edit/:itemId', { templateUrl: 'templates/editItem.html', controller: 'templateAttributeController' })
@@ -12,6 +12,9 @@
             .when('/order/edit/:orderId', { templateUrl: 'templates/createOrder.html', controller: 'orderController' })
             .when('/count', { templateUrl: 'templates/counts.html', controller: 'countController' })
             .when('/count/create', { templateUrl: 'templates/createCount.html', controller: 'countController' })
-            .when('/count/edit/:countId', { templateUrl: 'templates/createCount.html', controller: 'countController' });
+            .when('/count/edit/:countId', { templateUrl: 'templates/createCount.html', controller: 'countController' })
+            .when('/templateAttribute', { templateUrl: 'templates/templateAttributes.html', controller: 'templateAttributeController' })
+            .when('/templateAttribute/create', { templateUrl: 'templates/createTemplateAttribute.html', controller: 'templateAttributeController' })
+            .when('/templateAttribute/edit/:templateAttributeId', { templateUrl: 'templates/createTemplateAttribute.html', controller: 'templateAttributeController' });
         //$locationProvider.html5Mode(true);
     });

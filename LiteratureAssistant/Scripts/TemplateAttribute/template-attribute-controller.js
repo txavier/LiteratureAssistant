@@ -1,29 +1,47 @@
 ﻿itemModule.controller("templateAttributeController", function ($scope, $routeParams, $http, $route, $templateCache, $location,
-    itemService) {
-    $scope.templateAttributes = itemService.getTemplateAttributes();
+    templateAttributeService, itemService) {
+    $scope.templateAttributes = templateAttributeService.getTemplateAttributes();
 
     $scope.formData = {};
 
     var log = [];
 
-    // If there is a route parameter of an ItemId then we are editing and get the 
+    // Get single template attribute.
+    if ($routeParams.templateAttributeId != null) {
+
+        templateAttributeService.getTemplateAttributeService($routeParams.templateAttributeId).$promise.then(function (templateAttribute) {
+            $scope.templateAttribute = templateAttribute;
+        });
+    }
+    else {
+        $scope.templateAttribute = { templateAttributeId: 0 };
+    }
+
+    // If there is a route parameter of an ItemId then we are editing and get the
     // item from the web api get method.
     if ($routeParams.itemId != null) {
-
         var resultPromise = $http.get("api/itemsApi/" + $routeParams.itemId);
 
         resultPromise.success(function (item) {
-
             $scope.item = item;
 
             angular.forEach($scope.item.itemAttributes, function (itemAttribute, key) {
-
                 $scope.formData[itemAttribute.templateAttribute.templateAttributeName] = itemAttribute.value;
-
             }, log);
         });
     }
 
+    // Save or update a template attribute.
+    $scope.sendTemplateAttribute = function (templateAttribute) {
+
+        templateAttributeService.saveTemplateAttribute(templateAttribute).$promise.then(function () {
+            $scope.templateAttributes = templateAttributeService.getTemplateAttributes();
+        });
+
+        history.back();
+    }
+
+    // Save or update an item.
     $scope.sendItem = function () {
         var itemAttributes = $scope.formData;
 
@@ -51,6 +69,13 @@
             $scope.items = itemService.getItems();
 
             $location.path("/item");
+        });
+    }
+
+    // Delete a template attribute.
+    $scope.deleteTemplateAttribute = function (templateAttributeId) {
+        templateAttributeService.deleteTemplateAttribute(templateAttributeId).$promise.then(function () {
+            $scope.templateAttributes = templateAttributeService.gettemplateAttributes;
         });
     }
 });

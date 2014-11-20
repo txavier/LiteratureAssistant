@@ -22,9 +22,9 @@
 
         orderService.saveOrder(order).$promise.then(function() {
             $scope.orders = orderService.getOrders();
-        });
 
-        history.back();
+            $location.path("/order");
+        });
     }
 
     $scope.open = function ($event) {
@@ -37,7 +37,9 @@
 
     $scope.deleteOrder = function (orderId) {
         orderService.deleteOrder(orderId).$promise.then(function () {
-            $scope.orders = orderService.getOrders;
+            $scope.orders = orderService.getOrders();
+
+            $location.path("/order");
         });
     }
 });

@@ -97,11 +97,11 @@ namespace LiteratureAssistant.Core.Services
 
                 orderSent = i.orderSent,
 
-                itemId = i.itemId != null ? (i.itemId ?? 0) : (string.IsNullOrEmpty(i.itemLabel) ? 0 : (_itemService.GetAll().ToList().Where(j => _itemService.GetItemLabel(j) == i.itemLabel).SingleOrDefault().itemId)),
+                itemId = i.itemId == null && string.IsNullOrEmpty(i.itemLabel) ? 0 : (_itemService.GetAll().ToList().Where(j => _itemService.GetItemLabel(j) == i.itemLabel).SingleOrDefault().itemId),
 
-                orderedForUserId = i.orderedForUserId != null ? (i.orderedForUserId ?? 0) : (_userService.Get(filter: j => (j.firstName + " " + j.lastName) == i.orderedForUserFullName).SingleOrDefault().userId),
+                orderedForUserId = string.IsNullOrEmpty(i.orderedForUserFullName) ? (i.orderedForUserId ?? 0) : _userService.Get(filter: j => (j.firstName + " " + j.lastName) == i.orderedForUserFullName).SingleOrDefault().userId,
 
-                orderedByUserId = i.orderedByUserId != null ? (i.orderedByUserId ?? 0) : (i.orderedByUserFullName == null ? null : (int?)_userService.Get(filter: j => (j.firstName + " " + j.lastName) == i.orderedByUserFullName).SingleOrDefault().userId),
+                orderedByUserId = string.IsNullOrEmpty(i.orderedByUserFullName) ? i.orderedByUserId : (i.orderedByUserFullName == null ? null : (int?)_userService.Get(filter: j => (j.firstName + " " + j.lastName) == i.orderedByUserFullName).SingleOrDefault().userId),
 
             }).ToList();
 

@@ -29,7 +29,7 @@ namespace LiteratureAssistant.Controllers
         private readonly IItemService _itemService;
         
         private readonly IService<itemAttribute> ItemAttributeService;
-        
+
         private readonly IService<templateAttribute> TemplateAttributeService;
 
         public itemsApiController(IContainer container)

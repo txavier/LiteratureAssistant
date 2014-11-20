@@ -8,96 +8,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Omu.ValueInjecter;
 
 namespace LiteratureAssistant.Core.Services
 {
-    public class TemplateAttributeService : Service<templateAttribute>
+    public class TemplateAttributeService : Service<templateAttribute>, ITemplateAttributeService
     {
         private readonly IRepository<templateAttribute> _templateAttributeRepository;
-        
+
         public TemplateAttributeService(IRepository<templateAttribute> templateAttributeRepository)
             : base(templateAttributeRepository)
         {
             _templateAttributeRepository = templateAttributeRepository;
         }
 
-        public OrderViewModel ToViewModel(order order)
+        public TemplateAttributeViewModel ToViewModel(templateAttribute templateAttribute)
         {
-            var orders = new List<order>() { order };
-
-            var result = ToViewModels(orders).SingleOrDefault();
+            var result = (TemplateAttributeViewModel)(new TemplateAttributeViewModel()).InjectFrom(templateAttribute);
 
             return result;
         }
 
-        public IEnumerable<OrderViewModel> ToViewModels(IEnumerable<order> orders)
+        public IEnumerable<TemplateAttributeViewModel> ToViewModels(IEnumerable<templateAttribute> templateAttributes)
         {
-            var result = orders.Select(i =>  new OrderViewModel
-            {
-                orderedForUserFullName = i.user.firstName + " " + i.user.lastName,
+            var results = templateAttributes.Select(i => ToViewModel(i));
 
-                orderedByUserFullName = i.user1 == null ? null : i.user1.firstName + " " + i.user1.lastName,
+            return results;
+        }
 
-                itemLabel = i.item.itemAttributes.Select(j => j.value).Aggregate((current, next) => current + " - " + next),
-
-                orderId = i.orderId,
-
-                itemId = i.itemId,
-
-                orderedForUserId = i.orderedForUserId,
-
-                date = i.date.ToShortDateString(),
-
-                pending = i.pending,
-
-                received = i.received,
-
-                orderSent = i.orderSent,
-
-                orderedByUserId = i.orderedByUserId
-
-                //item = i.item == null ? null : ItemService.ToViewModel(i.item),
-
-                //user = i.user == null ? null : UserService.ToViewModel(i.user)
-            });
+        public templateAttribute ToEntity(TemplateAttributeViewModel templateAttributeViewModel)
+        {
+            var result = (templateAttribute)(new templateAttribute()).InjectFrom(templateAttributeViewModel);
 
             return result;
         }
 
-        public order ToEntity(OrderViewModel orderViewModel)
+        public IEnumerable<templateAttribute> ToEntities(IEnumerable<TemplateAttributeViewModel> templateAttributeViewModels)
         {
-            var orderViewModels = new List<OrderViewModel>() { orderViewModel };
+            var results = templateAttributeViewModels.Select(i => ToEntity(i));
 
-            var result = ToEntities(orderViewModels).SingleOrDefault();
-
-            return result;
-        }
-
-        public IEnumerable<order> ToEntities(IEnumerable<OrderViewModel> orderViewModels)
-        {
-            DateTime date = new DateTime();
-
-            var result = orderViewModels.Select(i => new order
-            {
-                orderId = i.orderId,
-
-                date = DateTime.TryParse(i.date, out date) ? date : DateTime.Today.Date,
-
-                pending = i.pending,
-
-                received = i.received,
-
-                orderSent = i.orderSent,
-
-                itemId = i.itemId != null ? (i.itemId ?? 0) : (string.IsNullOrEmpty(i.itemLabel) ? 0 : (_itemService.GetAll().ToList().Where(j => _itemService.GetItemLabel(j) == i.itemLabel).SingleOrDefault().itemId)),
-
-                orderedForUserId = i.orderedForUserId != null ? (i.orderedForUserId ?? 0) : (_userService.Get(filter: j => (j.firstName + " " + j.lastName) == i.orderedForUserFullName).SingleOrDefault().userId),
-
-                orderedByUserId = i.orderedByUserId != null ? (i.orderedByUserId ?? 0) : (i.orderedByUserFullName == null ? null : (int?)_userService.Get(filter: j => (j.firstName + " " + j.lastName) == i.orderedByUserFullName).SingleOrDefault().userId),
-
-            }).ToList();
-
-            return result;
+            return results;
         }
     }
 }

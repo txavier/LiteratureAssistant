@@ -1,5 +1,4 @@
 ﻿itemModule.factory("countService", function ($resource, $http) {
-
     var baseUrl = "api/countsApi";
 
     var resource = $resource(baseUrl);

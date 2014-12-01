@@ -1,12 +1,13 @@
 ﻿using System;
-namespace LiteratureAssistant.Core.Interfaces
+
+namespace WildCard.Core.Interfaces
 {
-    public interface ICountService : AutoClutch.Auto.Service.Interfaces.IService<LiteratureAssistant.Core.Models.count>
+    public interface ICountService : AutoClutch.Auto.Service.Interfaces.IService<WildCard.Core.Models.count>
     {
-        System.Collections.Generic.IEnumerable<LiteratureAssistant.Core.Models.count> ToEntities(System.Collections.Generic.IEnumerable<LiteratureAssistant.Core.ViewModels.CountViewModel> countViewModels);
-        LiteratureAssistant.Core.Models.count ToEntity(LiteratureAssistant.Core.ViewModels.CountViewModel countViewModel);
-        LiteratureAssistant.Core.ViewModels.CountViewModel ToViewModel(LiteratureAssistant.Core.Models.count count);
-        System.Collections.Generic.IEnumerable<LiteratureAssistant.Core.ViewModels.CountViewModel> ToViewModels(System.Collections.Generic.IEnumerable<LiteratureAssistant.Core.Models.count> counts);
+        System.Collections.Generic.IEnumerable<WildCard.Core.Models.count> ToEntities(System.Collections.Generic.IEnumerable<WildCard.Core.ViewModels.CountViewModel> countViewModels);
+        WildCard.Core.Models.count ToEntity(WildCard.Core.ViewModels.CountViewModel countViewModel);
+        WildCard.Core.ViewModels.CountViewModel ToViewModel(WildCard.Core.Models.count count);
+        System.Collections.Generic.IEnumerable<WildCard.Core.ViewModels.CountViewModel> ToViewModels(System.Collections.Generic.IEnumerable<WildCard.Core.Models.count> counts);
         //System.Collections.Generic.IEnumerable<Models.count> GetByMonth();
         object GetCurrentlyOnHandPerMonth();
     }

@@ -1,11 +1,11 @@
-﻿using LiteratureAssistant.Core.Models;
+﻿using WildCard.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LiteratureAssistant.Core.ViewModels
+namespace WildCard.Core.ViewModels
 {
     public class ItemViewModel
     {

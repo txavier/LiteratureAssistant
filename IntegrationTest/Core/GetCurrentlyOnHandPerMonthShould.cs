@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StructureMap;
-using LiteratureAssistant.Core.Interfaces;
+using WildCard.Core.Interfaces;
 
 namespace IntegrationTest.Core
 {

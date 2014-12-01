@@ -87,7 +87,7 @@
     <Compile Include="Interfaces\IOrderService.cs" />
     <Compile Include="Services\CountService.cs" />
     <Compile Include="Interfaces\ICountService.cs" />
-    <Compile Include="Services\ITemplateAttributeService.cs" />
+    <Compile Include="Interfaces\ITemplateAttributeService.cs" />
     <Compile Include="Services\TemplateAttributeService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\UserService.cs" />

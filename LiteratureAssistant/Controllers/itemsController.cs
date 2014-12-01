@@ -10,6 +10,7 @@ using LiteratureAssistant.Core.Models;
 using LiteratureAssistant.Data;
 using AutoClutch.Auto.Service;
 using StructureMap;
+using WildCard.Core.Models;
 
 namespace LiteratureAssistant.Views
 {

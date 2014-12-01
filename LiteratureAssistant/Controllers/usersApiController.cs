@@ -1,8 +1,5 @@
 ﻿using AutoClutch.Auto.Service.Interfaces;
-using LiteratureAssistant.Core.Interfaces;
 using LiteratureAssistant.Core.Models;
-using LiteratureAssistant.Core.Services;
-using LiteratureAssistant.Core.ViewModels;
 using Newtonsoft.Json.Linq;
 using StructureMap;
 using System;
@@ -12,6 +9,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Omu.ValueInjecter;
+using WildCard.Core.Interfaces;
+using WildCard.Core.ViewModels;
 
 namespace LiteratureAssistant.Controllers
 {

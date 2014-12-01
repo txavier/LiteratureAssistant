@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LiteratureAssistant.Core.Models
+namespace WildCard.Core.Models
 {
     [MetadataType(typeof(itemMetadata))]
     public partial class item

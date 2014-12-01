@@ -1,8 +1,8 @@
 ﻿using AutoClutch.Auto.Repo.Interfaces;
 using AutoClutch.Auto.Service.Services;
-using LiteratureAssistant.Core.Interfaces;
-using LiteratureAssistant.Core.Models;
-using LiteratureAssistant.Core.ViewModels;
+using WildCard.Core.Interfaces;
+using WildCard.Core.Models;
+using WildCard.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Omu.ValueInjecter;
 
-namespace LiteratureAssistant.Core.Services
+namespace WildCard.Core.Services
 {
     public class TemplateAttributeService : Service<templateAttribute>, ITemplateAttributeService
     {

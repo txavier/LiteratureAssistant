@@ -4,7 +4,7 @@ namespace LiteratureAssistant.Data
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using LiteratureAssistant.Core.Models;
+    using WildCard.Core.Models;
 
     public partial class LiteratureAssistantDbContext : DbContext
     {

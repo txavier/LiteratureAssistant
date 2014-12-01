@@ -1,4 +1,4 @@
-namespace LiteratureAssistant.Core.Models
+namespace WildCard.Core.Models
 {
     using System;
     using System.Collections.Generic;

@@ -21,9 +21,7 @@ namespace LiteratureAssistant.CompositionRoot
     using AutoClutch.Auto.Repo.Objects;
     using AutoClutch.Auto.Service.Interfaces;
     using AutoClutch.Auto.Service.Services;
-    using LiteratureAssistant.Core.Interfaces;
     using LiteratureAssistant.Core.Models;
-    using LiteratureAssistant.Core.Services;
     using LiteratureAssistant.Data;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -31,6 +29,9 @@ namespace LiteratureAssistant.CompositionRoot
     using StructureMap.Graph;
     using StructureMap.Web;
     using System.Data.Entity;
+    using WildCard.Core.Interfaces;
+    using WildCard.Core.Models;
+    using WildCard.Core.Services;
 	
     public class DefaultRegistry : Registry {
         #region Constructors and Destructors

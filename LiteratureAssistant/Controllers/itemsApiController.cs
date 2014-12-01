@@ -16,9 +16,8 @@ using AutoClutch.Auto.Service;
 using System.Runtime.Serialization;
 using Newtonsoft.Json.Linq;
 using AutoClutch.Auto.Service.Interfaces;
-using LiteratureAssistant.Core.Interfaces;
-using LiteratureAssistant.Core.ViewModels;
-using LiteratureAssistant.Core.Services;
+using WildCard.Core.Interfaces;
+using WildCard.Core.Models;
 
 namespace LiteratureAssistant.Controllers
 {

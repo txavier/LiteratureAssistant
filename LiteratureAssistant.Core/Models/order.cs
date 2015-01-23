@@ -31,5 +31,9 @@ namespace WildCard.Core.Models
         public virtual user user { get; set; }
 
         public virtual user user1 { get; set; }
+
+        public int? quantity { get; set; }
+
+        public string language { get; set; }
     }
 }

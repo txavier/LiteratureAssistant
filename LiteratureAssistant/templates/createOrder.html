@@ -19,6 +19,18 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="control-label col-md-2">Quantity</label>
+                <div class="col-md-10">
+                    <input class="text-box single-line" data-ng-model="order.quantity" type="number" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Language</label>
+                <div class="col-md-10">
+                    <input class="text-box single-line" data-ng-model="order.language" type="text" />
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="control-label col-md-2" for="{{ order.date }}">Date</label>
                 <div class="col-md-10">
                         <input class="text-box single-line" is-open="opened" datepicker-popup="MM/dd/yyyy" data-val="true" data-ng-model="order.date" />

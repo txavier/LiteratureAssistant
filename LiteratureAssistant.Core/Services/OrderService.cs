@@ -62,7 +62,11 @@ namespace WildCard.Core.Services
 
                 orderSent = i.orderSent,
 
-                orderedByUserId = i.orderedByUserId
+                orderedByUserId = i.orderedByUserId,
+
+                quantity = i.quantity,
+
+                language = i.language,
 
                 //item = i.item == null ? null : ItemService.ToViewModel(i.item),
 
@@ -102,6 +106,10 @@ namespace WildCard.Core.Services
                 orderedForUserId = string.IsNullOrEmpty(i.orderedForUserFullName) ? (i.orderedForUserId ?? 0) : _userService.Get(filter: j => (j.firstName + " " + j.lastName) == i.orderedForUserFullName).SingleOrDefault().userId,
 
                 orderedByUserId = string.IsNullOrEmpty(i.orderedByUserFullName) ? i.orderedByUserId : (i.orderedByUserFullName == null ? null : (int?)_userService.Get(filter: j => (j.firstName + " " + j.lastName) == i.orderedByUserFullName).SingleOrDefault().userId),
+
+                quantity = i.quantity,
+
+                language = i.language,
 
             }).ToList();
 

@@ -29,6 +29,10 @@ namespace WildCard.Core.ViewModels
 
         public bool? orderSent { get; set; }
 
+        public int? quantity { get; set; }
+
+        public string language { get; set; }
+
         //public ItemViewModel item { get; set; }
 
         //public UserViewModel user { get; set; }

@@ -18,7 +18,7 @@
 	OnProcessCompleted(IProcessItem processItem), 
 	OnProcessInterval(double intervalMilliseconds, IProcessItem processItem).
 
-	To get the display name of the item[number] items in the item class (i.e. item1, item13), use the following link:
+	To get the display name of the item[number] items in the item class (i.e. item1, item13), use the following link: 
 
 	http://msdn.microsoft.com/en-us/library/system.web.mvc.modelmetadata.getdisplayname(v=vs.118).aspx
 

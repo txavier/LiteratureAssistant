@@ -11,6 +11,8 @@ namespace WildCard.Core.Models
     {
         public int itemAttributeId { get; set; }
 
+        public int? organizationId { get; set; }
+
         public int itemId { get; set; }
 
         public int templateAttributeId { get; set; }
@@ -21,5 +23,7 @@ namespace WildCard.Core.Models
         public virtual item item { get; set; }
 
         public virtual templateAttribute templateAttribute { get; set; }
+
+        public virtual organization organization { get; set; }
     }
 }

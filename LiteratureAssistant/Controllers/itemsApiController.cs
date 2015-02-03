@@ -18,6 +18,7 @@ using Newtonsoft.Json.Linq;
 using AutoClutch.Auto.Service.Interfaces;
 using WildCard.Core.Interfaces;
 using WildCard.Core.Models;
+using LiteratureAssistant.DependencyResolution;
 
 namespace LiteratureAssistant.Controllers
 {
@@ -31,8 +32,10 @@ namespace LiteratureAssistant.Controllers
 
         private readonly IService<templateAttribute> TemplateAttributeService;
 
-        public itemsApiController(IContainer container)
+        public itemsApiController()
         {
+            IContainer container = IoC.Initialize();
+
             _itemService = container.GetInstance<IItemService>();
 
             _itemService.ItemTemplateId = 4; // This item template id indicates literature.

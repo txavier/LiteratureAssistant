@@ -57,7 +57,7 @@ namespace WildCard.Core.Services
             {
                 firstName = i.firstName,
                 lastName = i.lastName,
-                userId = i.userId,
+                userId = i.userId.Value,
                 //orders = i.orders == null ? null : _orderService.ToEntities(i.orders).ToList()
             });
 

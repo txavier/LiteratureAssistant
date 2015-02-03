@@ -26,14 +26,14 @@ namespace WildCard.Core.Models
 
         public bool? orderSent { get; set; }
 
+        public int? quantity { get; set; }
+
+        public string language { get; set; }
+
         public virtual item item { get; set; }
 
         public virtual user user { get; set; }
 
         public virtual user user1 { get; set; }
-
-        public int? quantity { get; set; }
-
-        public string language { get; set; }
     }
 }

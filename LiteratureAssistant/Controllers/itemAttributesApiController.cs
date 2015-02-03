@@ -1,6 +1,7 @@
 ﻿using AutoClutch.Auto.Service;
 using AutoClutch.Auto.Service.Interfaces;
 using LiteratureAssistant.Core.Models;
+using LiteratureAssistant.DependencyResolution;
 using StructureMap;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,9 @@ namespace LiteratureAssistant.Controllers
 
         public itemAttributesApiController()
         {
-            ItemAttributeService = ObjectFactory.GetInstance<IService<itemAttribute>>();
+            IContainer container = IoC.Initialize();
+
+            ItemAttributeService = container.GetInstance<IService<itemAttribute>>();
         }
 
         // GET: api/itemAttributesApi

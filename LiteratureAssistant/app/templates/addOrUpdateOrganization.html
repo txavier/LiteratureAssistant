@@ -1,0 +1,35 @@
+﻿<div class="form-group">
+    <div class="form-horizontal">
+        <form name="form1" role="form">
+            <div>
+                <input type="hidden" name="id" ng-value="vm.organization.organizationId" />
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="{{ vm.organization.name }}">Organization Name</label>
+                <div class="col-md-10">
+                    <input class="text-box single-line" data-val="true" data-ng-model="vm.organization.name" type="text" value="" />
+                    <span class="field-validation-valid" data-valmsg-for="vm.organization.name" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="{{ vm.organization.systemName }}">System Name</label>
+                <div class="col-md-10">
+                    <input class="text-box single-line" data-val="true" data-ng-model="vm.organization.systemName" type="text" value="" />
+                    <span class="field-validation-valid" data-valmsg-for="vm.organization.systemName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Default Organization</label>
+                <div class="col-md-10">
+                    <input type="checkbox" ng-model="vm.organization.defaultOrganization" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Add or Update" class="btn btn-default" ng-click="vm.saveOrganization()" />
+                    <back-button></back-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

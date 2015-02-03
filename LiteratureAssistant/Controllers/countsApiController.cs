@@ -1,5 +1,6 @@
 ﻿using AutoClutch.Auto.Service.Interfaces;
 using LiteratureAssistant.Core.Models;
+using LiteratureAssistant.DependencyResolution;
 using StructureMap;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,10 @@ namespace LiteratureAssistant.Controllers
     {
         private readonly ICountService _countService;
 
-        public countsApiController(IContainer container)
+        public countsApiController()
         {
+            IContainer container = IoC.Initialize();
+
             _countService = container.GetInstance<ICountService>();
         }
 

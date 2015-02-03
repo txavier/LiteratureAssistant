@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteratureAssistant", "LiteratureAssistant\LiteratureAssistant.csproj", "{1296CBE4-B28E-497E-96CC-09E172596B56}"
 EndProject
@@ -16,6 +16,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{D0D826FE-1E36-4AB8-900F-F24D9AFB405D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTest", "IntegrationTest\IntegrationTest.csproj", "{DA2A1136-4885-4F2C-8D8E-525AE76BA9BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0EFBE1E7-379E-4829-94E6-AB59D2055BE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{2CC04167-28A5-4452-AF24-AC4FC70DBAEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database Scripts", "Database Scripts", "{60BAAF12-4014-465B-9D48-DF19830D78B5}"
+	ProjectSection(SolutionItems) = preProject
+		LiteratureAssistant.Data\Documentation\LiteratureAssistantCreateScript.sql = LiteratureAssistant.Data\Documentation\LiteratureAssistantCreateScript.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,5 +63,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D0D826FE-1E36-4AB8-900F-F24D9AFB405D} = {A898B05F-0C2C-4A6C-9D2E-CE59131CFA04}
 		{DA2A1136-4885-4F2C-8D8E-525AE76BA9BB} = {A898B05F-0C2C-4A6C-9D2E-CE59131CFA04}
+		{2CC04167-28A5-4452-AF24-AC4FC70DBAEE} = {0EFBE1E7-379E-4829-94E6-AB59D2055BE7}
+		{60BAAF12-4014-465B-9D48-DF19830D78B5} = {0EFBE1E7-379E-4829-94E6-AB59D2055BE7}
 	EndGlobalSection
 EndGlobal

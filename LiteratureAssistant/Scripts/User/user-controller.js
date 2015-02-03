@@ -3,9 +3,11 @@
     // Cache was set to false in previous versions.  Does this still work ok?
     $scope.users = userService.getUsers();
 
-    $scope.sendUser = function () {
+    $scope.user = {};
 
-        var newUser = userService.saveUser($scope.user);
+    $scope.sendUser = function (user) {
+
+        var newUser = userService.saveUser(user);
 
         newUser.$promise.then(function () {
 

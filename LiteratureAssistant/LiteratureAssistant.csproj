@@ -213,6 +213,7 @@
     <Compile Include="Controllers\itemAttributesApiController.cs" />
     <Compile Include="Controllers\itemsApiController.cs" />
     <Compile Include="Controllers\countsApiController.cs" />
+    <Compile Include="Controllers\itemTemplatesApiController.cs" />
     <Compile Include="Controllers\organizationApiController.cs" />
     <Compile Include="Controllers\templateAttributesApiController.cs" />
     <Compile Include="Controllers\ordersApiController.cs" />
@@ -226,8 +227,17 @@
     <Compile Include="Controllers\itemsController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\itemTemplate\addOrUpdateItemTemplatesController.js" />
+    <Content Include="app\itemTemplate\itemTemplatesController.js" />
+    <Content Include="app\itemAttribute\addOrUpdateItemAttributesController.js" />
+    <Content Include="app\itemAttribute\itemAttributesController.js" />
     <Content Include="app\organization\addOrUpdateOrganizationController.js" />
+    <Content Include="app\organization\organizationsController.js" />
     <Content Include="app\services\dataService.js" />
+    <Content Include="app\templates\addOrUpdateItemAttribute.html" />
+    <Content Include="app\templates\addOrUpdateItemTemplate.html" />
+    <Content Include="app\templates\itemAttributes.html" />
+    <Content Include="app\templates\itemTemplates.html" />
     <Content Include="app\templates\organizations.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -256,7 +266,6 @@
     <Content Include="Scripts\angular-resource.min.js.map" />
     <None Include="Properties\PublishProfiles\staging1.xaviersoftware.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\ItemAttribute\item-attribute-controller.js" />
     <Content Include="Scripts\Item\item-controller.js" />
     <Content Include="Scripts\item-module.js" />
     <Content Include="Scripts\Item\item-service.js" />

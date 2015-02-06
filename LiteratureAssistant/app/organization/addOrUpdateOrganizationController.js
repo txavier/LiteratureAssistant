@@ -1,17 +1,17 @@
 ﻿(function () {
     angular
         .module('itemModule')
-        .controller('organizationController', organizationController);
+        .controller('addOrUpdateOrganizationController', addOrUpdateOrganizationController);
 
-    organizationController.$inject = ['$scope', '$log', 'dataService'];
+    addOrUpdateOrganizationController.$inject = ['$scope', '$log', 'dataService'];
 
-    function organizationController($scope, $log, dataService) {
+    function addOrUpdateOrganizationController($scope, $log, dataService) {
         var vm = this;
 
         vm.organizations = [];
         vm.organization = {};
         vm.getOrganizations = getOrganizations;
-        vm.saveOrganization = saveOrganization;
+        vm.addOrUpdateOrganization = addOrUpdateOrganization;
 
         activate();
 
@@ -29,8 +29,22 @@
             });
         }
 
-        function saveOrganization() {
-            dataService.saveOrganization(vm.organization)
+        function getOrganization(organizationId) {
+            return dataService.getOrganization(organizationId).then(function (data) {
+                vm.organization = data;
+
+                return vm.organization;
+            });
+        }
+
+        function addOrUpdateOrganization() {
+            return dataService.addOrUpdateOrganization(vm.organization)
+                .then()
+                .catch();
+        }
+
+        function deleteOrganization(organizationId) {
+            return dataService.deleteOrganization(organizationId)
                 .then()
                 .catch();
         }

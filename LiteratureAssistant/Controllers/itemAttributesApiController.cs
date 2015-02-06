@@ -13,6 +13,7 @@ using WildCard.Core.Models;
 
 namespace LiteratureAssistant.Controllers
 {
+    [RoutePrefix("api/itemAttributesApi")]
     public class itemAttributesApiController : ApiController
     {
         private readonly IService<itemAttribute> ItemAttributeService;
@@ -38,14 +39,27 @@ namespace LiteratureAssistant.Controllers
         }
 
         // GET: api/itemAttributesApi/5
-        public string Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            var result = ItemAttributeService.Find(id);
+
+            return Ok(result);
+        }
+
+        [Route("count")]
+        public IHttpActionResult GetCount()
+        {
+            var result = ItemAttributeService.GetCount();
+
+            return Ok(result);
         }
 
         // POST: api/itemAttributesApi
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post(itemAttribute itemAttribute)
         {
+            itemAttribute = ItemAttributeService.AddOrUpdate(itemAttribute);
+
+            return Ok(itemAttribute);
         }
 
         // PUT: api/itemAttributesApi/5
@@ -54,8 +68,11 @@ namespace LiteratureAssistant.Controllers
         }
 
         // DELETE: api/itemAttributesApi/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
+            ItemAttributeService.Delete(id);
+
+            return Ok();
         }
     }
 }

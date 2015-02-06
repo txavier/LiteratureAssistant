@@ -12,22 +12,22 @@ using AutoClutch.Auto.Service.Interfaces;
 
 namespace LiteratureAssistant.Controllers
 {
-    [RoutePrefix("api/organizationApi")]
-    public class organizationApiController : ApiController
+    [RoutePrefix("api/itemTemplatesApi")]
+    public class itemTemplatesApiController : ApiController
     {
-        private readonly IService<organization> _organizationService;
+        private readonly IService<itemTemplate> _itemTemplateService;
 
-        public organizationApiController()
+        public itemTemplatesApiController()
         {
             IContainer container = IoC.Initialize();
 
-            _organizationService = container.GetInstance<IService<organization>>();
+            _itemTemplateService = container.GetInstance<IService<itemTemplate>>();
         }
 
         // GET: api/organizationApi
         public IHttpActionResult Get()
         {
-            var result = _organizationService.Get();
+            var result = _itemTemplateService.Get();
 
             return Ok(result);
         }
@@ -35,7 +35,7 @@ namespace LiteratureAssistant.Controllers
         // GET: api/organizationApi/5
         public IHttpActionResult Get(int id)
         {
-            var result = _organizationService.Find(id);
+            var result = _itemTemplateService.Find(id);
 
             return Ok(result);
         }
@@ -43,17 +43,17 @@ namespace LiteratureAssistant.Controllers
         [Route("count")]
         public IHttpActionResult GetCount()
         {
-            var result = _organizationService.GetCount();
+            var result = _itemTemplateService.GetCount();
 
             return Ok(result);
         }
 
         // POST: api/organizationApi
-        public IHttpActionResult Post(organization organization)
+        public IHttpActionResult Post(itemTemplate itemTemplate)
         {
-            organization = _organizationService.AddOrUpdate(organization);
+            itemTemplate = _itemTemplateService.AddOrUpdate(itemTemplate);
 
-            return Ok(organization);
+            return Ok(itemTemplate);
         }
 
         // PUT: api/organizationApi/5
@@ -64,7 +64,7 @@ namespace LiteratureAssistant.Controllers
         // DELETE: api/organizationApi/5
         public IHttpActionResult Delete(int id)
         {
-            _organizationService.Delete(id);
+            _itemTemplateService.Delete(id);
 
             return Ok();
         }

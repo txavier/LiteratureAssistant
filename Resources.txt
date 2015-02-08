@@ -1,0 +1,4 @@
+ - The database connection string for Literature Assistant is found here
+
+    <add name="LiteratureAssistantDbEntities" connectionString="data source=sierragolf\sqlexpress;initial catalog=LiteratureAssistantDb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
+	

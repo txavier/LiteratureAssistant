@@ -66,7 +66,7 @@ namespace WildCard.Core.Services
 
                 quantity = i.quantity,
 
-                language = i.language,
+                language = i.language, 
 
                 //item = i.item == null ? null : ItemService.ToViewModel(i.item),
 

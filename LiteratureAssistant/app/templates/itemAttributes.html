@@ -1,0 +1,67 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Item Attributes</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="container">
+    <a href="#/itemAttribute/create">Create New</a>
+
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    <br />
+    <div>
+        <label class="control-label col-md-2">{{ vm.totalItems }} total.</label>
+    </div>
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    <a ng-click="setSortOrder('itemAttributeId')">ItemAttribute ID</a>
+                </th>
+                <th>
+                    <a ng-click="setSortOrder('itemId')">Item ID</a>
+                </th>
+                <th>
+                    <a ng-click="setSortOrder('templateAttributeId')">Template Attribute Id</a>
+                </th>
+                <th><a ng-click="setSortOrder('value')">Value</a></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="itemAttribute in vm.itemAttributes">
+                <td>
+                    {{ itemAttribute.itemAttributeId }}
+                </td>
+                <td>
+                    {{ itemAttribute.itemId }}
+                </td>
+                <td>
+                    {{ itemAttribute.templateAttributeId }}
+                </td>
+                <td>
+                    {{ itemAttribute.value }}
+                </td>
+                <td>
+                    <a class="btn btn-default" href="#/itemAttribute/edit/{{ vm.itemAttribute.itemAttributeId }}">
+                        Go To ItemAttribute
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-default" href="#/item/{{ vm.itemAttribute.itemId }}">
+                        Go To This Item
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-default" href="#/itemAttribute/{{ vm.itemAttribute.templateAttributeId }}">
+                        Go To This Template Attribute
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <div class="form-group">
+            <pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="7" boundary-links="true"
+                        rotate="false"></pagination>
+        </div>
+        <back-button></back-button>
+    </div>
+</div>

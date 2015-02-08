@@ -12,7 +12,7 @@
             return resource.get({ id: userId });
         },
         saveUser: function (user) {
-            return resource.save({ user: user });
+            return resource.save(user);
         },
         deleteUser: function (userId) {
             return resource.delete({ id: userId });

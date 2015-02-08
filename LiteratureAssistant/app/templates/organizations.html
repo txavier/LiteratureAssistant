@@ -1,0 +1,60 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Organizations</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="container">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    <br />
+    <div>
+        <label class="control-label col-md-2">{{ vm.totalItems }} total.</label>
+    </div>
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    <a ng-click="setSortOrder('organizationId')">Organization ID</a>
+                </th>
+                <th>
+                    <a ng-click="setSortOrder('defaultOrganization')">Default Organization</a>
+                </th>
+                <th>
+                    <a ng-click="setSortOrder('name')">Name</a>
+                </th>
+                <th><a ng-click="setSortOrder('systemName')">System Name</a></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="organization in vm.organizations">
+                <td>
+                    {{ organization.organizationId }}
+                </td>
+                <td>
+                    {{ organization.defaultOrganization }}
+                </td>
+                <td>
+                    {{ organization.name }}
+                </td>
+                <td>
+                    {{ organization.systemName }}
+                </td>
+                <td>
+                    <a class="btn btn-default" href="#/organization/edit/{{ organization.organizationId }}">
+                        Go To Organization
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-default" href="#/itemAttributes?organizationId={{ organization.organizationId }}">
+                        Go To This Organizations Item Attributes
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <div class="form-group">
+            <pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="7" boundary-links="true"
+                        rotate="false"></pagination>
+        </div>
+        <back-button></back-button>
+    </div>
+</div>

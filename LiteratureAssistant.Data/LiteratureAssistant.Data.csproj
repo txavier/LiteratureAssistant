@@ -57,10 +57,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LiteratureAssistantDbContext.cs" />
+    <Compile Include="Migrations\201501302046363_Initialize.cs" />
+    <Compile Include="Migrations\201501302046363_Initialize.Designer.cs">
+      <DependentUpon>201501302046363_Initialize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502022019375_AddUserName.cs" />
+    <Compile Include="Migrations\201502022019375_AddUserName.Designer.cs">
+      <DependentUpon>201502022019375_AddUserName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502032001541_AddedOrganization.cs" />
+    <Compile Include="Migrations\201502032001541_AddedOrganization.Designer.cs">
+      <DependentUpon>201502032001541_AddedOrganization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -69,9 +84,16 @@
       <Name>LiteratureAssistant.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Documentation\LiteratureAssistantCreateScript.sql" />
+    <EmbeddedResource Include="Migrations\201501302046363_Initialize.resx">
+      <DependentUpon>201501302046363_Initialize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502022019375_AddUserName.resx">
+      <DependentUpon>201502022019375_AddUserName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502032001541_AddedOrganization.resx">
+      <DependentUpon>201502032001541_AddedOrganization.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

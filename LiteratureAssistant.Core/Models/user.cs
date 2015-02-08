@@ -17,6 +17,9 @@ namespace WildCard.Core.Models
 
         public int userId { get; set; }
 
+        [StringLength(50)]
+        public string userName { get; set; }
+
         [Required]
         [StringLength(50)]
         public string firstName { get; set; }

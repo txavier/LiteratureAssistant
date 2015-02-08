@@ -1,0 +1,42 @@
+﻿<div class="form-group">
+    <div class="form-horizontal">
+        <form name="form1" role="form">
+            <div>
+                <input type="hidden" name="id" ng-value="vm.itemAttribute.itemAttributeId" />
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="{{ vm.itemAttribute.itemId }}">Item</label>
+                <div class="col-md-10">
+                    <select ng-model="vm.items"
+                            ng-options="item as item.itemLabel for item in vm.items">
+                    </select>
+                    <!--<input class="text-box single-line" data-val="true" data-ng-model="vm.itemId.value" type="text" value="" />-->
+                    <span class="field-validation-valid" data-valmsg-for="vm.itemId.value" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="{{ vm.itemAttribute.templateAttributeId }}">Template Attribute</label>
+                <div class="col-md-10">
+                    <select ng-model="vm.templateAttributes"
+                            ng-options="templateAttribute as templateAttribute.templateAttributeName for templateAttribute in vm.templateAttributes">
+                    </select>
+                    <!--<input class="text-box single-line" data-val="true" data-ng-model="vm.templateAttributeId.value" type="text" value="" />-->
+                    <span class="field-validation-valid" data-valmsg-for="vm.templateAttributeId.value" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="{{ vm.itemAttribute.value }}">Item Attribute Value</label>
+                <div class="col-md-10">
+                    <input class="text-box single-line" data-val="true" data-ng-model="vm.itemAttribute.value" type="text" value="" />
+                    <span class="field-validation-valid" data-valmsg-for="vm.itemAttribute.value" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Add or Update" class="btn btn-default" ng-click="vm.saveItemAttribute()" />
+                    <back-button></back-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -9,7 +9,7 @@ namespace LiteratureAssistant.Data
     public partial class LiteratureAssistantDbContext : DbContext
     {
         public LiteratureAssistantDbContext()
-            : base("name=LiteratureAssistantDbEntities")
+            : base("name=LiteratureAssistantDbContext")
         {
         }
 
@@ -18,6 +18,7 @@ namespace LiteratureAssistant.Data
         public virtual DbSet<itemAttribute> itemAttributes { get; set; }
         public virtual DbSet<itemTemplate> itemTemplates { get; set; }
         public virtual DbSet<order> orders { get; set; }
+        public virtual DbSet<organization> organizations { get; set; }
         public virtual DbSet<templateAttribute> templateAttributes { get; set; }
         public virtual DbSet<user> users { get; set; }
 
@@ -75,14 +76,14 @@ namespace LiteratureAssistant.Data
 
             modelBuilder.Entity<user>()
                 .HasMany(e => e.orders)
-                .WithRequired(e => e.user)
-                .HasForeignKey(e => e.orderedForUserId)
-                .WillCascadeOnDelete(false);
+                .WithOptional(e => e.user)
+                .HasForeignKey(e => e.orderedByUserId);
 
             modelBuilder.Entity<user>()
                 .HasMany(e => e.orders1)
-                .WithOptional(e => e.user1)
-                .HasForeignKey(e => e.orderedByUserId);
+                .WithRequired(e => e.user1)
+                .HasForeignKey(e => e.orderedForUserId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

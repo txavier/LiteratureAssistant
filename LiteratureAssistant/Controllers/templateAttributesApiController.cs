@@ -1,6 +1,7 @@
 ﻿using AutoClutch.Auto.Service;
 using AutoClutch.Auto.Service.Interfaces;
 using LiteratureAssistant.Core.Models;
+using LiteratureAssistant.DependencyResolution;
 using StructureMap;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,10 @@ namespace LiteratureAssistant.Controllers
     {
         private readonly IService<templateAttribute> TemplateAttributeService;
 
-        public templateAttributesApiController(IContainer container)
+        public templateAttributesApiController()
         {
+            IContainer container = IoC.Initialize();
+            
             TemplateAttributeService = container.GetInstance<IService<templateAttribute>>();
         }
 

@@ -1,6 +1,5 @@
 ﻿using AutoClutch.Auto.Service.Interfaces;
 using LiteratureAssistant.Core.Models;
-using Newtonsoft.Json.Linq;
 using StructureMap;
 using System;
 using System.Collections.Generic;
@@ -11,6 +10,8 @@ using System.Web.Http;
 using Omu.ValueInjecter;
 using WildCard.Core.Interfaces;
 using WildCard.Core.ViewModels;
+using LiteratureAssistant.DependencyResolution;
+using WildCard.Core.Models;
 
 namespace LiteratureAssistant.Controllers
 {
@@ -18,8 +19,10 @@ namespace LiteratureAssistant.Controllers
     {
         private readonly IUserService _userService;
 
-        public usersApiController(IContainer container)
+        public usersApiController()
         {
+            IContainer container = IoC.Initialize();
+
             _userService = container.GetInstance<IUserService>();
         }
 
@@ -40,35 +43,24 @@ namespace LiteratureAssistant.Controllers
         }
 
         // POST: api/usersApi
-        public UserViewModel Post(JObject data)
+        public IHttpActionResult Post(user user)
         {
             try
             {
-                dynamic dataDynamic = data;
+                user = _userService.AddOrUpdate(user);
 
-                var userViewModel = new UserViewModel()
-                {
-                    firstName = dataDynamic.user.firstName,
-                    lastName = dataDynamic.user.lastName,
-                    userId = dataDynamic.user.userId ?? 0,
-                    orders = dataDynamic.user.orders == null ? null : dataDynamic.user.orders.ToObject<List<OrderViewModel>>()
-                };
-
-                var result = _userService.AddOrUpdate(_userService.ToEntity(userViewModel));
-
-                return _userService.ToViewModel(result);
+                return Ok(_userService.ToViewModel(user));
             }
             catch (Exception ex)
             {
-                
                 throw;
             }
         }
 
         // PUT: api/usersApi/5
-        public void Put(int id, JObject data)
-        {
-        }
+        //public void Put(int id, JObject data)
+        //{
+        //}
 
         // DELETE: api/usersApi/5
         public void Delete(int id)

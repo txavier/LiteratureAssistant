@@ -2,6 +2,7 @@
 using AutoClutch.Auto.Service.Interfaces;
 using LiteratureAssistant.Core.Models;
 using LiteratureAssistant.DependencyResolution;
+using Newtonsoft.Json.Linq;
 using StructureMap;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using WildCard.Core.Models;
 
 namespace LiteratureAssistant.Controllers
 {
+    [RoutePrefix("api/templateAttributesApi")]
     public class templateAttributesApiController : ApiController
     {
         private readonly IService<templateAttribute> TemplateAttributeService;
@@ -24,16 +26,44 @@ namespace LiteratureAssistant.Controllers
             TemplateAttributeService = container.GetInstance<IService<templateAttribute>>();
         }
 
-        // GET: api/templateAttribute
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
             var lightTemplateAttributeList = TemplateAttributeService.GetAll().Select(i => new
+            {
+                templateAttributeName = i.templateAttributeName,
+                templateAttributeId = i.templateAttributeId
+            }).ToList();
+
+            return Ok(lightTemplateAttributeList.ToArray());
+        }
+
+        // GET: api/templateAttribute
+        public IHttpActionResult Get(int templateAttributeId, int itemTemplateId)
+        {
+            var lightTemplateAttributeList = TemplateAttributeService
+                .Get(filter: i => (templateAttributeId != -1) ? i.templateAttributeId == templateAttributeId: true
+                                && (itemTemplateId != -1) ? i.itemTemplateId == itemTemplateId : true)
+                .Select(i => new
                 {
                     templateAttributeName = i.templateAttributeName,
                     templateAttributeId = i.templateAttributeId
                 }).ToList();
 
-            return this.Request.CreateResponse(HttpStatusCode.OK, lightTemplateAttributeList.ToArray());
+            return Ok(lightTemplateAttributeList.ToArray());
+        }
+
+        [Route("count")]
+        public IHttpActionResult GetCount(int templateAttributeId, int itemTemplateId)
+        {
+            var count = TemplateAttributeService
+                .GetCount(filter: i => (templateAttributeId != -1) ? i.templateAttributeId == templateAttributeId : true
+                                && (itemTemplateId != -1) ? i.itemTemplateId == itemTemplateId : true);
+
+            var result = new List<int>();
+
+            result.Add(count);
+
+            return Ok(result);
         }
 
         // GET: api/templateAttribute/5
@@ -43,8 +73,11 @@ namespace LiteratureAssistant.Controllers
         }
 
         // POST: api/templateAttribute
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post(templateAttribute templateAttribute)
         {
+            templateAttribute = TemplateAttributeService.Add(templateAttribute);
+
+            return Ok(templateAttribute);
         }
 
         // PUT: api/templateAttribute/5

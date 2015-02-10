@@ -3,9 +3,9 @@
         .module('itemModule')
         .controller('addOrUpdateItemTemplatesController', addOrUpdateItemTemplatesController);
 
-    addOrUpdateItemTemplatesController.$inject = ['$scope', '$log', 'dataService'];
+    addOrUpdateItemTemplatesController.$inject = ['$scope', '$log', '$location', 'dataService'];
 
-    function addOrUpdateItemTemplatesController($scope, $log, dataService) {
+    function addOrUpdateItemTemplatesController($scope, $log, $location, dataService) {
         var vm = this;
 
         vm.itemTemplates = [];
@@ -39,7 +39,9 @@
 
         function addOrUpdateItemTemplate() {
             return dataService.addOrUpdateItemTemplate(vm.itemTemplate)
-                .then()
+                .then(
+                $location.path('/itemTemplates')
+                )
                 .catch();
         }
 

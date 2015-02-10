@@ -1,11 +1,11 @@
 ﻿<div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Organizations</h1>
+        <h1 class="page-header">TemplateAttributes</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
 <div class="container">
-    <a href="#/organization/create">Create New</a>
+    <a ng-click="vm.goToCreate()">Create New</a>
     <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
     <br />
     <div>
@@ -15,40 +15,40 @@
         <table class="table table-striped">
             <tr>
                 <th>
-                    <a ng-click="setSortOrder('organizationId')">Organization ID</a>
+                    <a ng-click="setSortOrder('templateAttributeName')">Name</a>
                 </th>
                 <th>
-                    <a ng-click="setSortOrder('defaultOrganization')">Default Organization</a>
+                    <a ng-click="setSortOrder('required')">Required</a>
                 </th>
                 <th>
-                    <a ng-click="setSortOrder('name')">Name</a>
+                    <a ng-click="setSortOrder('priority')">Priority</a>
                 </th>
-                <th><a ng-click="setSortOrder('systemName')">System Name</a></th>
+                <th></th>
                 <th></th>
                 <th></th>
             </tr>
-            <tr ng-repeat="organization in vm.organizations">
+            <tr ng-repeat="templateAttribute in vm.templateAttributes">
                 <td>
-                    {{ organization.organizationId }}
+                    {{ templateAttribute.templateAttributeName }}
                 </td>
                 <td>
-                    {{ organization.defaultOrganization }}
+                    {{ templateAttribute.priority }}
                 </td>
                 <td>
-                    {{ organization.name }}
+                    {{ templateAttribute.required }}
                 </td>
                 <td>
-                    {{ organization.systemName }}
-                </td>
-                <td>
-                    <a class="btn btn-default" href="#/organization/edit/{{ organization.organizationId }}">
-                        Go To Organization
+                    <a class="btn btn-default" href="#/templateAttribute/edit/{{ templateAttribute.templateAttributeId }}">
+                        Go To Template Attribute
                     </a>
                 </td>
                 <td>
-                    <a class="btn btn-default" href="#/itemAttributes?organizationId={{ organization.organizationId }}">
-                        Go To This Organizations Item Attributes
+                    <a class="btn btn-default" href="#/itemAttributes?templateAttributeId={{ templateAttribute.templateAttributeId }}">
+                        Go To This Template Attributes Item Attributes
                     </a>
+                </td>
+                <td>
+                    <a class="btn btn-default" ng-click="deleteTemplateAttribute(templateAttribute.templateAttributeId)">Delete</a>
                 </td>
             </tr>
         </table>

@@ -23,9 +23,12 @@
             getItemAttributesCount: getItemAttributesCount,
             addOrUpdateItemAttribute: addOrUpdateItemAttribute,
             getItems: getItems,
-            getTemplateAttributes: getTemplateAttributes,
             getItemTemplates: getItemTemplates,
             getItemTemplatesCount: getItemTemplatesCount,
+            addOrUpdateItemTemplate: addOrUpdateItemTemplate,
+            getTemplateAttributes: getTemplateAttributes,
+            getTemplateAttributesCount: getTemplateAttributesCount,
+            addOrUpdateTemplateAttribute: addOrUpdateTemplateAttribute,
         };
 
         return service;
@@ -58,16 +61,38 @@
             }
         }
 
-        function getTemplateAttributes() {
-            return $http.get(templateAttributeApiUrl)
-                .then(getTemplateAttributesComplete)
-                .catch(getTemplateAttributesFailed);
+        function addOrUpdateItemTemplate(itemTemplate) {
+            return $http.post(itemTemplateApiUrl, itemTemplate)
+                    .then(addOrUpdateItemTemplateComplete)
+                    .catch(addOrUpdateItemTemplateFailed);
 
-            function getTemplateAttributesComplete(response) {
+            function addOrUpdateItemTemplateComplete(response) {
                 return response.data;
             }
 
-            function getTemplateAttributesFailed(error) {
+            function addOrUpdateItemTemplateFailed(error) {
+                $log.error('XHR Failed for getOrganizations.' + error.data);
+            }
+        }
+
+        function getTemplateAttributes(templateAttributeId, itemTemplateId) {
+            return $resource(templateAttributeApiUrl).query({ templateAttributeId: templateAttributeId || '-1', itemTemplateId: itemTemplateId || '-1' });
+        }
+
+        function getTemplateAttributesCount(templateAttributeId, itemTemplateId) {
+            return $resource(templateAttributeApiUrl + '/count').query({ templateAttributeId: templateAttributeId || '-1', itemTemplateId: itemTemplateId || '-1' });
+        }
+
+        function addOrUpdateTemplateAttribute(templateAttribute) {
+            return $http.post(templateAttributeApiUrl, templateAttribute)
+                    .then(addOrUpdateTemplateAttributeComplete)
+                    .catch(addOrUpdateTemplateAttributeFailed);
+
+            function addOrUpdateTemplateAttributeComplete(response) {
+                return response.data;
+            }
+
+            function addOrUpdateTemplateAttributeFailed(error) {
                 $log.error('XHR Failed for getTemplateAttributes.' + error.data);
             }
         }

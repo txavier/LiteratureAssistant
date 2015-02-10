@@ -20,6 +20,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0EFBE1E7-379E-4829-94E6-AB59D2055BE7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{2CC04167-28A5-4452-AF24-AC4FC70DBAEE}"
+	ProjectSection(SolutionItems) = preProject
+		Implementation.txt = Implementation.txt
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database Scripts", "Database Scripts", "{60BAAF12-4014-465B-9D48-DF19830D78B5}"
 	ProjectSection(SolutionItems) = preProject

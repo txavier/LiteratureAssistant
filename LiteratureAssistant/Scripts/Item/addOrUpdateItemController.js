@@ -1,5 +1,8 @@
-﻿itemModule.controller("templateAttributeController", function ($scope, $routeParams, $http, $route, $templateCache, $location,
-    templateAttributeService, itemService) {
+﻿// This used to be the old template-attribute-controller before the angular was refactored.  This
+// may still have remnants for template attribute operations although they no longer are needed 
+// and no longer work.
+itemModule.controller("addOrUpdateItemController", function ($scope, $routeParams, $http, $route, $templateCache, $location,
+    templateAttributeService, itemService, dataService) {
     $scope.templateAttributes = templateAttributeService.getTemplateAttributes();
 
     $scope.formData = {};
@@ -15,6 +18,13 @@
     }
     else {
         $scope.templateAttribute = { templateAttributeId: 0 };
+    }
+
+    if ($routeParams.itemTemplateId != null) {
+        var Data = dataService.getTemplateAttributes(null, $routeParams.itemTemplateId)
+            .$promise.then(function (data) {
+                $scope.templateAttributes = data;
+            });
     }
 
     // If there is a route parameter of an ItemId then we are editing and get the

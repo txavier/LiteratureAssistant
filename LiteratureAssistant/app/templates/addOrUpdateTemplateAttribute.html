@@ -1,0 +1,35 @@
+﻿<div class="form-group">
+    <div class="form-horizontal">
+        <form name="form1" role="form">
+            <div>
+                <input type="hidden" name="id" ng-value="vm.templateAttribute.templateAttributeId" />
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="{{ vm.templateAttribute.templateAttributeName }}">Template Attribute Name</label>
+                <div class="col-md-10">
+                    <input class="text-box single-line" data-val="true" data-ng-model="vm.templateAttribute.templateAttributeName" type="text" value="" />
+                    <span class="field-validation-valid" data-valmsg-for="vm.templateAttribute.templateAttributeName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="{{ vm.templateAttribute.priority }}">Priority</label>
+                <div class="col-md-10">
+                    <input class="text-box single-line" data-val="true" data-ng-model="vm.templateAttribute.priority" type="text" value="" />
+                    <span class="field-validation-valid" data-valmsg-for="vm.templateAttribute.priority" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Required</label>
+                <div class="col-md-10">
+                    <input type="checkbox" ng-model="vm.templateAttribute.required" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Add or Update" class="btn btn-default" ng-click="vm.addOrUpdateTemplateAttribute()" />
+                    <back-button></back-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

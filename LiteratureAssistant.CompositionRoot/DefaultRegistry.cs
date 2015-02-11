@@ -69,7 +69,11 @@ namespace LiteratureAssistant.CompositionRoot
 
             Policies.SetAllProperties(prop => prop.OfType<IService<itemAttribute>>());
 
+            Policies.SetAllProperties(prop => prop.OfType<IService<itemTemplate>>());
+
             Policies.SetAllProperties(prop => prop.OfType<IService<templateAttribute>>());
+
+            Policies.SetAllProperties(prop => prop.OfType<IService<organization>>());
 
             Policies.SetAllProperties(prop => prop.OfType<IItemService>());
 

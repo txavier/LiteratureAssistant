@@ -2,8 +2,8 @@
 // may still have remnants for template attribute operations although they no longer are needed 
 // and no longer work.
 itemModule.controller("addOrUpdateItemController", function ($scope, $routeParams, $http, $route, $templateCache, $location,
-    templateAttributeService, itemService, dataService) {
-    $scope.templateAttributes = templateAttributeService.getTemplateAttributes();
+    itemService, dataService) {
+    $scope.templateAttributes = itemService.getTemplateAttributes();
 
     $scope.formData = {};
 
@@ -12,7 +12,7 @@ itemModule.controller("addOrUpdateItemController", function ($scope, $routeParam
     // Get single template attribute.
     if ($routeParams.templateAttributeId != null) {
 
-        templateAttributeService.getTemplateAttributeService($routeParams.templateAttributeId).$promise.then(function (templateAttribute) {
+        itemService.getTemplateAttributeService($routeParams.templateAttributeId).$promise.then(function (templateAttribute) {
             $scope.templateAttribute = templateAttribute;
         });
     }
@@ -44,8 +44,8 @@ itemModule.controller("addOrUpdateItemController", function ($scope, $routeParam
     // Save or update a template attribute.
     $scope.sendTemplateAttribute = function (templateAttribute) {
 
-        templateAttributeService.saveTemplateAttribute(templateAttribute).$promise.then(function () {
-            $scope.templateAttributes = templateAttributeService.getTemplateAttributes();
+        itemService.saveTemplateAttribute(templateAttribute).$promise.then(function () {
+            $scope.templateAttributes = itemService.getTemplateAttributes();
         });
 
         history.back();
@@ -84,8 +84,8 @@ itemModule.controller("addOrUpdateItemController", function ($scope, $routeParam
 
     // Delete a template attribute.
     $scope.deleteTemplateAttribute = function (templateAttributeId) {
-        templateAttributeService.deleteTemplateAttribute(templateAttributeId).$promise.then(function () {
-            $scope.templateAttributes = templateAttributeService.gettemplateAttributes;
+        itemService.deleteTemplateAttribute(templateAttributeId).$promise.then(function () {
+            $scope.templateAttributes = itemService.getTemplateAttributes;
         });
     }
 });

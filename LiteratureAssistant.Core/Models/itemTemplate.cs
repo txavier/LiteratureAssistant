@@ -17,6 +17,8 @@ namespace WildCard.Core.Models
 
         public int itemTemplateId { get; set; }
 
+        public int? organizationId { get; set; }
+
         [Required]
         [StringLength(50)]
         public string itemTemplateName { get; set; }
@@ -24,5 +26,7 @@ namespace WildCard.Core.Models
         public virtual ICollection<item> items { get; set; }
 
         public virtual ICollection<templateAttribute> templateAttributes { get; set; }
+
+        public virtual organization organization { get; set; }
     }
 }

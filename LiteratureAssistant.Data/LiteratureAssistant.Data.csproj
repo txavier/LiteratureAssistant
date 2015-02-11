@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201502032001541_AddedOrganization.Designer.cs">
       <DependentUpon>201502032001541_AddedOrganization.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502111803146_DummyUpdate.cs" />
+    <Compile Include="Migrations\201502111803146_DummyUpdate.Designer.cs">
+      <DependentUpon>201502111803146_DummyUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -93,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502032001541_AddedOrganization.resx">
       <DependentUpon>201502032001541_AddedOrganization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502111803146_DummyUpdate.resx">
+      <DependentUpon>201502111803146_DummyUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,6 +10,8 @@ namespace LiteratureAssistant.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Inventory Assistant";
+
             return View();
         }
 

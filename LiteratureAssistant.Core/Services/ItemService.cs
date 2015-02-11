@@ -19,11 +19,13 @@ namespace WildCard.Core.Services
         private readonly IService<itemAttribute> _itemAttributeService;
 
         private readonly IService<templateAttribute> _templateAttributeService;
+        
+        private readonly IService<organization> _organizationService;
 
         public int ItemTemplateId { get; set; }
 
         public ItemService(IRepository<item> itemRepository, IService<itemAttribute> itemAttributeService,
-            IService<templateAttribute> templateAttributeService) :
+            IService<templateAttribute> templateAttributeService, IService<organization> organizationService) :
             base(itemRepository)
         {
             _itemRepository = itemRepository;
@@ -31,6 +33,13 @@ namespace WildCard.Core.Services
             _itemAttributeService = itemAttributeService;
 
             _templateAttributeService = templateAttributeService;
+
+            _organizationService = organizationService;
+
+            var defaultOrganization = _organizationService.Get(i => i.defaultOrganization.HasValue ? i.defaultOrganization.Value : true).FirstOrDefault();
+
+            ItemTemplateId = defaultOrganization == null || !defaultOrganization.itemTemplates.Any() ? 
+                0 : defaultOrganization.itemTemplates.FirstOrDefault().itemTemplateId;
         }
 
         /// <summary>

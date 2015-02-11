@@ -38,8 +38,6 @@ namespace LiteratureAssistant.Controllers
 
             _itemService = container.GetInstance<IItemService>();
 
-            _itemService.ItemTemplateId = 4; // This item template id indicates literature.
-
             ItemAttributeService = container.GetInstance<IService<itemAttribute>>();
 
             TemplateAttributeService = container.GetInstance<IService<templateAttribute>>();

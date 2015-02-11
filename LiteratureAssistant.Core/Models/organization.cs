@@ -11,7 +11,7 @@ namespace WildCard.Core.Models
     {
         public organization()
         {
-            itemAttributes = new HashSet<itemAttribute>();
+            itemTemplates = new HashSet<itemTemplate>();
         }
 
         public int organizationId { get; set; }
@@ -23,6 +23,6 @@ namespace WildCard.Core.Models
         [Required]
         public string systemName { get; set; }
 
-        public virtual ICollection<itemAttribute> itemAttributes { get; set; }
+        public virtual ICollection<itemTemplate> itemTemplates { get; set; }
     }
 }

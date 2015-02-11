@@ -30,6 +30,15 @@
         },
         deleteItem: function (itemId) {
             return resource.delete({ id: itemId });
-        }
+        },
+        getTemplateAttribute: function (templateAttributeId) {
+            return templateAttributeResource.get({ id: templateAttributeId })
+        },
+        saveTemplateAttribute: function (templateAttribute) {
+            return templateAttributeResource.save(templateAttribute);
+        },
+        deleteTemplateAttribute: function (templateAttributeId) {
+            return templateAttributeResource.delete({ id: templateAttributeId });
+        },
     };
 });

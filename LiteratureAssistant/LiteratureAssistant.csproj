@@ -288,7 +288,6 @@
     <Content Include="Scripts\Order\order-service.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\TemplateAttribute\template-attribute-service.js" />
     <Content Include="Scripts\User\user-controller.js" />
     <Content Include="Scripts\User\user-service.js" />
     <Content Include="Scripts\_references.js" />

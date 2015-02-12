@@ -227,6 +227,8 @@
     <Compile Include="Controllers\itemsController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\inventory\createCountBarcodeSubtractController.js" />
+    <Content Include="app\inventory\createCountBarcodeAddController.js" />
     <Content Include="app\itemTemplate\addOrUpdateItemTemplatesController.js" />
     <Content Include="app\itemTemplate\itemTemplatesController.js" />
     <Content Include="app\itemAttribute\addOrUpdateItemAttributesController.js" />
@@ -239,6 +241,8 @@
     <Content Include="app\templates\addOrUpdateItemAttribute.html" />
     <Content Include="app\templates\addOrUpdateItemTemplate.html" />
     <Content Include="app\templates\addOrUpdateTemplateAttribute.html" />
+    <Content Include="app\templates\createCountBarcodeSubtract.html" />
+    <Content Include="app\templates\createCountBarcodeAdd.html" />
     <Content Include="app\templates\itemAttributes.html" />
     <Content Include="app\templates\itemTemplates.html" />
     <Content Include="app\templates\templateAttributes.html" />

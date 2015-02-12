@@ -13,6 +13,7 @@ using WildCard.Core.ViewModels;
 
 namespace LiteratureAssistant.Controllers
 {
+    [RoutePrefix("api/countsApi")]
     public class countsApiController : ApiController
     {
         private readonly ICountService _countService;
@@ -63,6 +64,14 @@ namespace LiteratureAssistant.Controllers
             return count;
         }
 
+        [Route("newCount")]
+        public CountViewModel GetNewCount(int itemId)
+        {
+            var newCountViewModel = _countService.ToNewCountViewModel(itemId);
+
+            return newCountViewModel;
+        }
+
         // POST: api/usersApi
         public void Post(CountViewModel countViewModel)
         {
@@ -74,6 +83,24 @@ namespace LiteratureAssistant.Controllers
             {
                 throw;
             }
+        }
+
+        [Route("subtractCount")]
+        [HttpPost]
+        public IHttpActionResult subtractCount(CountViewModel countViewModel)
+        {
+            var result = _countService.SubtractCount(countViewModel);
+
+            return Ok(result);
+        }
+
+        [Route("addCount")]
+        [HttpPost]
+        public IHttpActionResult addCount(CountViewModel countViewModel)
+        {
+            var result = _countService.AddCount(countViewModel);
+
+            return Ok(result);
         }
 
         // DELETE: api/usersApi/5

@@ -73,6 +73,14 @@
     <Compile Include="Migrations\201502111803146_DummyUpdate.Designer.cs">
       <DependentUpon>201502111803146_DummyUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502122106179_AddBarcodeFieldToTemplateAttributes.cs" />
+    <Compile Include="Migrations\201502122106179_AddBarcodeFieldToTemplateAttributes.Designer.cs">
+      <DependentUpon>201502122106179_AddBarcodeFieldToTemplateAttributes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502122108307_ChangeBarcodeFieldCasing.cs" />
+    <Compile Include="Migrations\201502122108307_ChangeBarcodeFieldCasing.Designer.cs">
+      <DependentUpon>201502122108307_ChangeBarcodeFieldCasing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -100,6 +108,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502111803146_DummyUpdate.resx">
       <DependentUpon>201502111803146_DummyUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502122106179_AddBarcodeFieldToTemplateAttributes.resx">
+      <DependentUpon>201502122106179_AddBarcodeFieldToTemplateAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502122108307_ChangeBarcodeFieldCasing.resx">
+      <DependentUpon>201502122108307_ChangeBarcodeFieldCasing.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -21,5 +21,10 @@ namespace WildCard.Core.ViewModels
         public int? currentlyOnHand { get; set; }
 
         public string currentlyOnHandDate { get; set; }
+
+        public string barcodeTemplateAttributeName { get; set; }
+
+        public string barcodeTemplateAttributeValue { get; set; }
+
     }
 }

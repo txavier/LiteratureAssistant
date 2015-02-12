@@ -10,5 +10,8 @@ namespace WildCard.Core.Interfaces
         System.Collections.Generic.IEnumerable<WildCard.Core.ViewModels.CountViewModel> ToViewModels(System.Collections.Generic.IEnumerable<WildCard.Core.Models.count> counts);
         //System.Collections.Generic.IEnumerable<Models.count> GetByMonth();
         object GetCurrentlyOnHandPerMonth();
+        WildCard.Core.ViewModels.CountViewModel ToNewCountViewModel(int itemId);
+        WildCard.Core.ViewModels.CountViewModel AddCount(ViewModels.CountViewModel countViewModel);
+        WildCard.Core.ViewModels.CountViewModel SubtractCount(ViewModels.CountViewModel countViewModel);
     }
 }

@@ -92,13 +92,46 @@ namespace WildCard.Core.Services
 
             return result;
         }
-
-
+        
         public object GetCurrentlyOnHandPerMonth()
         {
             var result = Get().GroupBy(i => i.currentlyOnHandDate.HasValue ? i.currentlyOnHandDate.Value.Month : -1);
 
             return result;
+        }
+
+        public CountViewModel ToNewCountViewModel(int itemId)
+        {
+            // The Get method on the generic service was not used because the 
+            // order by seems to have a problem with it as of the time of this
+            // writing 2/12/2014.
+            var lastCount = Get(filter: i => i.itemId == itemId).OrderBy(i => i.currentlyOnHandDate).LastOrDefault();
+
+            var newCount = new count()
+            {
+                countId = 0,
+                currentlyOnHand = lastCount.currentlyOnHand,
+                currentlyOnHandDate = DateTime.Now,
+                itemId = lastCount.itemId,
+            };
+
+            var newCountViewModel = ToViewModel(newCount);
+
+            newCountViewModel.barcodeTemplateAttributeName = lastCount.item.itemAttributes.Where(i => i.templateAttribute.barcode).FirstOrDefault() == null ?
+                                                lastCount.item.itemAttributes.FirstOrDefault().templateAttribute.templateAttributeName :
+                                                lastCount.item.itemAttributes.Where(i => i.templateAttribute.barcode).FirstOrDefault().templateAttribute.templateAttributeName;
+
+            return newCountViewModel;
+        }
+
+        public CountViewModel AddCount(CountViewModel countViewModel)
+        {
+            throw new NotImplementedException();            
+        }
+
+        public CountViewModel SubtractCount(CountViewModel countViewModel)
+        {
+            throw new NotImplementedException();
         }
     }
 }

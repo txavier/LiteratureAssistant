@@ -26,6 +26,8 @@ namespace WildCard.Core.Models
 
         public int? priority { get; set; }
 
+        public bool barcode { get; set; }
+
         public virtual ICollection<itemAttribute> itemAttributes { get; set; }
 
         public virtual itemTemplate itemTemplate { get; set; }

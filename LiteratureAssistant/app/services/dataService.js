@@ -14,6 +14,7 @@
         var itemApiUrl = '/api/itemsApi';
         var templateAttributeApiUrl = '/api/templateAttributesApi';
         var itemTemplateApiUrl = '/api/itemTemplatesApi';
+        var countApiUrl = '/api/countsApi';
 
         var service = {
             getOrganizations: getOrganizations,
@@ -29,6 +30,7 @@
             getTemplateAttributes: getTemplateAttributes,
             getTemplateAttributesCount: getTemplateAttributesCount,
             addOrUpdateTemplateAttribute: addOrUpdateTemplateAttribute,
+            getNewCount: getNewCount,
         };
 
         return service;
@@ -72,6 +74,20 @@
 
             function addOrUpdateItemTemplateFailed(error) {
                 $log.error('XHR Failed for getOrganizations.' + error.data);
+            }
+        }
+
+        function getNewCount(itemId) {
+            return $http.get(countApiUrl + '/newCount')
+                .then(getNewCountComplete)
+                .catch(getNewCountFailed);
+
+            function getNewCountComplete(response) {
+                return response.data;
+            }
+
+            function getNewCountFailed(error) {
+                $log.error('XHR Failed for getNewCount.' + error.data);
             }
         }
 

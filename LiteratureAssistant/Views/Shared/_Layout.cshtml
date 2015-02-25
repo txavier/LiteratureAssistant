@@ -31,6 +31,10 @@
         <script src="~/app/itemTemplate/itemTemplatesController.js"></script>
         <script src="~/app/templateAttribute/addOrUpdateTemplateAttributeController.js"></script>
         <script src="~/app/templateAttribute/templateAttributesController.js"></script>
+        <script src="~/app/inventory/createCountBarcodeAddController.js"></script>
+        <script src="~/app/inventory/createCountBarcodeSubtractController.js"></script>
+        <script src="~/app/barcode/barcodesController.js"></script>
+        <script src="~/Scripts/JSPDF/jspdf.min.js"></script>
     </head>
     <body ng-app="itemModule">
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -47,7 +51,6 @@
                     <ul class="nav navbar-nav">
                         @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
                         <li><a href="#/item">Items</a></li>
-                        <li><a href="#/item/create">Create Item</a></li>
                         <li><a href="#/order">Orders</a></li>
                         <li><a href="#/order/create">Create Order</a></li>
                         <li><a href="#/count">Inventory</a></li>

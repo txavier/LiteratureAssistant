@@ -3,9 +3,9 @@
         .module('itemModule')
         .controller('createCountBarcodeSubtractController', createCountBarcodeSubtractController);
 
-    createCountBarcodeSubtractController.$inject = ['$scope', '$log', 'dataService'];
+    createCountBarcodeSubtractController.$inject = ['$scope', '$log', '$routeParams', 'dataService'];
 
-    function createCountBarcodeSubtractController($scope, $log, dataService) {
+    function createCountBarcodeSubtractController($scope, $log, $routeParams, dataService) {
         var vm = this;
 
         vm.count = {};

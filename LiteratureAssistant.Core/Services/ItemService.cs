@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LiteratureAssistant.Core.ViewModels;
+using XavierEnterpriseLibrary.Core.Interfaces;
 
 namespace WildCard.Core.Services
 {
@@ -21,11 +23,14 @@ namespace WildCard.Core.Services
         private readonly IService<templateAttribute> _templateAttributeService;
         
         private readonly IService<organization> _organizationService;
+        
+        private readonly IImageManipulationService _imageManipulationService;
 
         public int ItemTemplateId { get; set; }
 
         public ItemService(IRepository<item> itemRepository, IService<itemAttribute> itemAttributeService,
-            IService<templateAttribute> templateAttributeService, IService<organization> organizationService) :
+            IService<templateAttribute> templateAttributeService, IService<organization> organizationService,
+            IImageManipulationService imageManipulationService) :
             base(itemRepository)
         {
             _itemRepository = itemRepository;
@@ -36,10 +41,33 @@ namespace WildCard.Core.Services
 
             _organizationService = organizationService;
 
+            _imageManipulationService = imageManipulationService;
+
             var defaultOrganization = _organizationService.Get(i => i.defaultOrganization.HasValue ? i.defaultOrganization.Value : true).FirstOrDefault();
 
             ItemTemplateId = defaultOrganization == null || !defaultOrganization.itemTemplates.Any() ? 
                 0 : defaultOrganization.itemTemplates.FirstOrDefault().itemTemplateId;
+        }
+
+        /// <summary>
+        /// This method gets the barcode for each item.
+        /// </summary>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
+        public IEnumerable<BarcodeViewModel> GetBarcodeViewModels(int itemId)
+        {
+            var itemTemplatesWithBarcodes = Get(filter: i => i.itemId == itemId).SelectMany(i => i.itemAttributes).Where(i => i.templateAttribute.barcode);
+
+            var barcodes = !itemTemplatesWithBarcodes.Any() ? null :
+                itemTemplatesWithBarcodes
+                .Select(k => new BarcodeViewModel
+                {
+                    barcodeBase64DataUri = k == null ? null : _imageManipulationService.GetBarcodeDataUri(ZXing.BarcodeFormat.CODE_128, k.value),
+                    fieldName = k == null ? null : k.templateAttribute.templateAttributeName,
+                    value = k.value
+                });
+
+            return barcodes;
         }
 
         /// <summary>

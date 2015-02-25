@@ -25,6 +25,18 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="control-label col-md-2">Priority Number</label>
+                <div class="col-md-10">
+                    <input type="checkbox" ng-model="vm.templateAttribute.priority" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Is this a barcode?</label>
+                <div class="col-md-10">
+                    <input type="checkbox" ng-model="vm.templateAttribute.barcode" />
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Add or Update" class="btn btn-default" ng-click="vm.addOrUpdateTemplateAttribute()" />
                     <back-button></back-button>

@@ -227,6 +227,7 @@
     <Compile Include="Controllers\itemsController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\barcode\barcodesController.js" />
     <Content Include="app\inventory\createCountBarcodeSubtractController.js" />
     <Content Include="app\inventory\createCountBarcodeAddController.js" />
     <Content Include="app\itemTemplate\addOrUpdateItemTemplatesController.js" />
@@ -241,6 +242,7 @@
     <Content Include="app\templates\addOrUpdateItemAttribute.html" />
     <Content Include="app\templates\addOrUpdateItemTemplate.html" />
     <Content Include="app\templates\addOrUpdateTemplateAttribute.html" />
+    <Content Include="app\templates\barcodes.html" />
     <Content Include="app\templates\createCountBarcodeSubtract.html" />
     <Content Include="app\templates\createCountBarcodeAdd.html" />
     <Content Include="app\templates\itemAttributes.html" />
@@ -285,6 +287,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JSPDF\jspdf.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Count\count-controller.js" />
     <Content Include="Scripts\Count\count-service.js" />

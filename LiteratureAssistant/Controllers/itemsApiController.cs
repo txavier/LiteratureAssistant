@@ -22,6 +22,7 @@ using LiteratureAssistant.DependencyResolution;
 
 namespace LiteratureAssistant.Controllers
 {
+    [RoutePrefix("api/itemsApi")]
     public class itemsApiController : ApiController
     {
         private LiteratureAssistantDbContext db = new LiteratureAssistantDbContext();
@@ -119,6 +120,14 @@ namespace LiteratureAssistant.Controllers
             }
 
             return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        [Route("GetBarcodes/{itemId}")]
+        public IHttpActionResult GetBarcodes(int itemId)
+        {
+            var barcodes = _itemService.GetBarcodeViewModels(itemId);
+
+            return Ok(barcodes);
         }
 
         // POST: api/itemsApi

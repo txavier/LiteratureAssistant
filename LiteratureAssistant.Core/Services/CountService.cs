@@ -38,7 +38,9 @@ namespace WildCard.Core.Services
         {
             var result = counts.Select(i =>  new CountViewModel
             {
-                itemLabel = i.item.itemAttributes.Select(j => j.value).Aggregate((current, next) => current + " - " + next),
+                itemLabel = i.item == null ? 
+                    _itemService.Get(j => j.itemId == i.itemId).SingleOrDefault().itemAttributes.Select(j => j.value).Aggregate((current, next) => current + " - " + next) 
+                    : i.item.itemAttributes.Select(j => j.value).Aggregate((current, next) => current + " - " + next),
 
                 countId = i.countId,
 

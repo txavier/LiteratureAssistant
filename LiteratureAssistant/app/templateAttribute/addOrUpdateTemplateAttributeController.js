@@ -3,9 +3,9 @@
         .module('itemModule')
         .controller('addOrUpdateTemplateAttributeController', addOrUpdateTemplateAttributeController);
 
-    addOrUpdateTemplateAttributeController.$inject = ['$scope', '$log', '$routeParams', 'dataService'];
+    addOrUpdateTemplateAttributeController.$inject = ['$scope', '$log', '$routeParams', '$location', 'dataService'];
 
-    function addOrUpdateTemplateAttributeController($scope, $log, $routeParams, dataService) {
+    function addOrUpdateTemplateAttributeController($scope, $log, $routeParams, $location, dataService) {
         var vm = this;
 
         vm.templateAttributes = [];
@@ -30,7 +30,7 @@
 
         function getTemplateAttribute(templateAttributeId) {
             if (templateAttributeId) {
-                return dataService.getTemplateAttribute(templateAttributeId).then(function (data) {
+                return dataService.getTemplateAttribute(templateAttributeId).$promise.then(function (data) {
                     vm.templateAttribute = data;
 
                     return vm.templateAttribute;

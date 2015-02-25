@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WildCard.Core.Interfaces;
 using WildCard.Core.Models;
 
 namespace LiteratureAssistant.Controllers
@@ -17,13 +18,13 @@ namespace LiteratureAssistant.Controllers
     [RoutePrefix("api/templateAttributesApi")]
     public class templateAttributesApiController : ApiController
     {
-        private readonly IService<templateAttribute> TemplateAttributeService;
+        private readonly ITemplateAttributeService TemplateAttributeService;
 
         public templateAttributesApiController()
         {
             IContainer container = IoC.Initialize();
-            
-            TemplateAttributeService = container.GetInstance<IService<templateAttribute>>();
+
+            TemplateAttributeService = container.GetInstance<ITemplateAttributeService>();
         }
 
         public IHttpActionResult Get()
@@ -67,15 +68,21 @@ namespace LiteratureAssistant.Controllers
         }
 
         // GET: api/templateAttribute/5
-        public string Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            var templateAttribute = TemplateAttributeService.Find(id);
+
+            return Ok(templateAttribute);
         }
 
         // POST: api/templateAttribute
         public IHttpActionResult Post(templateAttribute templateAttribute)
         {
-            templateAttribute = TemplateAttributeService.Add(templateAttribute);
+            templateAttribute.itemAttributes = null;
+
+            templateAttribute.itemTemplate = null;
+
+            templateAttribute = TemplateAttributeService.AddOrUpdate(templateAttribute);
 
             return Ok(templateAttribute);
         }

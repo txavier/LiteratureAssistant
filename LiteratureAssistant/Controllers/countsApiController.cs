@@ -64,12 +64,13 @@ namespace LiteratureAssistant.Controllers
             return count;
         }
 
-        [Route("newCount")]
-        public CountViewModel GetNewCount(int itemId)
+        [Route("newCount/{itemId}")]
+        [HttpGet]
+        public IHttpActionResult GetNewCount(int itemId)
         {
             var newCountViewModel = _countService.ToNewCountViewModel(itemId);
 
-            return newCountViewModel;
+            return Ok(newCountViewModel);
         }
 
         // POST: api/usersApi

@@ -9,6 +9,9 @@
             $scope.count = count;
         });
     }
+    else if ($routeParams.itemId != null) {
+        $scope.count = { itemId: $routeParams.itemId, receivedDate: countService.getToday(), currentlyOnHandDate: countService.getToday() };
+    }
     else {
         $scope.count = { countId: 0, receivedDate: countService.getToday(), currentlyOnHandDate: countService.getToday() };
     }

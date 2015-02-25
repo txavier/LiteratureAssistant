@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Omu.ValueInjecter;
+using LiteratureAssistant.Core.ViewModels;
+using XavierEnterpriseLibrary;
+using XavierEnterpriseLibrary.Core.Interfaces;
 
 namespace WildCard.Core.Services
 {

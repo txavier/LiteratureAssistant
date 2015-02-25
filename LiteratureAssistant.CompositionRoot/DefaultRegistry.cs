@@ -32,6 +32,9 @@ namespace LiteratureAssistant.CompositionRoot
     using WildCard.Core.Interfaces;
     using WildCard.Core.Models;
     using WildCard.Core.Services;
+    using XavierEnterpriseLibaray.Services;
+    using XavierEnterpriseLibrary.Core.Interfaces;
+    using XavierEnterpriseLibrary.Infrastructure.Getters;
 	
     public class DefaultRegistry : Registry {
         #region Constructors and Destructors
@@ -40,6 +43,7 @@ namespace LiteratureAssistant.CompositionRoot
             Scan(
                 scan => {
                     scan.TheCallingAssembly();
+                    scan.AssembliesFromApplicationBaseDirectory();
                     scan.WithDefaultConventions();
                 });
 
@@ -48,40 +52,6 @@ namespace LiteratureAssistant.CompositionRoot
             For(typeof(IService<>)).Use(typeof(Service<>));
 
             For(typeof(IRepository<>)).Use(typeof(Repository<>));
-
-            For<IItemService>().Use<ItemService>();
-
-            For<IUserService>().Use<UserService>();
-
-            For<IOrderService>().Use<OrderService>();
-
-            For<ICountService>().Use<CountService>();
-
-            //For<IUserStore<MyUser>>().Use<MyUserStore>();
-            
-            //For<UserStore<MyUser>>().Use<MyUserStore>();
-
-            //For<UserManager<MyUser>>().Use<MyUserManager>();
-
-            For(typeof(IUserStore<>)).Use(typeof(UserStore<>));
-
-            Policies.SetAllProperties(prop => prop.OfType<IService<item>>());
-
-            Policies.SetAllProperties(prop => prop.OfType<IService<itemAttribute>>());
-
-            Policies.SetAllProperties(prop => prop.OfType<IService<itemTemplate>>());
-
-            Policies.SetAllProperties(prop => prop.OfType<IService<templateAttribute>>());
-
-            Policies.SetAllProperties(prop => prop.OfType<IService<organization>>());
-
-            Policies.SetAllProperties(prop => prop.OfType<IItemService>());
-
-            Policies.SetAllProperties(prop => prop.OfType<IUserService>());
-
-            Policies.SetAllProperties(prop => prop.OfType<IOrderService>());
-
-            Policies.SetAllProperties(prop => prop.OfType<IUserStore<ApplicationUser>>());
         }
 
         #endregion

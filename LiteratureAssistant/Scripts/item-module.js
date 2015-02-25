@@ -11,8 +11,10 @@
             .when('/order/create', { templateUrl: 'templates/createOrder.html', controller: 'orderController' })
             .when('/order/edit/:orderId', { templateUrl: 'templates/createOrder.html', controller: 'orderController' })
             .when('/count', { templateUrl: 'templates/counts.html', controller: 'countController' })
-            .when('/count/create', { templateUrl: 'templates/createCount.html', controller: 'countController' })
+            .when('/count/create/:itemId', { templateUrl: 'templates/createCount.html', controller: 'countController' })
             .when('/count/edit/:countId', { templateUrl: 'templates/createCount.html', controller: 'countController' })
+            .when('/count/create/barcodeAdd/:itemId', { templateUrl: 'app/templates/createCountBarcodeAdd.html', controller: 'createCountBarcodeAddController', controllerAs: 'vm' })
+            .when('/count/create/barcodeSubtract/:itemId', { templateUrl: 'app/templates/createCountBarcodeSubtract.html', controller: 'createCountBarcodeSubtractController', controllerAs: 'vm' })
             .when('/organization/create', { templateUrl: 'app/templates/addOrUpdateOrganization.html', controller: 'addOrUpdateOrganizationController', controllerAs: 'vm' })
             .when('/organization/update/:organizationId', { templateUrl: 'app/templates/addOrUpdateOrganization.html', controller: 'addOrUpdateOrganizationController', controllerAs: 'vm' })
             .when('/organizations', { templateUrl: 'app/templates/organizations.html', controller: 'organizationsController', controllerAs: 'vm' })
@@ -25,8 +27,25 @@
             .when('/itemTemplate/update/:itemTemplateId', { templateUrl: 'app/templates/addOrUpdateItemTemplate.html', controller: 'addOrUpdateItemTemplatesController', controllerAs: 'vm' })
             .when('/itemTemplates', { templateUrl: 'app/templates/itemTemplates.html', controller: 'itemTemplatesController', controllerAs: 'vm' })
             .when('/itemTemplate/:itemTemplateId', { templateUrl: 'app/templates/itemTemplate.html', controller: 'itemTemplatesController', controllerAs: 'vm' })
-            .when('/templateAttribute', { templateUrl: 'app/templates/templateAttributes.html', controller: 'templateAttributesController', controllerAs: 'vm' })
-            .when('/templateAttribute/create', { templateUrl: 'app/templates/addOrUpdateTemplateAttribute.html', controller: 'addOrUpdateTemplateAttributeController', controllerAs: 'vm' })
-            .when('/templateAttribute/update/:templateAttributeId', { templateUrl: 'app/templates/addOrUpdateTemplateAttribute.html', controller: 'addOrUpdateTemplateAttributeController', controllerAs: 'vm' });
+            .when('/templateAttribute', {
+                templateUrl: 'app/templates/templateAttributes.html',
+                controller: 'templateAttributesController',
+                controllerAs: 'vm'
+            })
+            .when('/templateAttribute/create', {
+                templateUrl: 'app/templates/addOrUpdateTemplateAttribute.html',
+                controller: 'addOrUpdateTemplateAttributeController',
+                controllerAs: 'vm'
+            })
+            .when('/templateAttribute/update/:templateAttributeId', {
+                templateUrl: 'app/templates/addOrUpdateTemplateAttribute.html',
+                controller: 'addOrUpdateTemplateAttributeController',
+                controllerAs: 'vm'
+            })
+            .when('/count/barcodes/:itemId', {
+                templateUrl: 'app/templates/barcodes.html', 
+                controller: 'barcodesController',
+                controllerAs: 'vm'
+            });
         //$locationProvider.html5Mode(true);
     });

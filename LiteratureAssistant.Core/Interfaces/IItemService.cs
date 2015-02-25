@@ -15,6 +15,7 @@ namespace WildCard.Core.Interfaces
         WildCard.Core.ViewModels.ItemViewModel ToViewModel(WildCard.Core.Models.item item);
         System.Collections.Generic.IEnumerable<WildCard.Core.ViewModels.ItemViewModel> ToViewModels(System.Collections.Generic.IEnumerable<WildCard.Core.Models.item> items);
         System.Collections.Generic.List<WildCard.Core.Models.itemAttribute> UpdateRange(System.Collections.Generic.List<WildCard.Core.Models.itemAttribute> itemAttributes);
+        System.Collections.Generic.IEnumerable<LiteratureAssistant.Core.ViewModels.BarcodeViewModel> GetBarcodeViewModels(int itemId);
     }
 }
 

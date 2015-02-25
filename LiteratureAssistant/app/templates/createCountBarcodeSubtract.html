@@ -9,34 +9,34 @@
         <div class="form-horizontal">
             <form name="form1" role="form">
                 <div>
-                    <input type="hidden" name="id" ng-value="count.countId" />
+                    <input type="hidden" name="id" ng-value="vm.count.countId" />
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="{{ count.barcodeTemplateAttributeValue }}">{{ count.barcodeTemplateAttributeName }}</label>
+                    <label class="control-label col-md-2" for="{{ vm.count.barcodeTemplateAttributeValue }}">{{ vm.count.barcodeTemplateAttributeName }}</label>
                     <div class="col-md-10">
-                        <input class="text-box single-line" data-val="true" data-ng-model="count.barcodeTemplateAttributeValue" type="text" value="" />
-                        <span class="field-validation-valid" data-valmsg-for="count.barcodeTemplateAttributeValue" data-valmsg-replace="true"></span>
+                        <input class="text-box single-line" data-val="true" data-ng-model="vm.count.barcodeTemplateAttributeValue" type="text" value="" />
+                        <span class="field-validation-valid" data-valmsg-for="vm.count.barcodeTemplateAttributeValue" data-valmsg-replace="true"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="{{ count.currentlyOnHand }}">Currently On Hand</label>
+                    <label class="control-label col-md-2" for="{{ vm.count.currentlyOnHand }}">Currently On Hand</label>
                     <div class="col-md-10">
-                        <input class="text-box single-line" data-val="true" disabled="disabled" data-ng-model="count.currentlyOnHand" type="text" value="" />
-                        <span class="field-validation-valid" data-valmsg-for="count.currentlyOnHand" data-valmsg-replace="true"></span>
+                        <input class="text-box single-line" data-val="true" disabled="disabled" data-ng-model="vm.count.currentlyOnHand" type="text" value="" />
+                        <span class="field-validation-valid" data-valmsg-for="vm.count.currentlyOnHand" data-valmsg-replace="true"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="{{ count.currentlyOnHandDate }}">Date</label>
+                    <label class="control-label col-md-2" for="{{ vm.count.currentlyOnHandDate }}">Date</label>
                     <div class="col-md-10">
-                        <input class="text-box single-line" is-open="currentlyOnHandDateOpened" datepicker-popup="MM/dd/yyyy" data-val="true" data-ng-model="count.currentlyOnHandDate" />
+                        <input class="text-box single-line" is-open="vm.currentlyOnHandDateOpened" datepicker-popup="MM/dd/yyyy" data-val="true" data-ng-model="vm.count.currentlyOnHandDate" />
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="currentlyOnHandDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            <button type="button" class="btn btn-default" ng-click="vm.currentlyOnHandDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                         </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" ng-click="addOrUpdateCount(count)" />
+                        <input type="submit" value="Save" class="btn btn-default" ng-click="vm.addOrUpdateCount(vm.count)" />
                         <back-button></back-button>
                     </div>
                 </div>

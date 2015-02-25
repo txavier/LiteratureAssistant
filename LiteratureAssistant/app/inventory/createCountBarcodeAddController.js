@@ -1,50 +1,36 @@
 ﻿(function () {
     angular
         .module('itemModule')
-        .controller('addOrUpdateOrganizationController', addOrUpdateOrganizationController);
+        .controller('createCountBarcodeAddController', createCountBarcodeAddController);
 
-    addOrUpdateOrganizationController.$inject = ['$scope', '$log', 'dataService'];
+    createCountBarcodeAddController.$inject = ['$scope', '$log', '$routeParams', 'dataService'];
 
-    function addOrUpdateOrganizationController($scope, $log, dataService) {
+    function createCountBarcodeAddController($scope, $log, $routeParams, dataService) {
         var vm = this;
 
-        vm.organizations = [];
-        vm.organization = {};
-        vm.getOrganizations = getOrganizations;
-        vm.addOrUpdateOrganization = addOrUpdateOrganization;
+        vm.count = {};
+        vm.addOrUpdateCount = addOrUpdateCount;
 
         activate();
 
         function activate() {
-            getOrganizations();
+            getNewCount();
 
             return vm;
         }
 
-        function getOrganizations() {
-            return dataService.getOrganizations().then(function (data) {
-                vm.organizations = data;
+        function getNewCount() {
+            var itemId = $routeParams.itemId
 
-                return vm.organizations;
+            return dataService.getNewCount(itemId).then(function (data) {
+                vm.count = data;
+
+                return vm.count;
             });
         }
 
-        function getOrganization(organizationId) {
-            return dataService.getOrganization(organizationId).then(function (data) {
-                vm.organization = data;
-
-                return vm.organization;
-            });
-        }
-
-        function addOrUpdateOrganization() {
-            return dataService.addOrUpdateOrganization(vm.organization)
-                .then()
-                .catch();
-        }
-
-        function deleteOrganization(organizationId) {
-            return dataService.deleteOrganization(organizationId)
+        function addOrUpdateCount() {
+            return dataService.addOrUpdateOrganization(vm.count)
                 .then()
                 .catch();
         }

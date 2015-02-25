@@ -66,11 +66,24 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="XavierEnterpriseLibrary.Core">
+      <HintPath>..\packages\XavierEnterpriseLibrary.1.0.5\lib\net45\XavierEnterpriseLibrary.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="XavierEnterpriseLibrary.Infrastructure">
+      <HintPath>..\packages\XavierEnterpriseLibrary.1.0.5\lib\net45\XavierEnterpriseLibrary.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing">
+      <HintPath>..\packages\ZXing.Net.0.14.0.1\lib\net40\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation">
+      <HintPath>..\packages\ZXing.Net.0.14.0.1\lib\net40\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\AccountModels\AccountViewModels.cs" />
@@ -92,6 +105,7 @@
     <Compile Include="Services\TemplateAttributeService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="ViewModels\BarcodeViewModel.cs" />
     <Compile Include="ViewModels\CountViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\TemplateAttributeViewModel.cs" />

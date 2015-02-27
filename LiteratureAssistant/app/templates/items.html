@@ -1,5 +1,5 @@
 ﻿<div class="container">
-    <a href="#/item/create">Create Item</a>
+    <a href="#/item/add">Create Item</a>
     <table class="table table-striped">
         <tr ng-repeat="item in items | limitTo: 1">
             <th ng-repeat="itemAttribute in item.itemAttributes">
@@ -14,7 +14,7 @@
                 {{ itemAttribute.value }}
             </td>
             <td>
-                <a class="btn btn-default" href="#/item/edit/{{ item.itemId }}">Edit</a>
+                <a class="btn btn-default" href="#/item/update/{{ item.itemId }}">Edit</a>
             </td>
             <td>
                 <a class="btn btn-default" href="#/count/create/{{ item.itemId }}">Update Inventory</a>

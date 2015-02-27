@@ -2,40 +2,40 @@
     <div class="form-horizontal">
         <form name="form1" role="form">
             <div>
-                <input type="hidden" name="id" ng-value="order.orderId" />
+                <input type="hidden" name="id" ng-value="vm.order.orderId" />
             </div>
             <div class="form-group">
-                <label class="control-label col-md-2" for="{{ order.orderedForUserFullName }}">Name</label>
+                <label class="control-label col-md-2" for="{{ vm.order.orderedForUserFullName }}">Name</label>
                 <div class="col-md-10">
-                    <input class="text-box single-line" typeahead="user.fullName as user.fullName for user in users | filter:$viewValue | limitTo:8" data-val="true" data-ng-model="order.orderedForUserFullName" type="text" value="" />
-                    <span class="field-validation-valid" data-valmsg-for="order.orderedForUserFullName" data-valmsg-replace="true"></span>
+                    <input class="text-box single-line" typeahead="user.fullName as user.fullName for user in vm.users | filter:$viewValue | limitTo:8" data-val="true" data-ng-model="vm.order.orderedForUserFullName" type="text" value="" />
+                    <span class="field-validation-valid" data-valmsg-for="vm.order.orderedForUserFullName" data-valmsg-replace="true"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-2" for="{{ order.itemLabel }}">Item</label>
+                <label class="control-label col-md-2" for="{{ vm.order.itemLabel }}">Item</label>
                 <div class="col-md-10">
-                    <input class="text-box single-line" typeahead="item.itemLabel as item.itemLabel for item in items | filter:$viewValue | limitTo:8" data-val="true" data-ng-model="order.itemLabel" type="text" value="" />
-                    <span class="field-validation-valid" data-valmsg-for="order.itemLabel" data-valmsg-replace="true"></span>
+                    <input class="text-box single-line" typeahead="item.itemLabel as item.itemLabel for item in vm.items | filter:$viewValue | limitTo:8" data-val="true" data-ng-model="vm.order.itemLabel" type="text" value="" />
+                    <span class="field-validation-valid" data-valmsg-for="vm.order.itemLabel" data-valmsg-replace="true"></span>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-2">Quantity</label>
                 <div class="col-md-10">
-                    <input class="text-box single-line" data-ng-model="order.quantity" type="number" />
+                    <input class="text-box single-line" data-ng-model="vm.order.quantity" type="number" />
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-2">Language</label>
                 <div class="col-md-10">
-                    <input class="text-box single-line" data-ng-model="order.language" type="text" />
+                    <input class="text-box single-line" data-ng-model="vm.order.language" type="text" />
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-2" for="{{ order.date }}">Date</label>
+                <label class="control-label col-md-2" for="{{ vm.order.date }}">Date</label>
                 <div class="col-md-10">
-                        <input class="text-box single-line" is-open="opened" datepicker-popup="MM/dd/yyyy" data-val="true" data-ng-model="order.date" />
+                    <input class="text-box single-line" is-open="vm.opened" datepicker-popup="MM/dd/yyyy" data-val="true" data-ng-model="vm.order.date" />
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            <button type="button" class="btn btn-default" ng-click="vm.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                         </span>
                     <!--<span class="field-validation-valid" data-valmsg-for="order.date" data-valmsg-replace="true"></span>-->
                 </div>
@@ -50,24 +50,24 @@
             <div class="form-group">
                 <label class="control-label col-md-2">Pending</label>
                 <div class="col-md-10">
-                    <input type="checkbox" ng-model="order.pending" />
+                    <input type="checkbox" ng-model="vm.order.pending" />
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-2">Received</label>
                 <div class="col-md-10">
-                    <input type="checkbox" ng-model="order.received" />
+                    <input type="checkbox" ng-model="vm.order.received" />
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-2">Order Sent</label>
                 <div class="col-md-10">
-                    <input type="checkbox" ng-model="order.orderSent" />
+                    <input type="checkbox" ng-model="vm.order.orderSent" />
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" ng-click="sendOrder(order)" />
+                    <input type="submit" value="Save" class="btn btn-default" ng-click="vm.sendOrder(vm.order)" />
                     <back-button></back-button>
                 </div>
             </div>

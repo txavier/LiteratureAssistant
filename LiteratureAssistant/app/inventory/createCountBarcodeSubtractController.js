@@ -1,6 +1,6 @@
 ﻿(function () {
     angular
-        .module('itemModule')
+        .module('app')
         .controller('createCountBarcodeSubtractController', createCountBarcodeSubtractController);
 
     createCountBarcodeSubtractController.$inject = ['$scope', '$log', '$routeParams', 'dataService'];

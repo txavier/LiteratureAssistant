@@ -1,4 +1,5 @@
 ﻿<div class="container">
+    <a href="#/order/add">Create Order</a>
     <table class="table table-striped">
         <tr>
             <th>
@@ -20,30 +21,30 @@
                 Order Sent
             </th>
         </tr>
-        <tr ng-repeat="order in orders">
+        <tr ng-repeat="order in vm.orders">
             <td>
-                {{ order.orderedForUserFullName }}
+                {{ vm.order.orderedForUserFullName }}
             </td>
             <td>
-                {{ order.itemLabel }}
+                {{ vm.order.itemLabel }}
             </td>
             <td>
-                {{ order.date }}
+                {{ vm.order.date }}
             </td>
             <td>
-                {{ order.pending }}
+                {{ vm.order.pending }}
             </td>
             <td>
-                {{ order.received }}
+                {{ vm.order.received }}
             </td>
             <td>
-                {{ order.orderSent }}
+                {{ vm.order.orderSent }}
             </td>
             <td>
-                <a class="btn btn-default" href="#/order/edit/{{ order.orderId }}">Edit</a>
+                <a class="btn btn-default" href="#/order/update/{{ vm.order.orderId }}">Edit</a>
             </td>
             <td>
-                <a class="btn btn-default" ng-click="deleteOrder(order.orderId)">Delete</a>
+                <a class="btn btn-default" ng-click="vm.deleteOrder(vm.order.orderId)">Delete</a>
             </td>
         </tr>
     </table>

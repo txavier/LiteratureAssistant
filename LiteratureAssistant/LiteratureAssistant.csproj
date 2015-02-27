@@ -234,6 +234,8 @@
     <Content Include="app\itemTemplate\itemTemplatesController.js" />
     <Content Include="app\itemAttribute\addOrUpdateItemAttributesController.js" />
     <Content Include="app\itemAttribute\itemAttributesController.js" />
+    <Content Include="app\orders\ordersController.js" />
+    <Content Include="app\services\jsPdfBarcodeService.js" />
     <Content Include="app\templateAttribute\addOrUpdateTemplateAttributeController.js" />
     <Content Include="app\templateAttribute\templateAttributesController.js" />
     <Content Include="app\organization\addOrUpdateOrganizationController.js" />
@@ -277,7 +279,7 @@
     <None Include="Properties\PublishProfiles\staging1.xaviersoftware.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Item\item-controller.js" />
-    <Content Include="Scripts\item-module.js" />
+    <Content Include="app\app.js" />
     <Content Include="Scripts\Item\item-service.js" />
     <Content Include="Scripts\Item\addOrUpdateItemController.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -290,24 +292,22 @@
     <Content Include="Scripts\JSPDF\jspdf.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Count\count-controller.js" />
-    <Content Include="Scripts\Count\count-service.js" />
-    <Content Include="Scripts\Order\order-controller.js" />
-    <Content Include="Scripts\Order\order-service.js" />
+    <Content Include="app\services\countService.js" />
+    <Content Include="app\orders\addOrUpdateOrderController.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\User\user-controller.js" />
-    <Content Include="Scripts\User\user-service.js" />
+    <Content Include="app\users\addOrUpdateUserController.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="templates\createItem.html" />
-    <Content Include="templates\createCount.html" />
-    <Content Include="templates\createOrder.html" />
+    <Content Include="app\templates\addItem.html" />
+    <Content Include="app\templates\addOrUpdateCount.html" />
+    <Content Include="app\templates\addOrUpdateOrder.html" />
     <Content Include="app\templates\addOrUpdateOrganization.html" />
-    <Content Include="templates\editUser.html" />
-    <Content Include="templates\createUser.html" />
-    <Content Include="templates\editItem.html" />
-    <Content Include="templates\items.html" />
-    <Content Include="templates\counts.html" />
-    <Content Include="templates\orders.html" />
+    <Content Include="app\templates\updateUser.html" />
+    <Content Include="app\templates\addUser.html" />
+    <Content Include="app\templates\updateItem.html" />
+    <Content Include="app\templates\items.html" />
+    <Content Include="app\templates\counts.html" />
+    <Content Include="app\templates\orders.html" />
     <Content Include="template\accordion\accordion-group.html" />
     <Content Include="template\accordion\accordion.html" />
     <Content Include="template\alert\alert.html" />
@@ -334,7 +334,7 @@
     <Content Include="template\tooltip\tooltip-popup.html" />
     <Content Include="template\typeahead\typeahead-match.html" />
     <Content Include="template\typeahead\typeahead-popup.html" />
-    <Content Include="templates\users.html" />
+    <Content Include="app\templates\users.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -371,6 +371,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="templates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

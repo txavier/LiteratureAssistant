@@ -1,6 +1,6 @@
 ﻿(function () {
     angular
-        .module('itemModule')
+        .module('app')
         .controller('organizationsController', organizationsController);
 
     organizationsController.$inject = ['$scope', '$log', 'dataService'];

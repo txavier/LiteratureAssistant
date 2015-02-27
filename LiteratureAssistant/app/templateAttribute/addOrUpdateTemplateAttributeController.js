@@ -1,6 +1,6 @@
 ﻿(function () {
     angular
-        .module('itemModule')
+        .module('app')
         .controller('addOrUpdateTemplateAttributeController', addOrUpdateTemplateAttributeController);
 
     addOrUpdateTemplateAttributeController.$inject = ['$scope', '$log', '$routeParams', '$location', 'dataService'];

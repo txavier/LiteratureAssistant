@@ -1,6 +1,6 @@
 ﻿(function () {
     angular
-        .module('itemModule')
+        .module('app')
         .controller('addOrUpdateItemTemplatesController', addOrUpdateItemTemplatesController);
 
     addOrUpdateItemTemplatesController.$inject = ['$scope', '$log', '$location', 'dataService'];

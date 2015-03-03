@@ -7,13 +7,13 @@ namespace LiteratureAssistant.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class AddedOrganization : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedOrganization));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201502032001541_AddedOrganization"; }
+            get { return "201502101636453_Initial"; }
         }
         
         string IMigrationMetadata.Source

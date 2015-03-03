@@ -40,13 +40,16 @@ namespace WildCard.Core.Services
 
         public IEnumerable<OrderViewModel> ToViewModels(IEnumerable<order> orders)
         {
-            var result = orders.Select(i =>  new OrderViewModel
+            var test = orders.ToList();
+
+            var result = orders.Select(i => new OrderViewModel
             {
                 orderedForUserFullName = i.user.firstName + " " + i.user.lastName,
 
                 orderedByUserFullName = i.user1 == null ? null : i.user1.firstName + " " + i.user1.lastName,
 
-                itemLabel = i.item.itemAttributes.Select(j => j.value).Aggregate((current, next) => current + " - " + next),
+                itemLabel = i.item.itemAttributes.Any() ? 
+                    i.item.itemAttributes.Select(j => j.value).Aggregate((current, next) => current + " - " + next) : null,
 
                 orderId = i.orderId,
 

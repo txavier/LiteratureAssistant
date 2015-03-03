@@ -10,7 +10,7 @@
 
         vm.users = [];
         vm.user = {};
-        vm.sendUser = sendUser;
+        vm.addOrUpdateUser = addOrUpdateUser;
         vm.deleteUser = deleteUser;
 
         activate();
@@ -30,8 +30,8 @@
             });
         }
 
-        function sendUser(user) {
-            return dataService.saveUser(user).$promise.then(function () {
+        function addOrUpdateUser(user) {
+            return dataService.addOrUpdateUser(user).$promise.then(function () {
                 $location.path("/user");
             });
         }

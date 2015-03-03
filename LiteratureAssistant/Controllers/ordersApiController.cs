@@ -25,19 +25,19 @@ namespace LiteratureAssistant.Controllers
         }
 
         // GET: api/usersApi
-        public IEnumerable<OrderViewModel> Get()
+        public IHttpActionResult Get()
         {
             var orders = _orderService.ToViewModels(_orderService.GetAll());
 
-            return orders;
+            return Ok(orders);
         }
 
         // GET: api/usersApi/5
-        public OrderViewModel Get(int id)
+        public IHttpActionResult Get(int id)
         {
             var order = _orderService.ToViewModel(_orderService.Find(id));
 
-            return order;
+            return Ok(order);
         }
 
         // POST: api/usersApi

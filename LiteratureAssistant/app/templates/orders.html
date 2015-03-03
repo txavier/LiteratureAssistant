@@ -23,28 +23,28 @@
         </tr>
         <tr ng-repeat="order in vm.orders">
             <td>
-                {{ vm.order.orderedForUserFullName }}
+                {{ order.orderedForUserFullName }}
             </td>
             <td>
-                {{ vm.order.itemLabel }}
+                {{ order.itemLabel }}
             </td>
             <td>
-                {{ vm.order.date }}
+                {{ order.date }}
             </td>
             <td>
-                {{ vm.order.pending }}
+                {{ order.pending }}
             </td>
             <td>
-                {{ vm.order.received }}
+                {{ order.received }}
             </td>
             <td>
-                {{ vm.order.orderSent }}
+                {{ order.orderSent }}
             </td>
             <td>
-                <a class="btn btn-default" href="#/order/update/{{ vm.order.orderId }}">Edit</a>
+                <a class="btn btn-default" href="#/order/update/{{ order.orderId }}">Edit</a>
             </td>
             <td>
-                <a class="btn btn-default" ng-click="vm.deleteOrder(vm.order.orderId)">Delete</a>
+                <a class="btn btn-default" ng-click="vm.deleteOrder(order.orderId)">Delete</a>
             </td>
         </tr>
     </table>

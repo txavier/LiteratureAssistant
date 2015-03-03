@@ -3,12 +3,13 @@
         .module('app')
         .controller('itemTemplatesController', itemTemplatesController);
 
-    itemTemplatesController.$inject = ['$scope', '$log', 'dataService'];
+    itemTemplatesController.$inject = ['$scope', '$log', '$routeParams', 'dataService'];
 
-    function itemTemplatesController($scope, $log, dataService) {
+    function itemTemplatesController($scope, $log, $routeParams, dataService) {
         var vm = this;
 
         vm.itemTemplates = {};
+        vm.organizationId = null;
         vm.getItemTemplates = getItemTemplates;
         vm.deleteItemTemplate = deleteItemTemplate;
         vm.totalItems = 0;
@@ -21,8 +22,13 @@
         function activate() {
             getItemTemplates();
             getItemTemplatesCount();
+            setOrganizationId($routeParams);
 
             return vm;
+        }
+
+        function setOrganizationId($routeParams) {
+            vm.organizationId = $routeParams.organizationId;
         }
 
         function getItemTemplates() {
@@ -36,11 +42,7 @@
         function deleteItemTemplate(itemTemplateId) {
             return dataService.deleteItemTemplate(itemTemplateId)
                 .then(function (data) {
-                    vm.itemTemplates = dataService.getItemTemplates().then(function (data) {
-                        vm.itemTemplates = data;
-
-                        return vm.itemTemplates;
-                    });
+                    getItemTemplates();
                 })
                 .catch();
         }

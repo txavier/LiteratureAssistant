@@ -11,7 +11,7 @@
         vm.order = {};
         vm.users = [];
         vm.items = [];
-        vm.sendOrder = sendOrder;
+        vm.addOrUpdateOrder = addOrUpdateOrder;
         vm.deleteOrder = deleteOrder;
 
         activate();
@@ -19,10 +19,11 @@
         function activate() {
             getOrder($routeParams.orderId);
             getUsers();
+            getItems();
         }
 
         function getUsers() {
-            return userService.getUsers().$promise.then(function (data) {
+            return dataService.getUsers().$promise.then(function (data) {
                 vm.users = data;
 
                 return vm.users;
@@ -30,7 +31,7 @@
         }
 
         function getItems() {
-            return itemService.getItems().$promise.then(function (data) {
+            return dataService.getItems().then(function (data) {
                 vm.items = data;
 
                 return vm.items;
@@ -38,16 +39,18 @@
         }
 
         function getOrder(orderId) {
-            return orderService.getOrder(orderId).$promise.then(function (data) {
-                vm.order = data;
+            if (orderId) {
+                return dataService.getOrder(orderId).$promise.then(function (data) {
+                    vm.order = data;
 
-                return vm.order;
-            });
+                    return vm.order;
+                });
+            }
         }
 
-        function sendOrder(order) {
-            orderService.saveOrder(order).$promise.then(function () {
-                vm.orders = orderService.getOrders();
+        function addOrUpdateOrder(order) {
+            dataService.addOrUpdateOrder(order).$promise.then(function () {
+                vm.orders = dataService.getOrders();
 
                 $location.path("/order");
             });
@@ -62,8 +65,8 @@
         };
 
         function deleteOrder(orderId) {
-            return orderService.deleteOrder(orderId).$promise.then(function () {
-                vm.orders = orderService.getOrders();
+            return dataService.deleteOrder(orderId).$promise.then(function () {
+                vm.orders = dataService.getOrders();
 
                 $location.path("/order");
             });

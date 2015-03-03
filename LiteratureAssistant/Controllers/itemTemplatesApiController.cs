@@ -32,21 +32,27 @@ namespace LiteratureAssistant.Controllers
             return Ok(result);
         }
 
-        public IHttpActionResult Get(int itemTemplateId, int organizationId)
+        //public IHttpActionResult Get(int itemTemplateId, int organizationId)
+        //{
+        //    var result = _itemTemplateService
+        //        .Get(filter: i => (itemTemplateId != -1) ? i.itemTemplateId == itemTemplateId : true
+        //                        && (organizationId != -1) ? i.organizationId == organizationId : true);
+
+        //    return Ok(result);
+        //}
+
+        public IHttpActionResult Get(int id)
         {
-            var result = _itemTemplateService
-                .Get(filter: i => (itemTemplateId != -1) ? i.itemTemplateId == itemTemplateId : true
-                                && (organizationId != -1) ? i.organizationId == organizationId : true);
+            var result = _itemTemplateService.Find(id);
 
             return Ok(result);
         }
 
-        [Route("count")]
-        public IHttpActionResult GetCount(int itemTemplateId, int organizationId)
+        [Route("count/{organizationId}")]
+        public IHttpActionResult GetCount(int organizationId)
         {
             var count = _itemTemplateService
-                .GetCount(filter: i => (itemTemplateId != -1) ? i.itemTemplateId == itemTemplateId : true
-                                && (organizationId != -1) ? i.organizationId == organizationId : true);
+                .GetCount(filter: i => (organizationId != -1) ? i.organizationId == organizationId : true);
 
             var result = new List<int>() { count };
 

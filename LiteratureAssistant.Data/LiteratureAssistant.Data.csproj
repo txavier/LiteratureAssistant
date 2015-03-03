@@ -57,29 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LiteratureAssistantDbContext.cs" />
-    <Compile Include="Migrations\201501302046363_Initialize.cs" />
-    <Compile Include="Migrations\201501302046363_Initialize.Designer.cs">
-      <DependentUpon>201501302046363_Initialize.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502022019375_AddUserName.cs" />
-    <Compile Include="Migrations\201502022019375_AddUserName.Designer.cs">
-      <DependentUpon>201502022019375_AddUserName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502032001541_AddedOrganization.cs" />
-    <Compile Include="Migrations\201502032001541_AddedOrganization.Designer.cs">
-      <DependentUpon>201502032001541_AddedOrganization.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502111803146_DummyUpdate.cs" />
-    <Compile Include="Migrations\201502111803146_DummyUpdate.Designer.cs">
-      <DependentUpon>201502111803146_DummyUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502122106179_AddBarcodeFieldToTemplateAttributes.cs" />
-    <Compile Include="Migrations\201502122106179_AddBarcodeFieldToTemplateAttributes.Designer.cs">
-      <DependentUpon>201502122106179_AddBarcodeFieldToTemplateAttributes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502122108307_ChangeBarcodeFieldCasing.cs" />
-    <Compile Include="Migrations\201502122108307_ChangeBarcodeFieldCasing.Designer.cs">
-      <DependentUpon>201502122108307_ChangeBarcodeFieldCasing.cs</DependentUpon>
+    <Compile Include="Migrations\201503030822272_InitialMigration.cs" />
+    <Compile Include="Migrations\201503030822272_InitialMigration.Designer.cs">
+      <DependentUpon>201503030822272_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,23 +77,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201501302046363_Initialize.resx">
-      <DependentUpon>201501302046363_Initialize.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502022019375_AddUserName.resx">
-      <DependentUpon>201502022019375_AddUserName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502032001541_AddedOrganization.resx">
-      <DependentUpon>201502032001541_AddedOrganization.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502111803146_DummyUpdate.resx">
-      <DependentUpon>201502111803146_DummyUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502122106179_AddBarcodeFieldToTemplateAttributes.resx">
-      <DependentUpon>201502122106179_AddBarcodeFieldToTemplateAttributes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502122108307_ChangeBarcodeFieldCasing.resx">
-      <DependentUpon>201502122108307_ChangeBarcodeFieldCasing.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201503030822272_InitialMigration.resx">
+      <DependentUpon>201503030822272_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

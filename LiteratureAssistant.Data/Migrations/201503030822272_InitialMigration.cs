@@ -3,7 +3,7 @@ namespace LiteratureAssistant.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initialize : DbMigration
+    public partial class InitialMigration : DbMigration
     {
         public override void Up()
         {
@@ -71,6 +71,7 @@ namespace LiteratureAssistant.Data.Migrations
                         templateAttributeName = c.String(nullable: false, maxLength: 50),
                         required = c.Boolean(),
                         priority = c.Int(),
+                        barcode = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.templateAttributeId)
                 .ForeignKey("dbo.itemTemplate", t => t.itemTemplateId)
@@ -81,9 +82,23 @@ namespace LiteratureAssistant.Data.Migrations
                 c => new
                     {
                         itemTemplateId = c.Int(nullable: false, identity: true),
+                        organizationId = c.Int(),
                         itemTemplateName = c.String(nullable: false, maxLength: 50),
                     })
-                .PrimaryKey(t => t.itemTemplateId);
+                .PrimaryKey(t => t.itemTemplateId)
+                .ForeignKey("dbo.organization", t => t.organizationId)
+                .Index(t => t.organizationId);
+            
+            CreateTable(
+                "dbo.organization",
+                c => new
+                    {
+                        organizationId = c.Int(nullable: false, identity: true),
+                        defaultOrganization = c.Boolean(),
+                        name = c.String(),
+                        systemName = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.organizationId);
             
             CreateTable(
                 "dbo.order",
@@ -101,8 +116,8 @@ namespace LiteratureAssistant.Data.Migrations
                         language = c.String(),
                     })
                 .PrimaryKey(t => t.orderId)
-                .ForeignKey("dbo.user", t => t.orderedForUserId)
                 .ForeignKey("dbo.user", t => t.orderedByUserId)
+                .ForeignKey("dbo.user", t => t.orderedForUserId)
                 .ForeignKey("dbo.item", t => t.itemId)
                 .Index(t => t.itemId)
                 .Index(t => t.orderedForUserId)
@@ -113,6 +128,7 @@ namespace LiteratureAssistant.Data.Migrations
                 c => new
                     {
                         userId = c.Int(nullable: false, identity: true),
+                        userName = c.String(maxLength: 50),
                         firstName = c.String(nullable: false, maxLength: 50),
                         lastName = c.String(nullable: false, maxLength: 50),
                     })
@@ -123,10 +139,11 @@ namespace LiteratureAssistant.Data.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.order", "itemId", "dbo.item");
-            DropForeignKey("dbo.order", "orderedByUserId", "dbo.user");
             DropForeignKey("dbo.order", "orderedForUserId", "dbo.user");
+            DropForeignKey("dbo.order", "orderedByUserId", "dbo.user");
             DropForeignKey("dbo.itemAttribute", "itemId", "dbo.item");
             DropForeignKey("dbo.templateAttribute", "itemTemplateId", "dbo.itemTemplate");
+            DropForeignKey("dbo.itemTemplate", "organizationId", "dbo.organization");
             DropForeignKey("dbo.item", "itemTemplateId", "dbo.itemTemplate");
             DropForeignKey("dbo.itemAttribute", "templateAttributeId", "dbo.templateAttribute");
             DropForeignKey("dbo.item", "processItemId", "dbo.item");
@@ -137,6 +154,7 @@ namespace LiteratureAssistant.Data.Migrations
             DropIndex("dbo.order", new[] { "orderedByUserId" });
             DropIndex("dbo.order", new[] { "orderedForUserId" });
             DropIndex("dbo.order", new[] { "itemId" });
+            DropIndex("dbo.itemTemplate", new[] { "organizationId" });
             DropIndex("dbo.templateAttribute", new[] { "itemTemplateId" });
             DropIndex("dbo.itemAttribute", new[] { "templateAttributeId" });
             DropIndex("dbo.itemAttribute", new[] { "itemId" });
@@ -148,6 +166,7 @@ namespace LiteratureAssistant.Data.Migrations
             DropIndex("dbo.count", new[] { "itemId" });
             DropTable("dbo.user");
             DropTable("dbo.order");
+            DropTable("dbo.organization");
             DropTable("dbo.itemTemplate");
             DropTable("dbo.templateAttribute");
             DropTable("dbo.itemAttribute");

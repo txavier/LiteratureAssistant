@@ -8,19 +8,21 @@
             <th>
                 Last Name
             </th>
+            <th></th>
+            <th></th>
         </tr>
-        <tr ng-repeat="user in users">
+        <tr ng-repeat="user in vm.users">
             <td>
-                {{ vm.user.firstName }}
+                {{ user.firstName }}
             </td>
             <td>
-                {{ vm.user.lastName }}
+                {{ user.lastName }}
             </td>
             <td>
-                <a class="btn btn-default" href="#/user/update/{{ vm.user.userId }}">Edit</a>
+                <a class="btn btn-default" href="#/user/update/{{ user.userId }}">Edit</a>
             </td>
             <td>
-                <a class="btn btn-default" ng-click="vm.deleteUser(vm.user.userId)">Delete</a>
+                <a class="btn btn-default" ng-click="vm.deleteUser(user.userId)">Delete</a>
             </td>
         </tr>
     </table>

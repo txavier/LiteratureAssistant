@@ -46,15 +46,13 @@ namespace LiteratureAssistant.Controllers
 
         //[ResponseType(typeof(List<ItemViewModel>))]
         // GET: api/itemsApi
-        public HttpResponseMessage Getitems()
+        public IHttpActionResult Getitems()
         {
             try
             {
                 var lightResultList = _itemService.ToViewModels(_itemService.GetAll()).ToList();
 
-                return this.Request.CreateResponse(
-                    HttpStatusCode.OK,
-                    lightResultList.ToArray());
+                return Ok(lightResultList);
             }
             catch (Exception)
             {
@@ -65,7 +63,7 @@ namespace LiteratureAssistant.Controllers
 
         // GET: api/itemsApi/5
         //[ResponseType(typeof(ItemViewModel))]
-        public HttpResponseMessage Getitem(int id)
+        public IHttpActionResult Getitem(int id)
         {
             try
             {
@@ -78,7 +76,7 @@ namespace LiteratureAssistant.Controllers
 
                 var itemViewModel = _itemService.ToViewModel(item);
 
-                return this.Request.CreateResponse(HttpStatusCode.OK, itemViewModel);
+                return Ok(itemViewModel);
             }
             catch (Exception)
             {
@@ -147,7 +145,7 @@ namespace LiteratureAssistant.Controllers
 
                 var newItems = _itemService.AddRange(newItemAttributes.Where(i => i.itemId == 0).ToList());
 
-                return CreatedAtRoute("DefaultApi", new { }, newItems);
+                return Ok(newItems);
             }
             catch (Exception)
             {

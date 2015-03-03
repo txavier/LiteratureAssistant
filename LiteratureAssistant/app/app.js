@@ -14,7 +14,7 @@ function config($routeProvider, $locationProvider) {
     $routeProvider
         .when('/item', {
             templateUrl: 'app/templates/items.html',
-            controller: 'itemController',
+            controller: 'itemsController',
             controllerAs: 'vm'
         })
         .when('/item/update/:itemId', {
@@ -44,32 +44,32 @@ function config($routeProvider, $locationProvider) {
         })
         .when('/order', {
             templateUrl: 'app/templates/orders.html',
-            controller: 'orderController',
+            controller: 'ordersController',
             controllerAs: 'vm'
         })
         .when('/order/add', {
             templateUrl: 'app/templates/addOrUpdateOrder.html',
-            controller: 'orderController',
+            controller: 'addOrUpdateOrderController',
             controllerAs: 'vm'
         })
         .when('/order/update/:orderId', {
             templateUrl: 'app/templates/addOrUpdateOrder.html',
-            controller: 'orderController',
+            controller: 'addOrUpdateOrderController',
             controllerAs: 'vm'
         })
         .when('/count', {
             templateUrl: 'app/templates/counts.html',
-            controller: 'countController',
+            controller: 'countsController',
             controllerAs: 'vm'
         })
         .when('/count/create/:itemId', {
             templateUrl: 'app/templates/addOrUpdateCount.html',
-            controller: 'countController',
+            controller: 'addOrUpdateCountController',
             controllerAs: 'vm'
         })
         .when('/count/update/:countId', {
             templateUrl: 'app/templates/addOrUpdateCount.html',
-            controller: 'countController',
+            controller: 'addOrUpdateCountController',
             controllerAs: 'vm'
         })
         .when('/count/create/barcodeAdd/:itemId', {
@@ -122,7 +122,7 @@ function config($routeProvider, $locationProvider) {
             controller: 'itemAttributesController',
             controllerAs: 'vm'
         })
-        .when('/itemTemplate/create', {
+        .when('/itemTemplate/add/:organizationId', {
             templateUrl: 'app/templates/addOrUpdateItemTemplate.html',
             controller: 'addOrUpdateItemTemplatesController',
             controllerAs: 'vm'

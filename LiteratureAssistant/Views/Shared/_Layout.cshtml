@@ -6,23 +6,27 @@
         <title>@ViewBag.Title</title>
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
+        <script src="~/Scripts/JSPDF/jspdf.min.js"></script>
         <script src="~/Scripts/angular.js"></script>
         <script src="~/Scripts/angular-resource.js"></script>
         <script src="~/Scripts/angular-route.js"></script>
         <script src="~/Scripts/angular-ui/ui-bootstrap.js"></script>
         <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
-        <script src="~/Scripts/item-module.js"></script>
+        <script src="~/app/app.js"></script>
+        <!--Services-->
         <script src="~/app/services/dataService.js"></script>
-        <script src="~/Scripts/Item/item-service.js"></script>
-        <script src="~/Scripts/Item/item-controller.js"></script>
-        <script src="~/Scripts/User/user-service.js"></script>
-        <script src="~/Scripts/User/user-controller.js"></script>
-        <script src="~/Scripts/Order/order-service.js"></script>
-        <script src="~/Scripts/Order/order-controller.js"></script>
-        <script src="~/Scripts/Count/count-service.js"></script>
-        <script src="~/Scripts/Count/count-controller.js"></script>
-        <script src="~/Scripts/BackButton/back-button.js"></script>
-        <script src="~/Scripts/Item/addOrUpdateItemController.js"></script>
+        <script src="~/app/services/jsPdfBarcodeService.js"></script>
+        <script src="~/app/services/countService.js"></script>
+        <!--Controllers-->
+        <script src="~/app/item/addOrUpdateItemController.js"></script>
+        <script src="~/app/item/itemsController.js"></script>
+        <script src="~/app/users/addOrUpdateUserController.js"></script>
+        <script src="~/app/orders/addOrUpdateOrderController.js"></script>
+        <script src="~/app/orders/ordersController.js"></script>
+        <script src="~/app/count/addOrUpdateCountController.js"></script>
+        <script src="~/app/count/countsController.js"></script>
+        <script src="~/app/item/addOrUpdateItemController.js"></script>
+        <script src="~/app/item/itemsController.js"></script>
         <script src="~/app/organization/addOrUpdateOrganizationController.js"></script>
         <script src="~/app/organization/organizationsController.js"></script>
         <script src="~/app/itemAttribute/addOrUpdateItemAttributesController.js"></script>
@@ -34,10 +38,11 @@
         <script src="~/app/inventory/createCountBarcodeAddController.js"></script>
         <script src="~/app/inventory/createCountBarcodeSubtractController.js"></script>
         <script src="~/app/barcode/barcodesController.js"></script>
-        <script src="~/Scripts/JSPDF/jspdf.min.js"></script>
-        <script src="~/app/services/jsPdfBarcodeService.js"></script>
+        <!--Directives-->
+        <script src="~/shared-directives/shared-directives.js"></script>
+        <script src="~/shared-directives/BackButton/back-button.js"></script>
     </head>
-    <body ng-app="itemModule">
+    <body ng-app="app">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">

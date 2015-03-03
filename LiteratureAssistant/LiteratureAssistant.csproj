@@ -270,7 +270,7 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\BackButton\back-button.js" />
+    <Content Include="shared-directives\BackButton\back-button.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -278,10 +278,10 @@
     <Content Include="Scripts\angular-resource.min.js.map" />
     <None Include="Properties\PublishProfiles\staging1.xaviersoftware.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\Item\item-controller.js" />
+    <Content Include="app\count\addOrUpdateCountController.js" />
+    <Content Include="app\item\itemsController.js" />
     <Content Include="app\app.js" />
-    <Content Include="Scripts\Item\item-service.js" />
-    <Content Include="Scripts\Item\addOrUpdateItemController.js" />
+    <Content Include="app\item\addOrUpdateItemController.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -291,7 +291,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\JSPDF\jspdf.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\Count\count-controller.js" />
+    <Content Include="app\count\countsController.js" />
     <Content Include="app\services\countService.js" />
     <Content Include="app\orders\addOrUpdateOrderController.js" />
     <Content Include="Scripts\respond.js" />
@@ -308,6 +308,7 @@
     <Content Include="app\templates\items.html" />
     <Content Include="app\templates\counts.html" />
     <Content Include="app\templates\orders.html" />
+    <Content Include="shared-directives\shared-directives.js" />
     <Content Include="template\accordion\accordion-group.html" />
     <Content Include="template\accordion\accordion.html" />
     <Content Include="template\alert\alert.html" />
@@ -371,7 +372,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="templates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

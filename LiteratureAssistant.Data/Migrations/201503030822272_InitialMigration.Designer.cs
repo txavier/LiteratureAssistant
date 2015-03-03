@@ -7,13 +7,13 @@ namespace LiteratureAssistant.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class ChangeBarcodeFieldCasing : IMigrationMetadata
+    public sealed partial class InitialMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeBarcodeFieldCasing));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201502122108307_ChangeBarcodeFieldCasing"; }
+            get { return "201503030822272_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source

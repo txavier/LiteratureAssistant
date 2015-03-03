@@ -20,7 +20,7 @@
         }
 
         function getOrders() {
-            return orderService.getOrders().$promise.then(function (data) {
+            return dataService.getOrders().$promise.then(function (data) {
                 vm.orders = data;
 
                 return vm.orders;
@@ -28,8 +28,8 @@
         }
 
         function deleteOrder(orderId) {
-            orderService.deleteOrder(orderId).$promise.then(function () {
-                $scope.orders = orderService.getOrders();
+            dataService.deleteOrder(orderId).$promise.then(function () {
+                $scope.orders = dataService.getOrders();
 
                 $location.path("/order");
             });

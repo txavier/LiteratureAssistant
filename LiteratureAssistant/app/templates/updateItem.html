@@ -1,16 +1,16 @@
 ﻿<div class="form-group">
     <div class="form-horizontal">
         <form name="form1" role="form">
-            <div class="form-group" ng-repeat="templateAttribute in templateAttributes">
+            <div class="form-group" ng-repeat="templateAttribute in vm.templateAttributes">
                 <label class="control-label col-md-2" for="{{ templateAttribute.templateAttributeName }}">{{ templateAttribute.templateAttributeName }}</label>
                 <div class="col-md-10">
-                    <input class="text-box single-line" data-val="true" data-ng-model=formData[templateAttribute.templateAttributeName] type="text" value="" />
+                    <input class="text-box single-line" data-val="true" data-ng-model=vm.formData[templateAttribute.templateAttributeName] type="text" value="" />
                     <span class="field-validation-valid" data-valmsg-for="{{ templateAttribute.templateAttributeName }}" data-valmsg-replace="true"></span>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Edit" class="btn btn-default" ng-click="editItem(item)" />
+                    <input type="submit" value="Edit" class="btn btn-default" ng-click="vm.updateItem(item)" />
                     <back-button></back-button>
                 </div>
             </div>

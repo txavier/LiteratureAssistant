@@ -3,20 +3,22 @@
         .module('app')
         .controller('addOrUpdateItemTemplatesController', addOrUpdateItemTemplatesController);
 
-    addOrUpdateItemTemplatesController.$inject = ['$scope', '$log', '$location', 'dataService'];
+    addOrUpdateItemTemplatesController.$inject = ['$scope', '$log', '$location', '$routeParams', 'dataService'];
 
-    function addOrUpdateItemTemplatesController($scope, $log, $location, dataService) {
+    function addOrUpdateItemTemplatesController($scope, $log, $location, $routeParams, dataService) {
         var vm = this;
 
         vm.itemTemplates = [];
         vm.itemTemplate = {};
         vm.getItemTemplates = getItemTemplates;
-        vm.saveItemTemplate = addOrUpdateItemTemplate;
+        vm.addOrUpdateItemTemplate = addOrUpdateItemTemplate;
+        vm.organizationId = null;
 
         activate();
 
         function activate() {
             getItemTemplates();
+            setView($routeParams);
 
             return vm;
         }
@@ -29,6 +31,16 @@
             });
         }
 
+        function setView($routeParams) {
+            if ($routeParams.itemTemplateId) {
+                getItemTemplate($routeParams.itemTemplateId);
+            }
+            
+            if ($routeParams.organizationId) {
+                vm.organizationId = $routeParams.organizationId;
+            }
+        }
+
         function getItemTemplate(itemTemplateId) {
             return dataService.getItemTemplate(itemTemplateId).then(function (data) {
                 vm.itemTemplate = data;
@@ -38,10 +50,12 @@
         }
 
         function addOrUpdateItemTemplate() {
-            return dataService.addOrUpdateItemTemplate(vm.itemTemplate)
-                .then(
-                $location.path('/itemTemplates')
-                )
+            if (vm.organizationId) {
+                vm.itemTemplate.organizationId = vm.organizationId;
+            }
+            return dataService.addOrUpdateItemTemplate(vm.itemTemplate).then(function () {
+                    $location.path('/itemTemplates');
+                })
                 .catch();
         }
 
@@ -50,7 +64,5 @@
                 .then()
                 .catch();
         }
-
     }
-
 })();

@@ -40,7 +40,9 @@
 
         function addOrUpdateTemplateAttribute() {
             return dataService.addOrUpdateTemplateAttribute(vm.templateAttribute)
-                .then($location.path('/templateAttributes'))
+                .then(function () {
+                    history.back();
+                })
                 .catch();
         }
 

@@ -39,7 +39,9 @@
 
         function addOrUpdateOrganization() {
             return dataService.addOrUpdateOrganization(vm.organization)
-                .then()
+                .then(function () {
+                    history.back();
+                })
                 .catch();
         }
 

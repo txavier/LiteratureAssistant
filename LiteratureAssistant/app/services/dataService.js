@@ -26,9 +26,14 @@
             getItemAttributesCount: getItemAttributesCount,
             addOrUpdateItemAttribute: addOrUpdateItemAttribute,
             getItems: getItems,
+            getItem: getItem,
+            addOrUpdateItem: addOrUpdateItem,
+            deleteItem: deleteItem,
+            getItemTemplate: getItemTemplate,
             getItemTemplates: getItemTemplates,
             getItemTemplatesCount: getItemTemplatesCount,
             addOrUpdateItemTemplate: addOrUpdateItemTemplate,
+            deleteItemTemplate: deleteItemTemplate,
             getTemplateAttribute: getTemplateAttribute,
             getTemplateAttributes: getTemplateAttributes,
             getTemplateAttributesCount: getTemplateAttributesCount,
@@ -93,6 +98,20 @@
             }
         }
 
+        function getItemTemplate(itemTemplateId) {
+            return $http.get(itemTemplateApiUrl + '/' + itemTemplateId)
+                .then(getItemTemplateComplete)
+                .catch(getItemTemplateFailed);
+
+            function getItemTemplateComplete(response) {
+                return response.data;
+            }
+
+            function getItemTemplateFailed(error) {
+                $log.error('XHR Failed for getItemTemplate.' + error.data.message + ': ' + error.data.messageDetail);
+            }
+        }
+
         function getItemTemplates() {
             return $http.get(itemTemplateApiUrl)
                 .then(getItemTemplatesComplete)
@@ -107,8 +126,8 @@
             }
         }
 
-        function getItemTemplatesCount() {
-            return $http.get(itemTemplateApiUrl + '/count')
+        function getItemTemplatesCount(organizationId) {
+            return $http.get(itemTemplateApiUrl + '/count/' + (organizationId || -1))
                 .then(getItemTemplatesCountComplete)
                 .catch(getItemTemplatesCountFailed);
 
@@ -135,6 +154,20 @@
             }
         }
 
+        function deleteItemTemplate(itemTemplateId) {
+            return $http.delete(itemTemplateApiUrl + '/' + itemTemplateId)
+                .then(deleteItemComplete)
+                .catch(deleteItemFailed);
+
+            function deleteItemComplete(response) {
+                return response.data;
+            }
+
+            function deleteItemFailed(error) {
+                $log.error('XHR Failed for deleteItem.' + error.data.message + ': ' + error.data.messageDetail);
+            }
+        }
+
         function getNewCount(itemId) {
             return $http.get(countApiUrl + '/newCount/' + itemId)
                 .then(getNewCountComplete)
@@ -146,6 +179,62 @@
 
             function getNewCountFailed(error) {
                 $log.error('XHR Failed for getNewCount.' + error.data.message + ': ' + error.data.messageDetail);
+            }
+        }
+
+        function getCounts() {
+            return $http.get(countApiUrl)
+                .then(getCountsComplete)
+                .catch(getCountsFailed);
+
+            function getCountsComplete(response) {
+                return response.data;
+            }
+
+            function getCountsFailed(error) {
+                $log.error('XHR Failed for getCounts.' + error.data.message + ': ' + error.data.messageDetail);
+            }
+        }
+
+        function getCount(countId) {
+            return $http.get(countApiUrl + '/' + countId)
+                .then(getCountComplete)
+                .catch(getCountFailed);
+
+            function getCountComplete(response) {
+                return response.data;
+            }
+
+            function getCountFailed(error) {
+                $log.error('XHR Failed for getCount.' + error.data.message + ': ' + error.data.messageDetail);
+            }
+        }
+
+        function addOrUpdateCount(count) {
+            return $http.get(countApiUrl, count)
+                .then(addOrUpdateCountComplete)
+                .catch(addOrUpdateCountFailed);
+
+            function addOrUpdateCountComplete(response) {
+                return response.data;
+            }
+
+            function addOrUpdateCountFailed(error) {
+                $log.error('XHR Failed for addOrUpdateCount.' + error.data.message + ': ' + error.data.messageDetail);
+            }
+        }
+
+        function deleteCount(countId) {
+            return $http.delete(countApiUrl + '/' + countId)
+                .then(deleteCountComplete)
+                .catch(deleteCountFailed);
+
+            function deleteCountComplete(response) {
+                return response.data;
+            }
+
+            function deleteCountFailed(error) {
+                $log.error('XHR Failed for deleteCount.' + error.data.message + ': ' + error.data.messageDetail);
             }
         }
 
@@ -175,6 +264,24 @@
             }
         }
 
+        function deleteTemplateAttribute(templateAttributeId) {
+            return $resource(templateAttributeApiUrl).delete({ id: templateAttributeId });
+        }
+
+        function getItem(itemId) {
+            return $http.get(itemApiUrl + '/' + itemId)
+                .then(getItemComplete)
+                .catch(getItemFailed);
+
+            function getItemComplete(response) {
+                return response.data;
+            }
+
+            function getItemFailed(error) {
+                $log.error('XHR Failed for getItem.' + error.data.message + ': ' + error.data.messageDetail);
+            }
+        }
+
         function getItems() {
             return $http.get(itemApiUrl)
                 .then(getItemsComplete)
@@ -186,6 +293,34 @@
 
             function getItemsFailed(error) {
                 $log.error('XHR Failed for getItems.' + error.data.message + ': ' + error.data.messageDetail);
+            }
+        }
+
+        function addOrUpdateItem(item) {
+            return $http.post(itemApiUrl, item)
+                .then(addOrUpdateItemComplete)
+                .catch(addOrUpdateItemFailed);
+
+            function addOrUpdateItemComplete(response) {
+                return response.data;
+            }
+
+            function addOrUpdateItemFailed(error) {
+                $log.error('XHR Failed for addOrUpdateItem.' + error.data.message + ': ' + error.data.messageDetail);
+            }
+        }
+
+        function deleteItem(itemId) {
+            return $http.delete(itemApiUrl + '/' + itemId)
+                .then(deleteItemComplete)
+                .catch(deleteItemFailed);
+
+            function deleteItemComplete(response) {
+                return response.data;
+            }
+
+            function deleteItemFailed(error) {
+                $log.error('XHR Failed for deleteItem.' + error.data.message + ': ' + error.data.messageDetail);
             }
         }
 

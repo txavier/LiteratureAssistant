@@ -2,7 +2,6 @@
 using AutoClutch.Auto.Service.Interfaces;
 using LiteratureAssistant.Core.Models;
 using LiteratureAssistant.DependencyResolution;
-using Newtonsoft.Json.Linq;
 using StructureMap;
 using System;
 using System.Collections.Generic;

@@ -2,3 +2,8 @@
 
 	1) Create a new item template.
 	2) Create template attributes.
+
+ -- In order for newtonsoft json to deserialize an object graph with circular references fix 2 of the  
+	following guide was used.
+
+	https://code.msdn.microsoft.com/Loop-Reference-handling-in-caaffaf7

@@ -27,7 +27,7 @@ namespace LiteratureAssistant.Controllers
         // GET: api/organizationApi
         public IHttpActionResult Get()
         {
-            var result = _organizationService.Get();
+            var result = _organizationService.GetAll().ToList();
 
             return Ok(result);
         }

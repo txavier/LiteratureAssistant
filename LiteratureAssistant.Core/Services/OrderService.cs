@@ -103,9 +103,15 @@ namespace WildCard.Core.Services
 
                 itemId = i.itemId == null && string.IsNullOrEmpty(i.itemLabel) ? 0 : (_itemService.GetAll().ToList().Where(j => _itemService.GetItemLabel(j) == i.itemLabel).SingleOrDefault().itemId),
 
+                item = _itemService.Find(i.itemId == null && string.IsNullOrEmpty(i.itemLabel) ? 0 : (_itemService.GetAll().ToList().Where(j => _itemService.GetItemLabel(j) == i.itemLabel).SingleOrDefault().itemId)),
+
                 orderedForUserId = string.IsNullOrEmpty(i.orderedForUserFullName) ? (i.orderedForUserId ?? 0) : _userService.Get(filter: j => (j.firstName + " " + j.lastName) == i.orderedForUserFullName).SingleOrDefault().userId,
 
-                orderedByUserId = string.IsNullOrEmpty(i.orderedByUserFullName) ? i.orderedByUserId : (i.orderedByUserFullName == null ? null : (int?)_userService.Get(filter: j => (j.firstName + " " + j.lastName) == i.orderedByUserFullName).SingleOrDefault().userId),
+               user  = _userService.Find(string.IsNullOrEmpty(i.orderedForUserFullName) ? (i.orderedForUserId ?? 0) : _userService.Get(filter: j => (j.firstName + " " + j.lastName) == i.orderedForUserFullName).SingleOrDefault().userId),
+
+               user1 = _userService.Find(string.IsNullOrEmpty(i.orderedByUserFullName) ? (i.orderedByUserId ?? 1) : (i.orderedByUserFullName == null ? null : (int?)_userService.Get(filter: j => (j.firstName + " " + j.lastName) == i.orderedByUserFullName).SingleOrDefault().userId)),
+
+                orderedByUserId = string.IsNullOrEmpty(i.orderedByUserFullName) ? (i.orderedByUserId ?? 1) : (i.orderedByUserFullName == null ? null : (int?)_userService.Get(filter: j => (j.firstName + " " + j.lastName) == i.orderedByUserFullName).SingleOrDefault().userId),
 
                 quantity = i.quantity,
 

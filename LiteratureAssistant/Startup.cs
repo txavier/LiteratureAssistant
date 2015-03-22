@@ -18,11 +18,11 @@ namespace LiteratureAssistant
 
             app.UseWebApi(config);
 
-            //config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling 
-                = Newtonsoft.Json.ReferenceLoopHandling.Serialize;
-            config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling
-                = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            //config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling 
+            //    = Newtonsoft.Json.ReferenceLoopHandling.Serialize;
+            //config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling
+            //    = Newtonsoft.Json.PreserveReferencesHandling.Objects;
 
             // Remove the xml formatter we are going full json.
             config.Formatters.Remove(config.Formatters.XmlFormatter);

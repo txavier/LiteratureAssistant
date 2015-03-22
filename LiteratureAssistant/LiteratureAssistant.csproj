@@ -41,11 +41,11 @@
   <ItemGroup>
     <Reference Include="Auto.Repo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\AutoClutch.AutoRepo.1.0.1\lib\net45\Auto.Repo.dll</HintPath>
+      <HintPath>..\packages\AutoClutch.AutoRepo.1.0.4\lib\net45\Auto.Repo.dll</HintPath>
     </Reference>
     <Reference Include="Auto.Service, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\AutoClutch.AutoService.1.0.3\lib\net45\Auto.Service.dll</HintPath>
+      <HintPath>..\packages\AutoClutch.AutoService.1.0.4\lib\net45\Auto.Service.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -112,13 +112,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\valueinjecter.2.3.3\lib\net35\Omu.ValueInjecter.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="StructureMap, Version=3.1.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\structuremap.3.1.2.138\lib\net40\StructureMap.dll</HintPath>
+      <HintPath>..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap.Net4, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="StructureMap.Net4, Version=3.1.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\structuremap.3.1.2.138\lib\net40\StructureMap.Net4.dll</HintPath>
+      <HintPath>..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.Net4.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -217,6 +217,7 @@
     <Compile Include="Controllers\organizationApiController.cs" />
     <Compile Include="Controllers\templateAttributesApiController.cs" />
     <Compile Include="Controllers\ordersApiController.cs" />
+    <Compile Include="Controllers\testApiController.cs" />
     <Compile Include="Controllers\usersApiController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="Global.asax.cs">
@@ -276,6 +277,7 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-resource.min.js.map" />
+    <None Include="Properties\PublishProfiles\staging1.xaviersoftware.com - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\staging1.xaviersoftware.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="app\count\addOrUpdateCountController.js" />

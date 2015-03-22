@@ -20,7 +20,7 @@
         }
 
         function getOrders() {
-            return dataService.getOrders().$promise.then(function (data) {
+            return dataService.getOrders().then(function (data) {
                 vm.orders = data;
 
                 return vm.orders;

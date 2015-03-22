@@ -1,17 +1,11 @@
-﻿using AutoClutch.Auto.Service.Interfaces;
-using LiteratureAssistant.Core.Models;
+﻿using LiteratureAssistant.DependencyResolution;
 using StructureMap;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using Omu.ValueInjecter;
 using WildCard.Core.Interfaces;
-using WildCard.Core.ViewModels;
-using LiteratureAssistant.DependencyResolution;
 using WildCard.Core.Models;
+using WildCard.Core.ViewModels;
 
 namespace LiteratureAssistant.Controllers
 {

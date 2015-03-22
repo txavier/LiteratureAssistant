@@ -42,11 +42,12 @@ namespace WildCard.Core.Services
         {
             var result = orders.Select(i =>  new OrderViewModel
             {
-                orderedForUserFullName = i.user1 == null ? null : i.user1.firstName + " " + i.user1.lastName,
+                orderedForUserFullName = i.user1 == null || i.user1.firstName == null || i.user1.lastName == null ? null : i.user1.firstName + " " + i.user1.lastName,
 
-                orderedByUserFullName = i.user == null ? null : i.user.firstName + " " + i.user.lastName,
+                orderedByUserFullName = i.user == null || i.user.firstName == null || i.user.lastName == null ? null : i.user.firstName + " " + i.user.lastName,
 
-                itemLabel = i.item == null ? null : i.item.itemAttributes.Select(j => j.value).Aggregate((current, next) => current + " - " + next),
+                itemLabel = i.item == null || i.item.itemAttributes == null || !i.item.itemAttributes.Any() ? 
+                    null : i.item.itemAttributes.Select(j => j.value).Aggregate((current, next) => current + " - " + next),
 
                 orderId = i.orderId,
 

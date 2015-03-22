@@ -21,27 +21,26 @@ namespace LiteratureAssistant.CompositionRoot
     using AutoClutch.Auto.Repo.Objects;
     using AutoClutch.Auto.Service.Interfaces;
     using AutoClutch.Auto.Service.Services;
-    using LiteratureAssistant.Core.Models;
     using LiteratureAssistant.Data;
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
     using StructureMap.Web;
     using System.Data.Entity;
     using WildCard.Core.Interfaces;
-    using WildCard.Core.Models;
     using WildCard.Core.Services;
     using XavierEnterpriseLibaray.Services;
     using XavierEnterpriseLibrary.Core.Interfaces;
-    using XavierEnterpriseLibrary.Infrastructure.Getters;
-	
-    public class DefaultRegistry : Registry {
+    using XavierEnterpriseLibrary.Infrastructure.Senders;
+
+    public class DefaultRegistry : Registry
+    {
         #region Constructors and Destructors
 
-        public DefaultRegistry() {
+        public DefaultRegistry()
+        {
             Scan(
-                scan => {
+                scan =>
+                {
                     scan.TheCallingAssembly();
                     scan.AssembliesFromApplicationBaseDirectory();
                     scan.WithDefaultConventions();
@@ -52,8 +51,14 @@ namespace LiteratureAssistant.CompositionRoot
             For(typeof(IService<>)).Use(typeof(Service<>));
 
             For(typeof(IRepository<>)).Use(typeof(Repository<>));
+
+            For<IItemService>().Use<ItemService>();
+
+            For<IImageManipulationService>().Use<ImageManipulationService>();
+
+            For<IEmailSender>().Use<EmailSender>();
         }
 
-        #endregion
+        #endregion Constructors and Destructors
     }
 }

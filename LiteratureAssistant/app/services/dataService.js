@@ -15,8 +15,8 @@
         var templateAttributeApiUrl = '/api/templateAttributesApi';
         var itemTemplateApiUrl = '/api/itemTemplatesApi';
         var countApiUrl = '/api/countsApi';
-        var userApiUrl = 'api/usersApi/';
-        var orderApiUrl = 'api/ordersApi/';
+        var userApiUrl = 'api/usersApi';
+        var orderApiUrl = 'api/ordersApi';
 
         var service = {
             getOrganizations: getOrganizations,
@@ -52,8 +52,22 @@
 
         return service;
 
+        //function getOrders() {
+        //    return $resource(orderApiUrl).query({});
+        //}
+
         function getOrders() {
-            return $resource(orderApiUrl).query({});
+            return $http.get(orderApiUrl)
+                    .then(getOrdersComplete)
+                    .catch(getOrdersFailed);
+
+            function getOrdersComplete(response) {
+                return response.data;
+            }
+
+            function getOrdersFailed(error) {
+                $log.error('XHR failed for getOrders.' + error.data.message + ': ' + (error.data.messageDetail || error.data.exceptionMessage));
+            }
         }
 
         function getOrder(orderId) {

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataComparison>
+  <Version>10</Version>
+  <ConnectionProperties1>
+    <ConnectionString>Data Source=dodder.arvixe.com;Initial Catalog=LiteratureAssistantDb;Integrated Security=False;Persist Security Info=False;User ID=literatureassistantuser;Pooling=False</ConnectionString>
+    <FullDisplayName>dodder.arvixe.com.LiteratureAssistantDb (literatureassistantuser)</FullDisplayName>
+  </ConnectionProperties1>
+  <ConnectionProperties2>
+    <ConnectionString>Data Source=sierragolf\sqlexpress;Initial Catalog=LiteratureAssistantDb;Integrated Security=True;Persist Security Info=False;Pooling=False</ConnectionString>
+    <FullDisplayName>sierragolf\sqlexpress.LiteratureAssistantDb (SIERRAGOLF\Theo)</FullDisplayName>
+  </ConnectionProperties2>
+  <SessionSettings>Default</SessionSettings>
+</DataComparison>

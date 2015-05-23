@@ -29,6 +29,8 @@
 
         function deleteOrder(orderId) {
             dataService.deleteOrder(orderId).$promise.then(function () {
+                $scope.$apply();
+
                 getOrders();
             });
         }

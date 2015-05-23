@@ -20,14 +20,14 @@ namespace LiteratureAssistant.Controllers
         public ordersApiController()
         {
             IContainer container = IoC.Initialize();
-            
+
             _orderService = container.GetInstance<IOrderService>();
         }
 
         // GET: api/usersApi
         public IHttpActionResult Get()
         {
-            var orders = _orderService.ToViewModels(_orderService.GetAll());
+            var orders = _orderService.ToViewModels(_orderService.GetAll()).OrderByDescending(i => i.date);
 
             return Ok(orders);
         }
@@ -41,19 +41,11 @@ namespace LiteratureAssistant.Controllers
         }
 
         // POST: api/usersApi
-        public void Post(OrderViewModel orderViewModel)
+        public IHttpActionResult Post(OrderViewModel orderViewModel)
         {
-            try
-            {
-                var result = _orderService.AddOrUpdate(_orderService.ToEntity(orderViewModel));
+            var result = _orderService.AddOrUpdate(_orderService.ToEntity(orderViewModel));
 
-                //return OrderService.ToViewModel(result);
-            }
-            catch (Exception ex)
-            {
-                
-                throw;
-            }
+            return Ok();
         }
 
         // PUT: api/usersApi/5

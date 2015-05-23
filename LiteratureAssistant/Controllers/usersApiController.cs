@@ -6,6 +6,7 @@ using System.Web.Http;
 using WildCard.Core.Interfaces;
 using WildCard.Core.Models;
 using WildCard.Core.ViewModels;
+using System.Linq;
 
 namespace LiteratureAssistant.Controllers
 {
@@ -23,7 +24,7 @@ namespace LiteratureAssistant.Controllers
         // GET: api/usersApi
         public IEnumerable<UserViewModel> Get()
         {
-            var users = _userService.ToViewModels(_userService.GetAll());
+            var users = _userService.ToViewModels(_userService.GetAll()).OrderBy(i => i.lastName);
 
             return users;
         }

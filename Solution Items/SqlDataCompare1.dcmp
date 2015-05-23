@@ -6,8 +6,8 @@
     <FullDisplayName>dodder.arvixe.com.LiteratureAssistantDb (literatureassistantuser)</FullDisplayName>
   </ConnectionProperties1>
   <ConnectionProperties2>
-    <ConnectionString>Data Source=sierragolf\sqlexpress;Initial Catalog=LiteratureAssistantDb;Integrated Security=True;Persist Security Info=False;Pooling=False</ConnectionString>
-    <FullDisplayName>sierragolf\sqlexpress.LiteratureAssistantDb (SIERRAGOLF\Theo)</FullDisplayName>
+    <ConnectionString>Data Source=sierragolf\sqlexpress;Initial Catalog=inventoryAssistantDb;Integrated Security=True;Persist Security Info=False;Pooling=False</ConnectionString>
+    <FullDisplayName>sierragolf\sqlexpress.inventoryAssistantDb (SIERRAGOLF\Theo)</FullDisplayName>
   </ConnectionProperties2>
   <SessionSettings>Default</SessionSettings>
 </DataComparison>

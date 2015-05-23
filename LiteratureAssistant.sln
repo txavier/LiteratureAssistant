@@ -29,6 +29,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database Scripts", "Databas
 		LiteratureAssistant.Data\Documentation\LiteratureAssistantCreateScript.sql = LiteratureAssistant.Data\Documentation\LiteratureAssistantCreateScript.sql
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database Compare", "Database Compare", "{D9D772B1-452E-45F7-9744-51779FFA2D6A}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\SqlDataCompare1.dcmp = Solution Items\SqlDataCompare1.dcmp
+		Solution Items\SqlSchemaCompare1.scmp = Solution Items\SqlSchemaCompare1.scmp
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,5 +74,6 @@ Global
 		{DA2A1136-4885-4F2C-8D8E-525AE76BA9BB} = {A898B05F-0C2C-4A6C-9D2E-CE59131CFA04}
 		{2CC04167-28A5-4452-AF24-AC4FC70DBAEE} = {0EFBE1E7-379E-4829-94E6-AB59D2055BE7}
 		{60BAAF12-4014-465B-9D48-DF19830D78B5} = {0EFBE1E7-379E-4829-94E6-AB59D2055BE7}
+		{D9D772B1-452E-45F7-9744-51779FFA2D6A} = {0EFBE1E7-379E-4829-94E6-AB59D2055BE7}
 	EndGlobalSection
 EndGlobal

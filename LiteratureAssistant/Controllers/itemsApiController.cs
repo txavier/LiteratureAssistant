@@ -50,7 +50,7 @@ namespace LiteratureAssistant.Controllers
         {
             try
             {
-                var lightResultList = _itemService.ToViewModels(_itemService.GetAll()).ToList();
+                var lightResultList = _itemService.ToViewModels(_itemService.GetAll());
 
                 return Ok(lightResultList);
             }

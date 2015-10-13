@@ -31,6 +31,7 @@ namespace LiteratureAssistant.CompositionRoot
     using XavierEnterpriseLibaray.Services;
     using XavierEnterpriseLibrary.Core.Interfaces;
     using XavierEnterpriseLibrary.Infrastructure.Senders;
+    using Core.Interfaces;
 
     public class DefaultRegistry : Registry
     {
@@ -57,6 +58,8 @@ namespace LiteratureAssistant.CompositionRoot
             For<IImageManipulationService>().Use<ImageManipulationService>();
 
             For<IEmailSender>().Use<EmailSender>();
+
+            For<IEfQueryOpenOrders>().Use<Infrastructure.Data.EfQueryOpenOrders>();
         }
 
         #endregion Constructors and Destructors

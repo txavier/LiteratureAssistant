@@ -22,7 +22,9 @@ namespace LiteratureAssistant
 
             var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
 
-            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            json.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize;
+
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Arrays;
         }
     }
 }

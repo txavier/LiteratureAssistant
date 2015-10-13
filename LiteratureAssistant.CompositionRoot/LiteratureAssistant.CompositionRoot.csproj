@@ -109,6 +109,10 @@
       <Project>{ef0688c6-cbde-4ac5-a005-e41743c1748e}</Project>
       <Name>LiteratureAssistant.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LiteratureAssistant.Infrastructure\LiteratureAssistant.Infrastructure.csproj">
+      <Project>{18ebdf94-0425-4f96-97aa-b2ebd872b42a}</Project>
+      <Name>LiteratureAssistant.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Documentation\Implementation.txt" />

@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -235,6 +236,7 @@
     <Content Include="app\itemTemplate\itemTemplatesController.js" />
     <Content Include="app\itemAttribute\addOrUpdateItemAttributesController.js" />
     <Content Include="app\itemAttribute\itemAttributesController.js" />
+    <Content Include="app\orders\openOrdersController.js" />
     <Content Include="app\orders\ordersController.js" />
     <Content Include="app\services\jsPdfBarcodeService.js" />
     <Content Include="app\templateAttribute\addOrUpdateTemplateAttributeController.js" />
@@ -250,6 +252,7 @@
     <Content Include="app\templates\createCountBarcodeAdd.html" />
     <Content Include="app\templates\itemAttributes.html" />
     <Content Include="app\templates\itemTemplates.html" />
+    <Content Include="app\templates\openOrders.html" />
     <Content Include="app\templates\templateAttributes.html" />
     <Content Include="app\templates\organizations.html" />
     <Content Include="Content\bootstrap.css" />
@@ -410,7 +413,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>5124</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

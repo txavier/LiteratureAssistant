@@ -47,14 +47,25 @@
             getOrder: getOrder,
             getOrders: getOrders,
             addOrUpdateOrder: addOrUpdateOrder,
-            deleteOrder: deleteOrder
+            deleteOrder: deleteOrder,
+            getOpenOrders: getOpenOrders
         };
 
         return service;
 
-        //function getOrders() {
-        //    return $resource(orderApiUrl).query({});
-        //}
+        function getOpenOrders() {
+            return $http.get(orderApiUrl + '/openOrders')
+                        .then(getOpenOrdersComplete)
+                        .catch(getOpenOrdersFailed);
+
+            function getOpenOrdersComplete(response) {
+                return response.data;
+            }
+
+            function getOpenOrdersFailed(error) {
+                $log.error('XHR failed for getOpenOrders.' + error.data.message + ': ' + (error.data.messageDetail || error.data.exceptionMessage));
+            }
+        }
 
         function getOrders() {
             return $http.get(orderApiUrl)

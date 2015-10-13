@@ -12,6 +12,11 @@ angular
 
 function config($routeProvider, $locationProvider) {
     $routeProvider
+        .when('/openOrders', {
+            templateUrl: 'app/templates/openOrders.html',
+            controller: 'openOrdersController',
+            controllerAs: 'vm'
+        })
         .when('/item', {
             templateUrl: 'app/templates/items.html',
             controller: 'itemsController',

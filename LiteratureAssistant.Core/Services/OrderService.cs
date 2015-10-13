@@ -1,5 +1,7 @@
 ﻿using AutoClutch.Auto.Repo.Interfaces;
 using AutoClutch.Auto.Service.Services;
+using LiteratureAssistant.Core.Interfaces;
+using LiteratureAssistant.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,13 @@ namespace WildCard.Core.Services
 
         private readonly IItemService _itemService;
 
-        public OrderService(IRepository<order> orderRepository, IUserService userService, IItemService itemService)
+        private readonly IEfQueryOpenOrders _efQueryOpenOrders;
+
+        public OrderService(
+            IRepository<order> orderRepository, 
+            IUserService userService, 
+            IItemService itemService,
+            IEfQueryOpenOrders efQueryOpenOrders)
             : base(orderRepository)
         {
             _orderRepository = orderRepository;
@@ -25,6 +33,8 @@ namespace WildCard.Core.Services
             _userService = userService;
 
             _itemService = itemService;
+
+            _efQueryOpenOrders = efQueryOpenOrders;
         }
 
         public OrderViewModel ToViewModel(order order)
@@ -32,6 +42,13 @@ namespace WildCard.Core.Services
             var orders = new List<order>() { order };
 
             var result = ToViewModels(orders).SingleOrDefault();
+
+            return result;
+        }
+
+        public IEnumerable<OrderByItemViewModel> GetOpenOrders()
+        {
+            var result = _efQueryOpenOrders.QueryOpenOrders();
 
             return result;
         }

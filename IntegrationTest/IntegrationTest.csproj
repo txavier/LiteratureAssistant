@@ -79,6 +79,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Core\GetCurrentlyOnHandPerMonthShould.cs" />
+    <Compile Include="Data\EfQueryOpenOrdersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +94,10 @@
     <ProjectReference Include="..\LiteratureAssistant.Data\LiteratureAssistant.Data.csproj">
       <Project>{ef0688c6-cbde-4ac5-a005-e41743c1748e}</Project>
       <Name>LiteratureAssistant.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LiteratureAssistant.Infrastructure\LiteratureAssistant.Infrastructure.csproj">
+      <Project>{18EBDF94-0425-4F96-97AA-B2EBD872B42A}</Project>
+      <Name>LiteratureAssistant.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

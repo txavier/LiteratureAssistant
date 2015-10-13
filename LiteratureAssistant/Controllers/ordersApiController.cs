@@ -13,6 +13,7 @@ using WildCard.Core.ViewModels;
 
 namespace LiteratureAssistant.Controllers
 {
+    [RoutePrefix("api/ordersApi")]
     public class ordersApiController : ApiController
     {
         private readonly IOrderService _orderService;
@@ -38,6 +39,15 @@ namespace LiteratureAssistant.Controllers
             var order = _orderService.ToViewModel(_orderService.Find(id));
 
             return Ok(order);
+        }
+
+        [Route("openOrders")]
+        [HttpGet]
+        public IHttpActionResult GetOpenOrders()
+        {
+            var result = _orderService.GetOpenOrders();
+
+            return Ok(result);
         }
 
         // POST: api/usersApi

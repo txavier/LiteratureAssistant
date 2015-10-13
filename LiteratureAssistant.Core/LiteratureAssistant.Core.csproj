@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IEfQueryOpenOrders.cs" />
     <Compile Include="Models\AccountModels\AccountViewModels.cs" />
     <Compile Include="Models\AccountModels\IdentityModels.cs" />
     <Compile Include="Models\count.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModels\BarcodeViewModel.cs" />
     <Compile Include="ViewModels\CountViewModel.cs" />
+    <Compile Include="ViewModels\OrderByItem.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\TemplateAttributeViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
